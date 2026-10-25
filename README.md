@@ -34,7 +34,9 @@ Branding (name, subtitle, navigation) lives in [`lib/site.ts`](lib/site.ts), so 
 - **Next.js 16 (App Router) + TypeScript + plain CSS.** Every page is statically generated. There is no database, CMS, auth or API.
 - **Content lives apart from presentation.** Typed records in `content/` are read only through `lib/content.ts`. To move to a database or CMS later, replace that module; pages and components don't change.
 - **Design tokens** (colour, type scale, spacing) are CSS custom properties at the top of `app/globals.css`.
-- **Fonts:** Newsreader (display), IBM Plex Sans (text), IBM Plex Mono (metadata) and IBM Plex Sans JP (Japanese, loaded on demand). All are self-hosted through `next/font`, and all are under the SIL Open Font Licence.
+- **Visual language:** grid-paper ground, monochrome ink with one deep green for labels, thin rules, corner brackets, oversized ghost numerals, and vertical Japanese labels (tategaki) beside English headings. Photos are greyscale in cards and turn to colour on hover. Story pages show colour in full.
+- **Fonts:** Inter Tight (headlines), Inter (text and labels) and Shippori Mincho B1 (all Japanese, by the Japanese foundry FONTDASU, loaded on demand). All are self-hosted through `next/font` and licensed under the SIL Open Font License. Japanese runs inside English text are wrapped in `lang="ja"` (see `components/Ja.tsx`) so browsers draw Japanese glyph forms rather than Chinese ones.
+- **Japanese labels** (section names, and the brand rendered as 日常の向こう側) live in `lib/site.ts` and `subjectJa` on each story. They are plain, standard terms, but should be checked by a native speaker before launch.
 
 ```
 app/

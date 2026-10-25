@@ -22,6 +22,11 @@ export function Journey({ story }: { story: Story }) {
         <h3 className="journey__title">
           <Link href={storyHref(story)}>{story.subject}</Link>
         </h3>
+        {story.subjectJa ? (
+          <span className="journey__ja" lang="ja">
+            {story.subjectJa}
+          </span>
+        ) : null}
       </div>
       <ol className="journey__track" aria-label={`Timeline: ${story.subject}`}>
         {story.timeline.map((t) => (

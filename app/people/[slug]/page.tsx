@@ -45,14 +45,14 @@ export default async function PersonPage(props: PageProps<"/people/[slug]">) {
           <Breadcrumbs items={[{ href: "/people", label: "People" }, { label: p.name }]} />
           <p className="kicker kicker--accent" style={{ marginTop: "2.5rem" }}>{p.role}</p>
           <h1 className="display h1" style={{ marginTop: "1rem" }}>{p.name}</h1>
-          {p.nameJa ? (
-            <p className="profile-head__ja" lang="ja">
-              {p.nameJa}
-              {p.romanised?.length ? <span className="meta" lang="en" style={{ marginLeft: "1rem" }}>{p.romanised.join(" · ")}</span> : null}
-            </p>
-          ) : null}
+          {p.romanised?.length ? <p className="meta profile-head__romaji">{p.romanised.join(" · ")}</p> : null}
           <p className="lede" style={{ marginTop: "1.5rem", maxWidth: "36rem" }}>{p.intro}</p>
         </div>
+        {p.nameJa ? (
+          <p className="tate profile-head__ja" lang="ja">
+            {p.nameJa}
+          </p>
+        ) : <span />}
         <div>
           <Portrait person={p} className="profile-portrait" sizes="(max-width: 1000px) 80vw, 30vw" />
           {p.portrait ? <p className="meta" style={{ marginTop: "0.5rem", fontSize: "0.7rem" }}>{getImage(p.portrait).attribution}</p> : null}

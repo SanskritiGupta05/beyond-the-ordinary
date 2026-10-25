@@ -5,6 +5,8 @@
 export const site = {
   name: "Beyond the Ordinary",
   subtitle: "Japanese Design, Ideas & Global Influence",
+  /** Japanese rendering of the name: "the other side of the everyday". Have a native speaker confirm before launch. */
+  nameJa: "日常の向こう側",
   tagline: "Discover the Japanese people, ideas, and innovations that have shaped the way the world works, looks, and feels.",
   description:
     "An independent editorial archive exploring Japanese design, the people behind it, and the ideas that have travelled far beyond their original context.",
@@ -23,9 +25,22 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/stories", label: "Everyday Innovations" },
-  { href: "/people", label: "People" },
-  { href: "/influence", label: "Japan to the World" },
-  { href: "/thinking", label: "Thinking" },
-  { href: "/archive", label: "Archive" },
+  { href: "/stories", label: "Everyday Innovations", ja: "日常の発明" },
+  { href: "/people", label: "People", ja: "人物" },
+  { href: "/influence", label: "Japan to the World", ja: "日本から世界へ" },
+  { href: "/thinking", label: "Thinking", ja: "考え方" },
+  { href: "/archive", label: "Archive", ja: "アーカイブ" },
 ] as const;
+
+/** Japanese section labels, set vertically beside English headings. */
+export const sectionJa = {
+  overlooked: "日常の発明",
+  people: "人物",
+  world: "日本から世界へ",
+  thinking: "考え方",
+  more: "もっと見る",
+  note: "制作者より",
+  about: "このサイトについて",
+  sources: "出典",
+  archive: "アーカイブ",
+} as const;

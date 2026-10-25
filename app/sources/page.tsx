@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ImageCredits, SourceList, VerificationBadge } from "@/components/Article";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { sectionJa } from "@/lib/site";
 import { getImages, getSources } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function SourcesPage() {
   return (
     <>
       <header className="wrap page-head">
+        <p className="tate page-head__tate" lang="ja">{sectionJa.sources}</p>
         <Breadcrumbs items={[{ label: "Sources & research" }]} />
         <h1 className="display page-head__title">Sources &amp; research approach</h1>
         <p className="lede page-head__lede">

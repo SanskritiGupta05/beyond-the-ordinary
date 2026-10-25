@@ -4,6 +4,7 @@ import { Figure } from "@/components/Figure";
 import { Journey, JourneyLegend } from "@/components/Journey";
 import { RandomStoryButton } from "@/components/RandomStory";
 import { Serendipity } from "@/components/Serendipity";
+import { site, sectionJa } from "@/lib/site";
 import { getDiscoveries, getImage, getPeople, getPrinciples, getSources, getStories, getStory, principleHref, storyHref } from "@/lib/content";
 
 export default function HomePage() {
@@ -24,11 +25,24 @@ export default function HomePage() {
     <>
       {/* 1 · Hero */}
       <section className="hero" aria-labelledby="hero-title">
+        <span className="ghost-num" aria-hidden="true">1967</span>
         <div className="wrap grid">
           <div className="hero__copy">
-            <p className="kicker">Beyond the Ordinary · An independent archive of Japanese design</p>
+            <div className="hero__labels">
+              <p className="kicker">
+                An independent
+                <br />
+                archive
+              </p>
+              <p className="big">2K26</p>
+              <p className="kicker">
+                Japanese design,
+                <br />
+                ideas &amp; influence
+              </p>
+            </div>
             <h1 id="hero-title" className="display hero__title">
-              The world is full of design stories we&rsquo;ve never <em>stopped to notice.</em>
+              The world is full of design stories we&rsquo;ve never stopped to notice.
             </h1>
             <p className="hero__text">
               From the tactile paving beneath our feet to the technology in our pockets, discover the Japanese ideas,
@@ -41,23 +55,26 @@ export default function HomePage() {
               <RandomStoryButton hrefs={hrefs} />
             </div>
             <div className="hero__meta">
-              <div><strong>{stories.length}</strong><span className="meta">researched stories</span></div>
-              <div><strong>{people.length}</strong><span className="meta">people</span></div>
-              <div><strong>{getSources().length}</strong><span className="meta">cited sources</span></div>
+              <div><strong>{String(stories.length).padStart(2, "0")}</strong><span className="meta">Stories</span></div>
+              <div><strong>{String(people.length).padStart(2, "0")}</strong><span className="meta">People</span></div>
+              <div><strong>{getSources().length}</strong><span className="meta">Cited sources</span></div>
             </div>
           </div>
           <div className="hero__visual">
-            <Figure id="okayama-birthplace-1" bare priority className="hero__main" sizes="(max-width: 900px) 100vw, 50vw" />
-            <Figure id="tactile-japan-yellow" bare className="hero__inset" sizes="(max-width: 900px) 40vw, 20vw" />
+            <Figure id="okayama-birthplace-1" bare priority className="hero__main" sizes="(max-width: 900px) 100vw, 42vw" />
+            <Figure id="tactile-japan-yellow" bare className="hero__inset" sizes="(max-width: 900px) 34vw, 15vw" />
             <p className="hero__label">
-              <span className="kicker kicker--accent">Fig. 1 · Okayama, 1967</span>
-              <br />
-              The street where tactile paving was first laid.{" "}
-              <Link href={storyHref(featured)}>Read the story</Link>
-              <br />
-              <span className="meta" style={{ fontSize: "0.68rem" }}>{getImage("okayama-birthplace-1").attribution}</span>
+              <span className="chip-label">18.3.1967</span>
+              <span>
+                Okayama: the street where tactile paving was first laid. <Link href={storyHref(featured)}>Read the story ↗</Link>
+                <br />
+                <span className="meta" style={{ fontSize: "0.68rem" }}>{getImage("okayama-birthplace-1").attribution}</span>
+              </span>
             </p>
           </div>
+          <p className="tate hero__tate" lang="ja">
+            {site.nameJa}
+          </p>
         </div>
       </section>
 
@@ -66,6 +83,7 @@ export default function HomePage() {
         <div className="wrap">
           <header className="section-head">
             <p className="section-head__num">01 — Everyday innovations</p>
+            <p className="tate section-head__ja" lang="ja">{sectionJa.overlooked}</p>
             <h2 id="overlooked-title" className="display h2 section-head__title">The things we overlook</h2>
             <div className="section-head__aside">
               <p>You&rsquo;ve seen it a thousand times. Here&rsquo;s the story behind it.</p>
@@ -73,9 +91,9 @@ export default function HomePage() {
             </div>
           </header>
           <div className="grid overlooked">
-            <StoryCard story={overlooked[0]} size="lg" imageId="okayama-birthplace-2" sizes="(max-width: 900px) 100vw, 55vw" />
-            <StoryCard story={overlooked[1]} sizes="(max-width: 900px) 100vw, 30vw" />
-            <StoryCard story={overlooked[2]} sizes="(max-width: 900px) 100vw, 25vw" />
+            <StoryCard story={overlooked[0]} index={1} size="lg" imageId="okayama-birthplace-2" sizes="(max-width: 900px) 100vw, 55vw" />
+            <StoryCard story={overlooked[1]} index={2} sizes="(max-width: 900px) 100vw, 30vw" />
+            <StoryCard story={overlooked[2]} index={3} sizes="(max-width: 900px) 100vw, 25vw" />
           </div>
         </div>
       </section>
@@ -85,6 +103,7 @@ export default function HomePage() {
         <div className="wrap">
           <header className="section-head">
             <p className="section-head__num">02 — People</p>
+            <p className="tate section-head__ja" lang="ja">{sectionJa.people}</p>
             <h2 id="people-title" className="display h2 section-head__title">People behind the ideas</h2>
             <div className="section-head__aside">
               <p>Inventors, engineers and designers. Not everyone here would call themselves a designer — design is simply the lens we use to look at their work.</p>
@@ -104,6 +123,7 @@ export default function HomePage() {
         <div className="wrap">
           <header className="section-head">
             <p className="section-head__num">03 — Influence</p>
+            <p className="tate section-head__ja" lang="ja">{sectionJa.world}</p>
             <h2 id="world-title" className="display h2 section-head__title">From Japan to the world</h2>
             <div className="section-head__aside">
               <p>How ideas that began in Japan were adopted and adapted elsewhere — traced through documented events, not assumptions.</p>
@@ -124,6 +144,7 @@ export default function HomePage() {
         <div className="wrap">
           <header className="section-head">
             <p className="section-head__num">04 — Design thinking</p>
+            <p className="tate section-head__ja" lang="ja">{sectionJa.thinking}</p>
             <h2 id="thinking-title" className="display h2 section-head__title">The thinking behind the work</h2>
             <div className="section-head__aside">
               <p>Principles drawn from real decisions in real objects — each one traced back to the stories where it appears.</p>
@@ -154,6 +175,7 @@ export default function HomePage() {
         <div className="wrap">
           <header className="section-head">
             <p className="section-head__num">05 — More to discover</p>
+            <p className="tate section-head__ja" lang="ja">{sectionJa.more}</p>
             <h2 id="more-title" className="display h2 section-head__title">Keep exploring</h2>
             <div className="section-head__aside">
               <p>Graphic systems, everyday products, and the ideas that connect them.</p>
@@ -164,7 +186,7 @@ export default function HomePage() {
               {more.map((s) => (
                 <li key={s.id} className="mini-item">
                   <Link href={storyHref(s)}>
-                    <Figure id={s.cardImage ?? s.heroImage} bare className="mini-item__img" sizes="128px" />
+                    <Figure id={s.cardImage ?? s.heroImage} bare className="mini-item__img mono" sizes="128px" />
                     <span>
                       <span className="kicker kicker--accent">{s.category} · {s.originDateLabel}</span>
                       <span className="mini-item__title" style={{ display: "block", marginTop: "0.35rem" }}>{s.title}</span>
@@ -198,6 +220,9 @@ export default function HomePage() {
               <Link href="/sources" className="link-arrow">How the research works</Link>
             </div>
           </div>
+          <p className="tate note-tate" lang="ja">
+            {sectionJa.note}
+          </p>
         </div>
       </section>
     </>

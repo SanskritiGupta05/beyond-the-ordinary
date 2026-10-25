@@ -3,21 +3,30 @@ import { getPerson, personHref, storyHref } from "@/lib/content";
 import type { Person, Story } from "@/lib/types";
 import { Figure } from "./Figure";
 
-export function StoryCard({ story, size, imageId, sizes }: { story: Story; size?: "lg"; imageId?: string; sizes?: string }) {
+export function StoryCard({ story, size, imageId, sizes, index }: { story: Story; size?: "lg"; imageId?: string; sizes?: string; index?: number }) {
   const names = story.people.map((id) => getPerson(id)?.name).filter(Boolean).join(", ");
   return (
     <Link href={storyHref(story)} className={`card ${size === "lg" ? "card--lg" : ""}`}>
-      <Figure id={imageId ?? story.cardImage ?? story.heroImage} bare className="card__img" sizes={sizes ?? "(max-width: 900px) 100vw, 40vw"} />
+      <Figure id={imageId ?? story.cardImage ?? story.heroImage} bare className="card__img mono" sizes={sizes ?? "(max-width: 900px) 100vw, 40vw"} />
       <div className="card__body">
-        <div className="card__meta">
-          <span className="kicker kicker--accent">{story.category}</span>
+        {index !== undefined ? (
+          <span className="card__num" aria-hidden="true">
+            {String(index).padStart(2, "0")}
+          </span>
+        ) : null}
+        <div className="card__meta" style={index === undefined ? { gridColumn: "1 / -1" } : undefined}>
+          <span>{story.category}</span>
           <span className="meta">{story.originDateLabel}</span>
         </div>
-        <h3 className="card__title">{story.title}</h3>
-        <p className="card__dek">{story.dek}</p>
-        <p className="meta">
-          {story.subject}
-          {names && !story.subject.includes(names.split(",")[0]) ? ` · ${names}` : ""}
+        <h3 className="card__title" style={index === undefined ? { gridColumn: "1 / -1" } : undefined}>
+          {story.title}
+        </h3>
+        <p className="card__dek" style={index === undefined ? { gridColumn: "1 / -1" } : undefined}>
+          {story.dek}
+          <span className="meta" style={{ display: "block", marginTop: "0.5rem" }}>
+            {story.subject}
+            {names && !story.subject.includes(names.split(",")[0]) ? ` · ${names}` : ""}
+          </span>
         </p>
       </div>
     </Link>
@@ -26,7 +35,7 @@ export function StoryCard({ story, size, imageId, sizes }: { story: Story; size?
 
 /** Portrait, or a typographic placeholder when no appropriately licensed portrait exists. */
 export function Portrait({ person, className = "", sizes }: { person: Person; className?: string; sizes?: string }) {
-  if (person.portrait) return <Figure id={person.portrait} bare className={className} sizes={sizes ?? "(max-width: 1000px) 50vw, 20vw"} />;
+  if (person.portrait) return <Figure id={person.portrait} bare className={`${className} mono`} sizes={sizes ?? "(max-width: 1000px) 50vw, 20vw"} />;
   return (
     <div className={`figure__img placeholder ${className}`} role="img" aria-label={`No licensed portrait of ${person.name} yet`}>
       <div>
@@ -48,7 +57,7 @@ export function PersonCard({ person }: { person: Person }) {
       <div>
         <p className="person-card__name">{person.name}</p>
         {person.nameJa ? (
-          <p className="meta ja" lang="ja">
+          <p className="meta" lang="ja" style={{ marginTop: "0.3rem", color: "var(--ink-2)" }}>
             {person.nameJa}
           </p>
         ) : null}

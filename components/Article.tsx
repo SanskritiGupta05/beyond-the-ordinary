@@ -3,6 +3,7 @@ import { entityLabel, formatPartialDate, getImage, getSource, relationshipLabels
 import type { Block, Relationship, Source, TimelineEvent } from "@/lib/types";
 import { Diagram } from "./Diagrams";
 import { Figure } from "./Figure";
+import { Ja } from "./Ja";
 
 /** Maps source ids to footnote numbers for one page. */
 export type CiteMap = Map<string, number>;
@@ -162,9 +163,9 @@ export function SourceList({ ids, numbered = true }: { ids: string[]; numbered?:
               <summary>
                 <span className="source__n">{numbered ? i + 1 : "·"}</span>
                 <span className="source__title">
-                  {s.title}
+                  <Ja>{s.title}</Ja>
                   <span className="source__pub">
-                    {s.publisher}
+                    <Ja>{s.publisher}</Ja>
                     {s.published ? `, ${formatPartialDate(s.published)}` : ""}
                     {s.language === "ja" ? " · in Japanese" : ""}
                   </span>
@@ -182,7 +183,7 @@ export function SourceList({ ids, numbered = true }: { ids: string[]; numbered?:
                   <p className="kicker">Supports these claims</p>
                   <ul>
                     {s.claims.map((c) => (
-                      <li key={c}>{c}</li>
+                      <li key={c}><Ja>{c}</Ja></li>
                     ))}
                   </ul>
                 </div>

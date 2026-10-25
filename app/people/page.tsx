@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { sectionJa } from "@/lib/site";
 import { PersonCard } from "@/components/Cards";
 import { getPeople } from "@/lib/content";
 
@@ -13,6 +14,7 @@ export default function PeoplePage() {
   return (
     <>
       <header className="wrap page-head">
+        <p className="tate page-head__tate" lang="ja">{sectionJa.people}</p>
         <Breadcrumbs items={[{ label: "People" }]} />
         <h1 className="display page-head__title">People behind the design</h1>
         <p className="lede page-head__lede">

@@ -9,6 +9,8 @@ export const stories: Story[] = [
     slug: "tactile-paving",
     title: "The pavement that changed how we navigate public spaces",
     subject: "Tactile paving",
+    subjectJa: "点字ブロック",
+    palette: ["#d9a521", "#a9a39a", "#4a4a48", "#5b6e3a"],
     alternativeNames: ["Tenji blocks (点字ブロック)", "Braille blocks", "Tactile walking surface indicators", "Detectable warnings"],
     dek: "A grid of raised dots and bars, first laid on one street in Okayama in 1967, became a language that millions of feet and canes now read every day.",
     summary:
@@ -201,6 +203,8 @@ export const stories: Story[] = [
     slug: "qr-code",
     title: "The code you scan without thinking",
     subject: "QR Code",
+    subjectJa: "QRコード",
+    palette: ["#111111", "#e9e6df", "#3f4a63", "#a88a64"],
     alternativeNames: ["Quick Response code", "QRコード"],
     dek: "Built in 1994 to speed up a car-parts factory floor, the QR Code became public infrastructure partly because its makers chose not to enforce their patent.",
     summary:
@@ -380,6 +384,8 @@ export const stories: Story[] = [
     slug: "sori-yanagi-butterfly-stool",
     title: "When design becomes part of everyday life",
     subject: "Sori Yanagi and the Butterfly Stool",
+    subjectJa: "バタフライスツール",
+    palette: ["#4a2a1c", "#b8963e", "#8a817a", "#ece8e1"],
     alternativeNames: ["バタフライスツール"],
     dek: "Two identical pieces of plywood, a brass rod, and machinery left over from building wartime aircraft: how one stool brought industrial technique and domestic life together.",
     summary:
@@ -536,6 +542,8 @@ export const stories: Story[] = [
     slug: "tokyo-1964-visual-identity",
     title: "The art of communicating visually",
     subject: "Yusaku Kamekura and the Tokyo 1964 design programme",
+    subjectJa: "東京オリンピック",
+    palette: ["#c8322b", "#23315a", "#e07a2e", "#efebe3"],
     alternativeNames: ["Tokyo Olympics 1964 posters", "1964 Olympic pictograms"],
     dek: "A red disc, five gold rings and a set of pictograms that let visitors find their way without a shared language — the first time an Olympic Games was designed as a system.",
     summary:
@@ -683,6 +691,8 @@ export const stories: Story[] = [
     slug: "naoto-fukasawa-wall-mounted-cd-player",
     title: "Designing for the things we do without thinking",
     subject: "Naoto Fukasawa's wall-mounted CD player",
+    subjectJa: "壁掛式CDプレーヤー",
+    palette: ["#1a1a1a", "#b07a4a", "#8c8c8a", "#f2f2f0"],
     alternativeNames: ["MUJI wall-mounted CD player", "壁掛式CDプレーヤー"],
     dek: "You already know how to switch it on. Fukasawa's CD player borrows its whole interaction from a kitchen extractor fan.",
     summary:

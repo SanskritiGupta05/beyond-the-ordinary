@@ -6,7 +6,7 @@ export function CorrectionCta({ subject }: { subject: string }) {
     ? `mailto:${site.contactEmail}?subject=${encodeURIComponent(`Correction: ${subject}`)}`
     : null;
   return (
-    <div className="correction-cta">
+    <div className="correction-cta bracket">
       <div>
         <p className="kicker">Spotted something?</p>
         <p className="display h4" style={{ marginTop: "0.5rem", maxWidth: "28ch" }}>

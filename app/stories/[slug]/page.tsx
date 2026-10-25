@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { StoryCard } from "@/components/Cards";
 import { CorrectionCta } from "@/components/CorrectionCta";
 import { Figure } from "@/components/Figure";
+import { Ja } from "@/components/Ja";
 import { RandomStoryButton } from "@/components/RandomStory";
 import { StoryRail } from "@/components/StoryRail";
 import {
@@ -85,6 +86,12 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
     <article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <header className="wrap story-head">
+        <span className="ghost-num" aria-hidden="true">{story.originDate.slice(0, 4)}</span>
+        {story.subjectJa ? (
+          <p className="tate story-head__tate" lang="ja">
+            {story.subjectJa}
+          </p>
+        ) : null}
         <Breadcrumbs items={[{ href: "/stories", label: "Everyday Innovations" }, { label: story.subject }]} />
         <p className="kicker kicker--accent" style={{ marginTop: "2.5rem" }}>
           {story.category} · The journey of an idea
@@ -96,7 +103,7 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
             <dt>Subject</dt>
             <dd>
               {story.subject}
-              {story.alternativeNames?.length ? <span className="muted"> · also {story.alternativeNames.join(", ")}</span> : null}
+              {story.alternativeNames?.length ? <span className="muted"> · also <Ja>{story.alternativeNames.join(", ")}</Ja></span> : null}
             </dd>
           </div>
           <div>
@@ -119,6 +126,18 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
             <dt>Reading · Reviewed</dt>
             <dd>{story.readingMinutes} min · {formatPartialDate(story.reviewed)}</dd>
           </div>
+          {story.palette ? (
+            <div aria-hidden="true">
+              <div className="palette">
+                {story.palette.map((c) => (
+                  <i key={c} style={{ background: c }} />
+                ))}
+              </div>
+              <p className="palette-label">Colour
+                <br />
+                picture</p>
+            </div>
+          ) : null}
         </dl>
       </header>
 
@@ -132,7 +151,10 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
         </div>
 
         <div className="story-body" id="story-body">
-          <p className="lede" style={{ marginBottom: "4rem", maxWidth: "38rem" }}>{story.summary}</p>
+          <div className="summary-block bracket">
+            <p className="kicker" style={{ marginBottom: "0.75rem" }}>In short</p>
+            <p>{story.summary}</p>
+          </div>
 
           {sections.map(({ meta, section }) => (
             <section key={meta.step} id={meta.step} className="step" aria-labelledby={`h-${meta.step}`}>

@@ -7,26 +7,30 @@ export const contentType = "image/png";
 
 /** Default social preview: a typographic card in the site's palette. */
 export default function OpengraphImage() {
-  const dots = Array.from({ length: 25 }, (_, i) => i);
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: "#f5f1e9", color: "#1b1a17", padding: 72, fontFamily: "serif" }}>
+      <div
+        style={{
+          width: "100%", height: "100%", display: "flex", padding: 72, color: "#121212",
+          backgroundColor: "#f7f7f5",
+          backgroundImage: "linear-gradient(to right, rgba(18,18,18,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(18,18,18,0.06) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          fontFamily: "sans-serif",
+        }}
+      >
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
-          <div style={{ fontSize: 22, letterSpacing: 4, textTransform: "uppercase", color: "#a3301c", fontFamily: "monospace" }}>{site.subtitle}</div>
+          <div style={{ display: "flex", gap: 64, fontSize: 20, letterSpacing: 1, textTransform: "uppercase" }}>
+            <span>An independent archive</span>
+            <span>{site.subtitle}</span>
+          </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 96, lineHeight: 1, letterSpacing: -2 }}>{site.name}</div>
-            <div style={{ fontSize: 34, lineHeight: 1.3, marginTop: 28, color: "#4a463f", maxWidth: 760 }}>
+            <div style={{ fontSize: 104, lineHeight: 0.95, letterSpacing: -6, fontWeight: 600 }}>{site.name}</div>
+            <div style={{ fontSize: 32, lineHeight: 1.35, marginTop: 32, color: "#474747", maxWidth: 760 }}>
               The world is full of design stories we&rsquo;ve never stopped to notice.
             </div>
           </div>
         </div>
-        <div style={{ width: 230, height: 230, background: "#d9a521", display: "flex", flexWrap: "wrap", padding: 18, alignSelf: "flex-end" }}>
-          {dots.map((d) => (
-            <div key={d} style={{ width: 38.8, height: 38.8, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ width: 22, height: 22, borderRadius: 11, background: "#1b1a17", opacity: 0.85 }} />
-            </div>
-          ))}
-        </div>
+        <div style={{ display: "flex", alignSelf: "flex-end", background: "#1f4d36", color: "#fff", fontSize: 26, padding: "6px 16px" }}>1967 → today</div>
       </div>
     ),
     size,

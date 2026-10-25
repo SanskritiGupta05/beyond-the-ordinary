@@ -173,6 +173,10 @@ export interface Story {
   title: string;
   /** The subject in plain words, e.g. "Tactile paving". */
   subject: string;
+  /** The subject as it is written in Japanese, shown as vertical display type. */
+  subjectJa?: string;
+  /** Four colours sampled from the hero photograph. Decorative only. */
+  palette?: [string, string, string, string];
   alternativeNames?: string[];
   dek: string;
   summary: string;

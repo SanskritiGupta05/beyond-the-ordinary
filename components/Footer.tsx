@@ -8,6 +8,7 @@ export function Footer() {
         <div className="footer-grid">
           <div>
             <p className="footer-brand">{site.name}</p>
+            <p className="footer-brand-ja" lang="ja">{site.nameJa}</p>
             <p style={{ marginTop: "1rem", maxWidth: "26rem" }}>
               An independent, growing archive of Japanese design stories — researched with care, sourced in the open, and
               always open to correction.

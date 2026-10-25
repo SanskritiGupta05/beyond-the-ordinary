@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { site } from "@/lib/site";
+import { site, sectionJa } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About the Project",
@@ -12,6 +12,7 @@ export default function AboutPage() {
   return (
     <>
       <header className="wrap page-head">
+        <p className="tate page-head__tate" lang="ja">{sectionJa.about}</p>
         <Breadcrumbs items={[{ label: "About" }]} />
         <h1 className="display page-head__title">About the project</h1>
         <p className="lede page-head__lede">{site.tagline}</p>

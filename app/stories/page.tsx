@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { sectionJa } from "@/lib/site";
 import { StoryCard } from "@/components/Cards";
 import { RandomStoryButton } from "@/components/RandomStory";
 import { getStories, storyHref } from "@/lib/content";
@@ -15,6 +16,7 @@ export default function StoriesPage() {
   return (
     <>
       <header className="wrap page-head">
+        <p className="tate page-head__tate" lang="ja">{sectionJa.overlooked}</p>
         <Breadcrumbs items={[{ label: "Everyday Innovations" }]} />
         <h1 className="display page-head__title">You&rsquo;ve seen it a thousand times.</h1>
         <p className="lede page-head__lede">

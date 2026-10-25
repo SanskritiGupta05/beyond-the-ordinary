@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RelationshipList } from "@/components/Article";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { sectionJa } from "@/lib/site";
 import { Journey, JourneyLegend } from "@/components/Journey";
 import { getRelationships, getStories, storyHref } from "@/lib/content";
 
@@ -26,6 +27,7 @@ export default function InfluencePage() {
   return (
     <>
       <header className="wrap page-head">
+        <p className="tate page-head__tate" lang="ja">{sectionJa.world}</p>
         <Breadcrumbs items={[{ label: "From Japan to the World" }]} />
         <h1 className="display page-head__title">From Japan to the world</h1>
         <p className="lede page-head__lede">

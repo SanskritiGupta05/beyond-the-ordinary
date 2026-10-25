@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ArchiveSearch } from "@/components/ArchiveSearch";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { sectionJa } from "@/lib/site";
 import { buildSearchIndex } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function ArchivePage() {
   return (
     <>
       <header className="wrap page-head" style={{ paddingBottom: "2rem" }}>
+        <p className="tate page-head__tate" lang="ja">{sectionJa.archive}</p>
         <Breadcrumbs items={[{ label: "Archive" }]} />
         <h1 className="display page-head__title">The archive</h1>
         <p className="lede page-head__lede">

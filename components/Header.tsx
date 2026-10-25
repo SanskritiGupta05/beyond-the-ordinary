@@ -60,7 +60,10 @@ export function Header() {
             {nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
-                  {item.label}
+                  <span>{item.label}</span>
+                  <span className="nav-ja" lang="ja" aria-hidden="true">
+                    {item.ja}
+                  </span>
                 </Link>
               </li>
             ))}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { sectionJa } from "@/lib/site";
 import { getPrinciples, getStory, principleHref } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function ThinkingPage() {
   return (
     <>
       <header className="wrap page-head">
+        <p className="tate page-head__tate" lang="ja">{sectionJa.thinking}</p>
         <Breadcrumbs items={[{ label: "Thinking" }]} />
         <h1 className="display page-head__title">The thinking behind the work</h1>
         <p className="lede page-head__lede">
