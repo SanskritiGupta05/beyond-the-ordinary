@@ -33,7 +33,7 @@
   /* Type */
   --font-display: var(--font-inter-tight), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, var(--font-shippori), sans-serif;
-  --font-mono: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif; /* labels: tabular figures */
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; /* the typewriter layer */
   --font-ja: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
 
   --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
@@ -158,7 +158,27 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 .h4 { font-size: var(--step-2); line-height: 1.1; letter-spacing: -0.03em; }
 .lede { font-size: var(--step-1); line-height: 1.5; color: var(--ink-2); }
 .small { font-size: var(--step--1); }
-.meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.meta { font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* Typewriter layer: the archive's labels, dates, captions, citations and sources
+   are set in IBM Plex Mono, like typed index cards beside the editorial headlines. */
+.section-head__num, .tag, .footer-grid h2, .footer-bottom, .breadcrumbs ol, .placeholder__note,
+.hero__meta .meta, .card__meta, .journey__date, .journey__place, .legend, .story-meta dt, .palette-label,
+.story-rail h2, .toc a span:first-child, .story-aside, .callout__label, .facts dt, .compare thead th,
+.diagram__label, .timeline__date, .timeline__phase, .explore h3, .rel-type, .evidence, .source__toggle,
+.source__detail, .source__pub, .badge, .search-field button, .filter-group legend, .result__type,
+.result__year, .profile-facts dt, .profile-section h2, .not-found__code, .field-label, .field-hint,
+.chip-label, .chip__count, .cite, .figure figcaption, .credits, .diagram figcaption, .dock__label,
+.dock__menu, .serendipity__from, .works .meta, .compare-note, .step__label .kicker {
+  font-family: var(--font-mono);
+}
+/* Monospace is wider: trim tracking on uppercase labels */
+.kicker, .section-head__num, .footer-grid h2, .footer-bottom, .breadcrumbs ol, .card__meta, .story-meta dt,
+.facts dt, .callout__label, .explore h3, .filter-group legend, .profile-section h2, .field-label, .dock__label { letter-spacing: 0.01em; }
+.figure figcaption, .credits, .diagram figcaption { font-size: 0.78rem; line-height: 1.55; }
+.dock__label { font-size: 0.76rem; }
+.journey__date { font-size: 0.95rem; letter-spacing: -0.01em; }
+.timeline__date { font-size: 0.86rem; letter-spacing: 0; }
 .muted { color: var(--ink-2); }
 .prose { max-width: var(--measure); }
 .prose p + p { margin-top: var(--space-4); }

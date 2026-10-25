@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Inter_Tight, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Dock } from "@/components/Dock";
 import { site } from "@/lib/site";
@@ -16,6 +16,15 @@ const interTight = Inter_Tight({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Typewriter layer: IBM Plex Mono for labels, dates, captions, citations and sources.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -60,7 +69,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${interTight.variable} ${inter.variable} ${shippori.variable} ${yuji.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${interTight.variable} ${inter.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
