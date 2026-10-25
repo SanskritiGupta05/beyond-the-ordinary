@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, Shippori_Mincho_B1 } from "next/font/google";
+import { Inter, Inter_Tight, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Dock } from "@/components/Dock";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -29,6 +29,14 @@ const shippori = Shippori_Mincho_B1({
   display: "swap",
 });
 
+// Yuji Syuku, a brush-script face, used only for the brushed wordmark 日常の向こう側 in the dock.
+const yuji = Yuji_Syuku({
+  variable: "--font-yuji",
+  weight: "400",
+  preload: false,
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -52,16 +60,16 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${interTight.variable} ${inter.variable} ${shippori.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${interTight.variable} ${inter.variable} ${shippori.variable} ${yuji.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <Header />
         <main id="main" tabIndex={-1}>
           {children}
         </main>
         <Footer />
+        <Dock />
       </body>
     </html>
   );

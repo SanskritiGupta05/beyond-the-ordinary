@@ -35,7 +35,7 @@ Branding (name, subtitle, navigation) lives in [`lib/site.ts`](lib/site.ts), so 
 - **Content lives apart from presentation.** Typed records in `content/` are read only through `lib/content.ts`. To move to a database or CMS later, replace that module; pages and components don't change.
 - **Design tokens** (colour, type scale, spacing) are CSS custom properties at the top of `app/globals.css`.
 - **Visual language:** grid-paper ground, monochrome ink with one deep green for labels, thin rules, corner brackets, oversized ghost numerals, and vertical Japanese labels (tategaki) beside English headings. Photos are greyscale in cards and turn to colour on hover. Story pages show colour in full.
-- **Fonts:** Inter Tight (headlines), Inter (text and labels) and Shippori Mincho B1 (all Japanese, by the Japanese foundry FONTDASU, loaded on demand). All are self-hosted through `next/font` and licensed under the SIL Open Font License. Japanese runs inside English text are wrapped in `lang="ja"` (see `components/Ja.tsx`) so browsers draw Japanese glyph forms rather than Chinese ones.
+- **Fonts:** Inter Tight (headlines), Inter (text and labels), Shippori Mincho B1 (Japanese text, by the Japanese foundry FONTDASU) and Yuji Syuku (brush script, used only for the wordmark). The Japanese faces load on demand. All are self-hosted through `next/font` and licensed under the SIL Open Font License. Japanese runs inside English text are wrapped in `lang="ja"` (see `components/Ja.tsx`) so browsers draw Japanese glyph forms rather than Chinese ones.
 - **Japanese labels** (section names, and the brand rendered as 日常の向こう側) live in `lib/site.ts` and `subjectJa` on each story. They are plain, standard terms, but should be checked by a native speaker before launch.
 
 ```
@@ -72,7 +72,7 @@ Defined in [`lib/types.ts`](lib/types.ts):
 
 ### Interactions
 
-- Header search, which works without JavaScript (it submits to `/archive?q=`).
+- A floating bottom navigation dock (`components/Dock.tsx`). The wordmark shows 日常の向こう側 in brushed ink (Yuji Syuku plus an SVG ink filter) and dissolves into "Beyond the Ordinary" on hover or keyboard focus. The dock hides while scrolling down and returns on scroll up or focus. On narrow screens the links open as a sheet above the bar.
 - Archive search with type and category filters, diacritic-insensitive matching, Japanese-script matching, and filter state kept in the URL.
 - "Discover an unexpected story": a random-story button, plus a card that deals one sourced fact at a time.
 - Story pages: a journey index that tracks the active section, a reading progress bar, numbered citations linking to expandable source records, and related-story navigation.

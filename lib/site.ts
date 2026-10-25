@@ -27,12 +27,15 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/stories", label: "Everyday Innovations", ja: "日常の発明" },
-  { href: "/people", label: "People", ja: "人物" },
-  { href: "/influence", label: "Japan to the World", ja: "日本から世界へ" },
-  { href: "/thinking", label: "Thinking", ja: "考え方" },
-  { href: "/archive", label: "Archive", ja: "アーカイブ" },
+  { href: "/stories", label: "Everyday Innovations", short: "Stories", ja: "日常の発明" },
+  { href: "/people", label: "People", short: "People", ja: "人物" },
+  { href: "/influence", label: "Japan to the World", short: "Japan → World", ja: "日本から世界へ" },
+  { href: "/thinking", label: "Thinking", short: "Thinking", ja: "考え方" },
+  { href: "/archive", label: "Archive", short: "Archive", ja: "アーカイブ" },
 ] as const;
+
+/** The dock's call to action, shown after the main links. */
+export const navAction = { href: "/submit", label: "Suggest a story", ja: "投稿する" } as const;
 
 /** Japanese section labels, set vertically beside English headings. */
 export const sectionJa = {
