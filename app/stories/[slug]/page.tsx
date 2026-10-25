@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Blocks, ImageCredits, RelationshipList, SourceList, Timeline, makeCiteMap } from "@/components/Article";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { StoryCard } from "@/components/Cards";
+import { StoryCard, StoryVisual } from "@/components/Cards";
 import { CorrectionCta } from "@/components/CorrectionCta";
 import { Figure } from "@/components/Figure";
 import { Ja } from "@/components/Ja";
@@ -37,7 +37,7 @@ export async function generateMetadata(props: PageProps<"/stories/[slug]">): Pro
   const { slug } = await props.params;
   const story = getStoryBySlug(slug);
   if (!story) return {};
-  const hero = getImage(story.heroImage);
+  const hero = story.heroImage ? getImage(story.heroImage) : undefined;
   return {
     title: story.title,
     description: story.dek,
@@ -46,7 +46,7 @@ export async function generateMetadata(props: PageProps<"/stories/[slug]">): Pro
       type: "article",
       title: story.title,
       description: story.dek,
-      images: [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }],
+      images: hero ? [{ url: hero.src, width: hero.width, height: hero.height, alt: hero.alt }] : undefined,
     },
   };
 }
@@ -78,7 +78,7 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
     description: story.dek,
     about: story.subject,
     dateModified: story.reviewed,
-    image: getImage(story.heroImage).src,
+    image: story.heroImage ? getImage(story.heroImage).src : undefined,
     citation: sourceIds.map((id) => ({ "@type": "CreativeWork", name: getSource(id)?.title, url: getSource(id)?.url })),
   };
 
@@ -142,7 +142,7 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
       </header>
 
       <div className="wrap story-hero">
-        <Figure id={story.heroImage} priority sizes="100vw" />
+        {story.heroImage ? <Figure id={story.heroImage} priority sizes="100vw" /> : <StoryVisual story={story} className="story-hero__placeholder" />}
       </div>
 
       <div className="wrap story-layout">

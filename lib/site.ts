@@ -18,6 +18,8 @@ export const site = {
    * of showing a form that goes nowhere.
    */
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
+  /** Public repository; submissions can also be opened as GitHub issues here. */
+  repo: "SanskritiGupta05/beyond-the-ordinary",
   /** Optional social links. Only rendered when set. */
   social: [] as { label: string; href: string }[],
   /** Last time the whole dataset was reviewed. */
@@ -43,4 +45,5 @@ export const sectionJa = {
   about: "このサイトについて",
   sources: "出典",
   archive: "アーカイブ",
+  submit: "投稿する",
 } as const;

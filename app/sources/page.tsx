@@ -106,7 +106,7 @@ export default function SourcesPage() {
           <h2 id="img" className="display h3" style={{ marginBottom: "2rem" }}>Image credits</h2>
           <ImageCredits ids={getImages().map((i) => i.id)} />
           <p className="muted small" style={{ marginTop: "2rem" }}>
-            Found an error in a credit or licence? <Link href="/about#corrections">Tell us</Link> and we will fix it or remove the image.
+            Found an error in a credit or licence? <Link href="/submit?type=correction">Tell us</Link> and we will fix it or remove the image.
           </p>
         </div>
       </section>

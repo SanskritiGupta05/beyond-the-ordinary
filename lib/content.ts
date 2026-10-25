@@ -75,8 +75,9 @@ export function personSourceIds(person: Person): string[] {
 
 /** Images used by a story, for credits. */
 export function storyImageIds(story: Story): string[] {
-  const ids = [story.heroImage];
-  if (story.cardImage) ids.push(story.cardImage);
+  const ids: string[] = [];
+  if (story.heroImage) ids.push(story.heroImage);
+  if (story.cardImage && !ids.includes(story.cardImage)) ids.push(story.cardImage);
   story.sections.forEach((s) => s.blocks.forEach((b) => b.kind === "image" && !ids.includes(b.image) && ids.push(b.image)));
   return ids;
 }
@@ -138,7 +139,7 @@ export function buildSearchIndex(): SearchEntry[] {
     href: storyHref(s),
     category: s.category,
     year: s.originDate.slice(0, 4),
-    image: getImage(s.cardImage ?? s.heroImage).src,
+    image: (s.cardImage ?? s.heroImage) ? getImage((s.cardImage ?? s.heroImage)!).src : undefined,
     text: [s.title, s.subject, s.dek, s.summary, s.category, ...s.tags, ...(s.alternativeNames ?? []), s.originLocation, ...s.people.map((id) => getPerson(id)?.name ?? ""), ...(s.collaborators ?? []).map((c) => c.name)].join(" "),
   }));
   const personEntries: SearchEntry[] = people.map((p) => ({

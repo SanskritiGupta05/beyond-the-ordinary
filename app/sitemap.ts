@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (p: string) => new URL(p, site.url).toString();
-  const fixed = ["/", "/stories", "/people", "/influence", "/thinking", "/archive", "/sources", "/about"];
+  const fixed = ["/", "/stories", "/people", "/influence", "/thinking", "/archive", "/sources", "/about", "/submit"];
   return [
     ...fixed.map((p) => ({ url: url(p) })),
     ...getStories().map((s) => ({ url: url(storyHref(s)), lastModified: s.reviewed })),

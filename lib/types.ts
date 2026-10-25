@@ -71,7 +71,7 @@ export interface ImageAsset {
   creator: string;
   /** Where the file was obtained (a page, not a direct file link). */
   sourceUrl: string;
-  license: "Public domain" | "CC0" | "CC BY 2.0" | "CC BY 2.5" | "CC BY 4.0" | "CC BY-SA 3.0" | "Editorial diagram";
+  license: "Public domain" | "CC0" | "CC BY 2.0" | "CC BY 2.5" | "CC BY 4.0" | "CC BY-SA 3.0" | "CC BY-SA 4.0" | "Editorial diagram";
   licenseUrl?: string;
   /** Exact attribution line required by the licence. */
   attribution: string;
@@ -149,7 +149,7 @@ export type Block =
   | { kind: "facts"; items: { label: string; value: string; cite?: string[] }[] }
   | { kind: "compare"; title: string; columns: string[]; rows: { label: string; values: string[] }[]; cite?: string[]; note?: string };
 
-export type DiagramId = "tactile-blocks" | "qr-finder" | "butterfly-halves" | "pull-cord" | "poster-system";
+export type DiagramId = "tactile-blocks" | "qr-finder" | "butterfly-halves" | "pull-cord" | "poster-system" | "emoji-grid" | "rice-cooker" | "cup-suspension";
 
 export interface StorySection {
   step: JourneyStep;
@@ -190,7 +190,8 @@ export interface Story {
   /** Collaborators without profiles, credited by name. */
   collaborators?: { name: string; role: string; cite?: string[] }[];
   organisations?: { name: string; role: string }[];
-  heroImage: string;
+  /** Omit when no appropriately licensed image exists; a typographic placeholder is shown instead. */
+  heroImage?: string;
   cardImage?: string;
   /** Whether the story has documented international adoption worth showing in From Japan to the World. */
   globalReach: boolean;

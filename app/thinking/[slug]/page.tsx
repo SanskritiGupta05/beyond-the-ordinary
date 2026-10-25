@@ -3,8 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Cites, SourceList, makeCiteMap } from "@/components/Article";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { StoryCard } from "@/components/Cards";
-import { Figure } from "@/components/Figure";
+import { StoryCard, StoryVisual } from "@/components/Cards";
 import { getPerson, getPrincipleBySlug, getPrinciples, getStory, personHref, principleHref, storyHref } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -62,7 +61,7 @@ export default async function PrinciplePage(props: PageProps<"/thinking/[slug]">
               const s = getStory(e.story)!;
               return (
                 <li key={e.story + e.text} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 2fr)", gap: "1.5rem", alignItems: "start" }}>
-                  <Figure id={s.cardImage ?? s.heroImage} bare className="mini-item__img" sizes="240px" />
+                  <StoryVisual story={s} className="mini-item__img" sizes="240px" />
                   <div>
                     <p className="kicker kicker--accent">{s.subject}</p>
                     <p className="display h4" style={{ marginTop: "0.5rem" }}>

@@ -49,6 +49,7 @@ for (const im of images) {
 for (const st of stories) {
   const w = `story ${st.id}`;
   img(w, st.heroImage); img(w, st.cardImage);
+  if (!st.heroImage) warnings.push(`${w}: no hero image (placeholder will be shown)`);
   ref(w, P, "person", st.people);
   ref(w, ST, "related story", st.related);
   ref(w, PR, "principle", st.principles);

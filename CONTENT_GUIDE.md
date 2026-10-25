@@ -65,7 +65,7 @@ Only use images whose licence you have checked: public domain, CC0, Creative Com
 
 ### 4. Write the story
 
-Add a `Story` to `content/stories.ts`. Sections take a `step` from the Journey format and appear in canonical order whatever order you write them in. Leave out steps the evidence can't support. "Explore further" is generated automatically.
+Add a `Story` to `content/stories.ts`. `heroImage` is optional: leave it out rather than use an image whose licence you have not checked, and the site shows the Japanese subject name (`subjectJa`) as a vertical placeholder. Sections take a `step` from the Journey format and appear in canonical order whatever order you write them in. Leave out steps the evidence can't support. "Explore further" is generated automatically.
 
 Block types:
 

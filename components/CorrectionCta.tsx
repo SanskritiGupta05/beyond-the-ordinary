@@ -1,10 +1,7 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 
 export function CorrectionCta({ subject }: { subject: string }) {
-  const mail = site.contactEmail
-    ? `mailto:${site.contactEmail}?subject=${encodeURIComponent(`Correction: ${subject}`)}`
-    : null;
+  const href = `/submit?type=correction&subject=${encodeURIComponent(subject)}`;
   return (
     <div className="correction-cta bracket">
       <div>
@@ -13,15 +10,9 @@ export function CorrectionCta({ subject }: { subject: string }) {
           Help us get the story of {subject} right.
         </p>
       </div>
-      {mail ? (
-        <a className="btn" href={mail}>
-          Suggest a correction <span className="arrow" aria-hidden="true">→</span>
-        </a>
-      ) : (
-        <Link className="btn btn--ghost" href="/about#corrections">
-          How to suggest a correction <span className="arrow" aria-hidden="true">→</span>
-        </Link>
-      )}
+      <Link className="btn" href={href}>
+        Suggest a correction <span className="arrow" aria-hidden="true">→</span>
+      </Link>
     </div>
   );
 }

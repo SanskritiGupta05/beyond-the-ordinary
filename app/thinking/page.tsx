@@ -56,7 +56,7 @@ export default function ThinkingPage() {
             <p>
               We have not written about them yet because we would rather do it properly: with sources on their origins, on how
               their meanings have changed, and on which designers have actually discussed them in their own words. If you can
-              recommend scholarship or primary sources, <Link href="/about#corrections">we would like to hear from you</Link>.
+              recommend scholarship or primary sources, <Link href="/submit?type=source">we would like to hear from you</Link>.
             </p>
           </div>
         </div>

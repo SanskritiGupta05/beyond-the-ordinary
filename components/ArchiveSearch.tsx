@@ -161,7 +161,7 @@ export function ArchiveSearch({ entries }: { entries: SearchEntry[] }) {
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
             <button type="button" className="btn" onClick={clear}>Show everything</button>
-            <Link href="/about#corrections" className="btn btn--ghost">Suggest a subject</Link>
+            <Link href={`/submit${q ? `?subject=${encodeURIComponent(q)}` : ""}`} className="btn btn--ghost">Suggest a subject</Link>
           </div>
         </div>
       )}

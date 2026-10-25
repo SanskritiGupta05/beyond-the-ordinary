@@ -834,4 +834,662 @@ export const stories: Story[] = [
     readingMinutes: 5,
     reviewed: "2026-10-18",
   },
+  /* ================================================================ */
+  /* 6. Emergency exit pictogram                                       */
+  /* ================================================================ */
+  {
+    id: "exit-sign",
+    slug: "emergency-exit-running-man",
+    title: "The figure who shows you the way out",
+    subject: "The running-man exit sign",
+    subjectJa: "非常口",
+    palette: ["#1f8a4c", "#f2f2ef", "#2b2b2b", "#9aa39c"],
+    alternativeNames: ["ISO 7010 E001", "非常口マーク"],
+    dek: "A Japanese design competition, smoke-filled test rooms and a quiet argument at ISO produced the green sign above exit doors around the world.",
+    summary:
+      "In the late 1970s a Japanese fire-safety contest looked for an exit sign that anyone could understand — whatever language they read, and through smoke. Yukio Ota's running figure won after testing, and Japan put it forward to ISO, where it became the basis of the international emergency exit sign.",
+    category: "Information design",
+    tags: ["pictograms", "wayfinding", "safety", "standards", "public signage"],
+    originDate: "1979",
+    originDateLabel: "Late 1970s · ISO from the mid-1980s",
+    originLocation: "Japan",
+    people: ["yukio-ota"],
+    heroImage: "exit-sign-running-man",
+    globalReach: true,
+    timeline: [
+      { date: "1964", label: "Ota begins LoCoS, a pictorial language", place: "Japan", phase: "origin", cite: ["wikipedia-ota"] },
+      { date: "late 1970s", label: "Japanese fire-safety contest for a national exit sign draws 3,300 entries", place: "Japan", phase: "origin", cite: ["slate-exit-sign"] },
+      { date: "1980", label: "Japan submits Ota's design to ISO, alongside a similar Soviet proposal", place: "International", phase: "development", cite: ["slate-exit-sign"] },
+      { date: "1985 or 1987", label: "Adopted for international use (sources differ on the year)", place: "International", phase: "spread", cite: ["slate-exit-sign", "wikipedia-ota"] },
+      { date: "2006", label: "New York City requires the pictogram on high-rise fire doors", place: "New York", phase: "spread", cite: ["slate-exit-sign"] },
+      { date: "today", label: "Registered as ISO 7010 E001", place: "International", phase: "today", cite: ["iso-7010"] },
+    ],
+    sections: [
+      {
+        step: "problem",
+        heading: "A word nobody can read in smoke",
+        blocks: [
+          {
+            kind: "interpretation",
+            text: "A text sign such as 非常出口 — emergency exit — works for people who read Japanese and can see clearly. In a fire, smoke cuts visibility, and in buildings used by visitors, not everyone reads the language on the wall. The contest that produced the running figure tested entries for exactly this: legibility in smoke.",
+          },
+          { kind: "image", image: "exit-sign-text-sapporo", size: "inline" },
+        ],
+      },
+      {
+        step: "idea",
+        heading: "A person, a door, a direction",
+        blocks: [
+          {
+            kind: "p",
+            text: "In the late 1970s a Japanese association devoted to fire safety held a contest for a new national exit sign. It drew 3,300 entries. Shortlisted designs were tested to see how readily each could be understood in a smoky environment, and Yukio Ota's figure — a person running towards a doorway, white on green — was chosen.",
+            cite: ["slate-exit-sign"],
+          },
+          {
+            kind: "p",
+            text: "Ota had been working on pictorial communication for years: from 1964 he developed LoCoS, a language of pictures meant to work without words.",
+            cite: ["wikipedia-ota"],
+          },
+          {
+            kind: "uncertain",
+            text: "Some accounts name Japan's Fire and Disaster Management Agency as the contest organiser and give 1979 as the year; Slate describes it only as a fire-safety association in the late 1970s. We have not yet confirmed the organiser from a Japanese primary source.",
+            cite: ["slate-exit-sign"],
+          },
+        ],
+      },
+      {
+        step: "design-decision",
+        heading: "Fifty-eight versions of one running man",
+        blocks: [
+          {
+            kind: "p",
+            text: "Ota drew 58 variations. One committee member objected that the figure looked as if it were sprinting out of the door, so Ota adjusted the angle of the legs — the aim, he said, was to suggest people should run slowly.",
+            cite: ["slate-exit-sign"],
+          },
+          {
+            kind: "interpretation",
+            text: "That small adjustment shows how a safety sign is also a behavioural instruction. A figure that looks panicked could encourage panic; a figure moving purposefully suggests the pace you want in a crowded stairwell.",
+          },
+          {
+            kind: "facts",
+            items: [
+              { label: "Entries to contest", value: "3,300", cite: ["slate-exit-sign"] },
+              { label: "Variations drawn", value: "58", cite: ["slate-exit-sign"] },
+              { label: "Colour", value: "White figure on green", cite: ["slate-exit-sign"] },
+              { label: "International code", value: "ISO 7010 E001", cite: ["iso-7010"] },
+            ],
+          },
+        ],
+      },
+      {
+        step: "turning-point",
+        heading: "Two similar ideas at ISO",
+        blocks: [
+          {
+            kind: "p",
+            text: "Japan submitted the design to the International Organization for Standardization in 1980. ISO had been close to adopting a Soviet proposal — also a man running through a door. The Soviet side objected that Ota's version had no door; the Japanese side argued that a vertical line in the Soviet design made the figure harder to recognise. ISO agreed to consider Ota's design because of the testing behind it.",
+            cite: ["slate-exit-sign"],
+          },
+          {
+            kind: "p",
+            text: "Ota later said that two teams independently arriving at such similar ideas convinced him it was \"a fundamentally human exit sign\".",
+            cite: ["slate-exit-sign"],
+          },
+          {
+            kind: "uncertain",
+            text: "Sources give different years for international adoption — Slate says 1985, other sources 1987 — and we have not seen the original ISO publication. We show both.",
+            cite: ["slate-exit-sign", "wikipedia-ota"],
+          },
+        ],
+      },
+      {
+        step: "beyond-origins",
+        heading: "Green running man, red EXIT",
+        blocks: [
+          {
+            kind: "p",
+            text: "The figure is registered today as ISO 7010 E001, part of the international set of safety signs. Adoption is not universal: in the United States the red text sign EXIT remains standard, although the National Fire Protection Association lists the ISO pictogram among auxiliary symbols, and New York City required it on high-rise fire doors from 2006.",
+            cite: ["iso-7010", "slate-exit-sign"],
+          },
+        ],
+      },
+      {
+        step: "world-today",
+        heading: "Above the door",
+        blocks: [
+          { kind: "image", image: "exit-sign-running-man", size: "wide" },
+          {
+            kind: "interpretation",
+            text: "Because the sign is everywhere, it is easy to forget it was ever designed. Its quiet success is that most people understand it without having been taught.",
+          },
+        ],
+      },
+      {
+        step: "lessons",
+        heading: "What designers can learn",
+        blocks: [
+          { kind: "interpretation", text: "Test in the real conditions of use. The smoke tests, not aesthetic preference, decided both the Japanese contest and the argument at ISO." },
+          { kind: "interpretation", text: "Pose communicates behaviour. A few degrees in the legs change the message from \"flee\" to \"leave\"." },
+          { kind: "interpretation", text: "Evidence persuades standards bodies. Documented testing gave a late proposal a hearing against one that was nearly adopted." },
+        ],
+      },
+    ],
+    limitations: [
+      { text: "Pictograms still have to be learned; their meaning is not universal by nature.", cite: [] },
+      { text: "Countries continue to use different exit signs, including text-based ones, so travellers meet more than one system.", cite: ["slate-exit-sign"] },
+    ],
+    related: ["tokyo-1964-design", "tactile-paving", "emoji"],
+    principles: ["designing-for-recognition", "standards-and-openness"],
+    sources: ["slate-exit-sign", "wikipedia-ota", "iso-7010"],
+    readingMinutes: 5,
+    reviewed: "2026-10-26",
+  },
+
+  /* ================================================================ */
+  /* 7. Emoji                                                          */
+  /* ================================================================ */
+  {
+    id: "emoji",
+    slug: "emoji",
+    title: "Feelings in twelve by twelve pixels",
+    subject: "Emoji",
+    subjectJa: "絵文字",
+    palette: ["#111111", "#e94b4b", "#f2c94c", "#f2f2ef"],
+    alternativeNames: ["絵文字 (e-moji, picture character)"],
+    dek: "Before smartphones, a team at NTT DOCOMO squeezed weather, hearts and faces onto tiny mobile screens. The set became one of the ancestors of the emoji everyone now types.",
+    summary:
+      "In 1998–99 Shigetaka Kurita, working on DOCOMO's i-mode mobile internet service, designed 176 pictograms on a 12×12 pixel grid. They were not the first pictograms on a Japanese phone, but they are among the best-documented early sets, and Japanese carrier emoji were later unified into the Unicode standard that made them global.",
+    category: "Information design",
+    tags: ["digital interaction", "pictograms", "mobile", "communication", "standards"],
+    originDate: "1999",
+    originDateLabel: "1998–1999",
+    originLocation: "NTT DOCOMO, Tokyo",
+    people: ["shigetaka-kurita"],
+    organisations: [
+      { name: "NTT DOCOMO", role: "Mobile carrier; i-mode service" },
+      { name: "Unicode Consortium", role: "Standardised emoji internationally" },
+    ],
+    globalReach: true,
+    timeline: [
+      { date: "1990s", label: "A heart symbol on a DOCOMO pager proves popular with young users", place: "Japan", phase: "origin", cite: ["wikipedia-kurita"] },
+      { date: "1998–1999", label: "Kurita designs 176 pictograms for i-mode on a 12×12 grid", place: "Tokyo", phase: "origin", cite: ["wikipedia-kurita"] },
+      { date: "2000s", label: "Japanese carriers run incompatible emoji sets", place: "Japan", phase: "development", cite: ["unicode-emoji-history"] },
+      { date: "2010-10", label: "Unicode 6.0 incorporates emoji, making them interoperable worldwide", place: "International", phase: "spread", cite: ["unicode-emoji-history"] },
+      { date: "2016", label: "MoMA adds the original DOCOMO set to its collection", place: "New York", phase: "today", cite: ["wikipedia-kurita"] },
+    ],
+    sections: [
+      {
+        step: "problem",
+        heading: "Small screens, short messages, lost tone",
+        blocks: [
+          {
+            kind: "p",
+            text: "Early mobile messages were short and plain. A heart pictogram on a DOCOMO pager aimed at young users became popular; when a later, business-oriented pager dropped it, users protested and it was brought back. The demand for pictures alongside text was already visible.",
+            cite: ["wikipedia-kurita"],
+          },
+        ],
+      },
+      {
+        step: "idea",
+        heading: "A vocabulary of tiny pictures",
+        blocks: [
+          {
+            kind: "p",
+            text: "When DOCOMO prepared i-mode, its mobile internet service, Shigetaka Kurita was assigned to design a set of pictograms. He produced 176, including weather symbols, hearts and faces, and drew on manga symbols, weather forecast icons, Chinese characters and street signs.",
+            cite: ["wikipedia-kurita"],
+          },
+          {
+            kind: "uncertain",
+            text: "DOCOMO's set is often called the first emoji. Emojipedia has documented earlier Japanese phones with pictogram sets, so we describe DOCOMO's as one of the earliest and most influential sets, not the first.",
+            cite: ["emojipedia-first-set"],
+          },
+        ],
+      },
+      {
+        step: "design-decision",
+        heading: "Designing on a 12×12 grid",
+        blocks: [
+          {
+            kind: "p",
+            text: "Each pictogram was drawn on a grid of just 12 by 12 pixels — 144 squares to convey \"sunny\", \"love\" or \"happy\".",
+            cite: ["wikipedia-kurita"],
+          },
+          { kind: "diagram", diagram: "emoji-grid", caption: "Working at 12×12: every pixel is a decision. A generic heart drawn on the grid for illustration — not one of Kurita's original designs, which remain the property of NTT DOCOMO." },
+          {
+            kind: "interpretation",
+            text: "The grid forced the same discipline as a pictogram set like Tokyo 1964's: reduce each idea to the few marks that carry it. Borrowing from manga conventions — sweat drops, sparkles — gave users a visual language many already knew.",
+          },
+        ],
+      },
+      {
+        step: "turning-point",
+        heading: "From rival sets to one standard",
+        blocks: [
+          {
+            kind: "p",
+            text: "Other Japanese carriers developed their own sets, and they were incompatible: an emoji sent from one network could arrive as a different symbol or nothing at all. Engineers at Google and Apple worked to map the carrier sets onto a shared encoding, and Unicode 6.0, released in October 2010, incorporated emoji into the international text standard.",
+            cite: ["unicode-emoji-history"],
+          },
+        ],
+      },
+      {
+        step: "beyond-origins",
+        heading: "A Japanese word in every language",
+        blocks: [
+          {
+            kind: "p",
+            text: "Once emoji were in Unicode, any device could exchange them, and the Japanese word — e (picture) + moji (character) — travelled with them. In 2016 MoMA added DOCOMO's original 176 to its collection and exhibited them as \"Inbox: The Original Emoji\".",
+            cite: ["unicode-emoji-history", "wikipedia-kurita"],
+          },
+          {
+            kind: "uncertain",
+            text: "Today's emoji are designed separately by each platform and have expanded far beyond the original sets. We have not traced which specific modern emoji descend directly from Kurita's designs.",
+          },
+        ],
+      },
+      {
+        step: "lessons",
+        heading: "What designers can learn",
+        blocks: [
+          { kind: "interpretation", text: "Constraints clarify. A 12×12 grid leaves no room for decoration, only meaning." },
+          { kind: "interpretation", text: "Notice what users fight to keep. The protest over a missing heart symbol was a design brief in disguise." },
+          { kind: "interpretation", text: "Interoperability decides reach. Emoji became global not when they were invented, but when they were standardised." },
+        ],
+      },
+    ],
+    related: ["exit-sign", "tokyo-1964-design", "qr-code"],
+    principles: ["designing-for-recognition", "standards-and-openness"],
+    sources: ["wikipedia-kurita", "emojipedia-first-set", "unicode-emoji-history", "guardian-kurita-2016"],
+    readingMinutes: 5,
+    reviewed: "2026-10-26",
+  },
+
+  /* ================================================================ */
+  /* 8. Cup Noodles                                                    */
+  /* ================================================================ */
+  {
+    id: "cup-noodles",
+    slug: "cup-noodles",
+    title: "The package that became the bowl",
+    subject: "Cup Noodles",
+    subjectJa: "カップヌードル",
+    palette: ["#c8102e", "#f4f1ea", "#d4a640", "#3a3a3a"],
+    alternativeNames: ["カップヌードル", "Cup O'Noodles (US, 1973)"],
+    dek: "Momofuku Ando fried noodles like tempura so they would keep, then watched people eat them from paper cups — and redesigned the meal around the container.",
+    summary:
+      "After developing Chicken Ramen in 1958, Momofuku Ando noticed on a 1966 trip to the United States that people broke the noodles into cups and ate them with forks. Cup Noodles (1971) answered with a single object that is package, cooking vessel and bowl — including a clever way of holding the noodles in the middle of the cup.",
+    category: "Product design",
+    tags: ["packaging", "food", "everyday products", "manufacturing"],
+    originDate: "1971",
+    originDateLabel: "Chicken Ramen 1958 · Cup Noodles 1971",
+    originLocation: "Ikeda, Osaka, Japan",
+    people: ["momofuku-ando"],
+    organisations: [{ name: "Nissin Foods", role: "Manufacturer, founded by Ando" }],
+    heroImage: "cup-noodle",
+    globalReach: true,
+    timeline: [
+      { date: "1957", label: "Ando loses almost everything when a credit union he directs fails", place: "Osaka", phase: "origin", cite: ["nissin-founder"] },
+      { date: "1958-08-25", label: "Chicken Ramen goes on sale at ¥35", place: "Japan", phase: "origin", cite: ["nissin-founder"] },
+      { date: "1966", label: "On a US trip Ando sees noodles eaten from paper cups with forks", place: "United States", phase: "development", cite: ["nissin-founder"] },
+      { date: "1971-09-18", label: "Cup Noodles launches at ¥100", place: "Japan", phase: "origin", cite: ["nissin-founder"] },
+      { date: "1973", label: "Launched in the US as Cup O'Noodles", place: "United States", phase: "spread", cite: ["nissin-founder"] },
+    ],
+    sections: [
+      {
+        step: "problem",
+        heading: "Ramen that waits for you",
+        blocks: [
+          {
+            kind: "p",
+            text: "In 1957 Momofuku Ando lost nearly everything when a credit union he directed failed. He resolved to make ramen people could prepare at home with nothing but hot water, and set five conditions: it had to taste good, keep for a long time, be quick to prepare, be cheap and be safe.",
+            cite: ["nissin-founder"],
+          },
+        ],
+      },
+      {
+        step: "idea",
+        heading: "Tempura, applied to noodles",
+        blocks: [
+          {
+            kind: "p",
+            text: "Working alone for about a year in a shed behind his house in Ikeda, Ando found his answer in tempura: frying drove the moisture out of the noodles so they would keep, and left tiny holes that let hot water soften them again. Chicken Ramen went on sale on 25 August 1958.",
+            cite: ["nissin-founder"],
+          },
+          { kind: "image", image: "ando-workshop", size: "inline" },
+        ],
+      },
+      {
+        step: "turning-point",
+        heading: "Paper cups in an American supermarket",
+        blocks: [
+          {
+            kind: "p",
+            text: "On a 1966 trip to Europe and the United States, Ando watched supermarket staff break Chicken Ramen into paper cups, add hot water and eat with forks. Nissin records this as the origin of the idea of noodles in a cup.",
+            cite: ["nissin-founder"],
+          },
+        ],
+      },
+      {
+        step: "design-decision",
+        heading: "Suspended in the middle",
+        blocks: [
+          {
+            kind: "p",
+            text: "Nearly forty container prototypes were tested before an enlarged paper-cup shape in polystyrene foam — then unusual in Japan — was chosen. The noodle block was made larger than the base of the cup, so it would sit suspended in the middle of the cup rather than resting on the bottom.",
+            cite: ["nissin-founder"],
+          },
+          {
+            kind: "p",
+            text: "Dropping the block into the cup made it tip. The solution was to reverse the process: turn the block upside down and lower the cup over it.",
+            cite: ["nissin-founder"],
+          },
+          { kind: "diagram", diagram: "cup-suspension", caption: "The block is larger than the cup's base, so it wedges mid-cup with space beneath. To fill reliably, the cup is lowered over an upturned block. Editorial diagram." },
+          {
+            kind: "interpretation",
+            text: "Holding the noodles off the bottom plausibly lets hot water reach the whole block and cushions it in transit — though Nissin's account we have read records the solution, not its reasons.",
+          },
+          {
+            kind: "facts",
+            items: [
+              { label: "Launch", value: "18 September 1971", cite: ["nissin-founder"] },
+              { label: "Price", value: "¥100 (bag noodles ¥25)", cite: ["nissin-founder"] },
+              { label: "Container prototypes", value: "Nearly 40", cite: ["nissin-founder"] },
+              { label: "Material", value: "Polystyrene foam", cite: ["nissin-founder"] },
+            ],
+          },
+        ],
+      },
+      {
+        step: "beyond-origins",
+        heading: "Hot water anywhere",
+        blocks: [
+          {
+            kind: "p",
+            text: "At four times the price of bag noodles, Cup Noodles needed new routes to customers. Nissin installed hot-water vending machines and handed out samples in Ginza. The product launched in the United States as Cup O'Noodles in 1973, and Nissin later opened bases across Asia, the Americas and Europe with locally adapted flavours.",
+            cite: ["nissin-founder"],
+          },
+          { kind: "image", image: "cup-noodle", size: "inline" },
+        ],
+      },
+      {
+        step: "lessons",
+        heading: "What designers can learn",
+        blocks: [
+          { kind: "interpretation", text: "Watch how people misuse your product. Ando's breakthrough came from seeing customers improvise with paper cups." },
+          { kind: "interpretation", text: "Collapse steps into one object. Package, pot and bowl became a single thing, removing equipment from the meal entirely." },
+          { kind: "interpretation", text: "Solve manufacturing as design. Turning the process upside down — literally — made the suspended block possible at scale." },
+        ],
+      },
+    ],
+    limitations: [
+      { text: "Single-use containers raise environmental questions, which apply to any disposable food packaging.", cite: [] },
+    ],
+    related: ["naoto-fukasawa-cd-player", "butterfly-stool", "rice-cooker"],
+    principles: ["material-and-making", "borrowed-behaviour"],
+    sources: ["nissin-founder"],
+    readingMinutes: 5,
+    reviewed: "2026-10-26",
+  },
+
+  /* ================================================================ */
+  /* 9. Walkman                                                        */
+  /* ================================================================ */
+  {
+    id: "walkman",
+    slug: "sony-walkman",
+    title: "Music you could carry, and share",
+    subject: "Sony Walkman TPS-L2",
+    subjectJa: "ウォークマン",
+    palette: ["#2d4a7a", "#c9ccd1", "#e8892a", "#111111"],
+    alternativeNames: ["Soundabout (US)", "Stowaway (UK)", "Freestyle (Sweden)"],
+    dek: "Sony took a reporter's tape recorder, removed the recording, added stereo — and created a new way to move through a city.",
+    summary:
+      "Sony's TPS-L2 (1979) began with co-founder Masaru Ibuka wanting stereo music he could carry. The tape recorder division adapted its Pressman interview recorder into a playback-only stereo player. Two headphone sockets and a \"hotline\" button show that it was designed to be shared, not only listened to alone.",
+    category: "Product design",
+    tags: ["consumer electronics", "industrial design", "music", "miniaturisation"],
+    originDate: "1979",
+    originDateLabel: "1979",
+    originLocation: "Sony, Tokyo",
+    people: [],
+    collaborators: [
+      { name: "Masaru Ibuka", role: "Sony co-founder whose request started the project", cite: ["vam-walkman"] },
+      { name: "Sony tape recorder division", role: "Adapted the Pressman recorder into the TPS-L2", cite: ["vam-walkman"] },
+    ],
+    organisations: [{ name: "Sony Corporation", role: "Developer and manufacturer" }],
+    heroImage: "walkman-tps-l2",
+    globalReach: true,
+    timeline: [
+      { date: "1970s", label: "Ibuka finds the TC-D5 recorder he takes on flights too bulky", place: "Tokyo", phase: "origin", cite: ["vam-walkman"] },
+      { date: "1979-07-01", label: "TPS-L2 goes on sale in Japan at ¥33,000", place: "Japan", phase: "origin", cite: ["networkworld-walkman-30"] },
+      { date: "1979–1980", label: "Sold abroad as Soundabout, Stowaway and Freestyle", place: "US, UK, Sweden", phase: "spread", cite: ["vam-walkman"] },
+      { date: "later", label: "Renamed Walkman in every market", place: "International", phase: "spread", cite: ["vam-walkman"] },
+    ],
+    sections: [
+      {
+        step: "problem",
+        heading: "Stereo sound, too big to carry",
+        blocks: [
+          {
+            kind: "p",
+            text: "Sony co-founder Masaru Ibuka wanted to listen to stereo music while travelling. The TC-D5 cassette recorder he carried on long flights was too bulky, and he asked the tape recorder division for something smaller.",
+            cite: ["vam-walkman"],
+          },
+        ],
+      },
+      {
+        step: "idea",
+        heading: "Take away a feature",
+        blocks: [
+          {
+            kind: "p",
+            text: "The division started from the Pressman TCM-5000, a compact recorder for press interviews. It added stereo playback and removed the recording function, and lower-cost components kept the price down.",
+            cite: ["vam-walkman"],
+          },
+          {
+            kind: "interpretation",
+            text: "Removing recording was a bold subtraction at a time when a cassette machine was expected to record. It turned a tool for capturing sound into an object for experiencing it.",
+          },
+        ],
+      },
+      {
+        step: "design-decision",
+        heading: "Built for two",
+        blocks: [
+          {
+            kind: "p",
+            text: "The TPS-L2 had two headphone sockets so that two people could listen at once, and a \"hotline\" button that switched on a small built-in microphone, letting listeners talk to each other over the music.",
+            cite: ["vam-walkman"],
+          },
+          { kind: "image", image: "walkman-teardown", size: "wide" },
+          {
+            kind: "interpretation",
+            text: "These features suggest Sony anticipated a worry about isolation — that personal headphones might cut people off — and designed a social mode into the very first model.",
+          },
+        ],
+      },
+      {
+        step: "original-application",
+        heading: "Launch in Japan",
+        blocks: [
+          {
+            kind: "p",
+            text: "The TPS-L2 went on sale in Japan on 1 July 1979, priced at ¥33,000.",
+            cite: ["networkworld-walkman-30"],
+          },
+          {
+            kind: "facts",
+            items: [
+              { label: "Based on", value: "Pressman TCM-5000", cite: ["vam-walkman"] },
+              { label: "Japan launch", value: "1 July 1979", cite: ["networkworld-walkman-30"] },
+              { label: "Price", value: "¥33,000", cite: ["networkworld-walkman-30"] },
+              { label: "Size (V&A example)", value: "15 × 9 × 3.5 cm", cite: ["vam-walkman"] },
+            ],
+          },
+        ],
+      },
+      {
+        step: "beyond-origins",
+        heading: "Three names, then one",
+        blocks: [
+          {
+            kind: "p",
+            text: "Abroad it was first sold as the Soundabout in the United States, the Stowaway in the United Kingdom and the Freestyle in Sweden, before the Walkman name was adopted everywhere.",
+            cite: ["vam-walkman"],
+          },
+          {
+            kind: "p",
+            text: "The V&A describes how, because cassettes do not skip like records, the player started a trend of listening to music on the move — giving commuting and errands a private soundtrack.",
+            cite: ["vam-walkman"],
+          },
+          {
+            kind: "uncertain",
+            text: "Popular accounts differ on who conceived the product (Ibuka, Akio Morita or engineers such as Nobutoshi Kihara), how quickly the prototype was built, and early sales figures. We have relied on the V&A's record and not yet on Sony's own corporate history, which our tools could not access.",
+          },
+        ],
+      },
+      {
+        step: "lessons",
+        heading: "What designers can learn",
+        blocks: [
+          { kind: "interpretation", text: "Subtraction can create a category. Removing a feature everyone expected made a new kind of product." },
+          { kind: "interpretation", text: "Design for the social side effects. Two sockets and a talk button addressed a cost of personal listening before anyone complained about it." },
+          { kind: "interpretation", text: "Recombine what you already make. The Walkman reused an existing mechanism; the innovation was in the brief." },
+        ],
+      },
+    ],
+    related: ["naoto-fukasawa-cd-player", "cup-noodles", "qr-code"],
+    principles: ["borrowed-behaviour", "material-and-making"],
+    sources: ["vam-walkman", "networkworld-walkman-30"],
+    readingMinutes: 5,
+    reviewed: "2026-10-26",
+  },
+
+  /* ================================================================ */
+  /* 10. Automatic rice cooker                                         */
+  /* ================================================================ */
+  {
+    id: "rice-cooker",
+    slug: "automatic-rice-cooker",
+    title: "The appliance that learned when rice is done",
+    subject: "The automatic electric rice cooker",
+    subjectJa: "自動式電気釜",
+    palette: ["#e9e4d8", "#8f8a80", "#2b2b2b", "#c9b48a"],
+    alternativeNames: ["Toshiba ER-4", "電気釜"],
+    dek: "Rice used to need constant watching. A small factory family and Toshiba turned boiling water into a timer, and gave Japanese kitchens back their mornings.",
+    summary:
+      "Toshiba's ER-4, on sale from December 1955, switched itself off when rice was done. The working design came from Yoshitada Minami, whose small factory made water heaters for Toshiba, with years of testing credited to his wife, Fumiko. Its clever trick: let water in an outer pot boil away, and use the jump in temperature to trip a bimetallic switch.",
+    category: "Industrial design",
+    tags: ["household objects", "appliances", "engineering", "domestic labour"],
+    originDate: "1955",
+    originDateLabel: "On sale 10 December 1955",
+    originLocation: "Tokyo, Japan",
+    people: [],
+    collaborators: [
+      { name: "Yoshitada Minami", role: "Ran the small family factory that developed the working design", cite: ["ieee-spectrum-rice-cooker"] },
+      { name: "Fumiko Minami", role: "Credited with years of testing that set the cooking method; documentation of her role is recent", cite: ["ieee-spectrum-rice-cooker"] },
+      { name: "Shogo Yamada (Toshiba)", role: "Appliance development manager who commissioned the work", cite: ["ieee-spectrum-rice-cooker"] },
+    ],
+    organisations: [{ name: "Toshiba", role: "Manufacturer and seller" }],
+    globalReach: false,
+    timeline: [
+      { date: "early 1950s", label: "Toshiba turns to the Minamis' water-heater factory to develop a cooker", place: "Tokyo", phase: "origin", cite: ["ieee-spectrum-rice-cooker"] },
+      { date: "1955-12-10", label: "ER-4 goes on sale for ¥3,200", place: "Japan", phase: "origin", cite: ["ieee-spectrum-rice-cooker"] },
+      { date: "1956–57", label: "Sales reach more than 200,000 a month within a year", place: "Japan", phase: "development", cite: ["ieee-spectrum-rice-cooker"] },
+      { date: "2026", label: "An IEEE Milestone recognising the cooker is under review", place: "International", phase: "today", cite: ["ieee-milestone-rice-cooker"] },
+    ],
+    sections: [
+      {
+        step: "problem",
+        heading: "Someone had to watch the pot",
+        blocks: [
+          {
+            kind: "interpretation",
+            text: "Cooking rice well over a flame meant judging heat and timing by experience, and staying near the stove. In most households that work fell to women, often early in the morning. An appliance that could judge \"done\" by itself promised to give that time back.",
+          },
+        ],
+      },
+      {
+        step: "idea",
+        heading: "Let the water keep time",
+        blocks: [
+          {
+            kind: "p",
+            text: "Toshiba's appliance development manager, Shogo Yamada, turned to Yoshitada Minami, who ran a small family factory making electric water heaters for Toshiba — and which was close to bankruptcy. Their working design heated an inner pot of rice indirectly, inside an outer pot holding a measured amount of water.",
+            cite: ["ieee-spectrum-rice-cooker"],
+          },
+          {
+            kind: "p",
+            text: "While water remained in the outer pot, the temperature stayed at boiling point. Once it had boiled away, the temperature rose above 100 °C, a bimetallic switch bent, and the power was cut. One cup of water took about twenty minutes to evaporate.",
+            cite: ["ieee-spectrum-rice-cooker"],
+          },
+          { kind: "diagram", diagram: "rice-cooker", caption: "Indirect heating: water in the outer pot holds the temperature at 100 °C. When it has boiled away, the temperature jumps and the bimetallic switch cuts the power. Editorial diagram, simplified." },
+        ],
+      },
+      {
+        step: "design-decision",
+        heading: "Physics instead of a clock",
+        blocks: [
+          {
+            kind: "interpretation",
+            text: "The design uses the physics of boiling as its sensor. Rather than adding a timer that the user must set, it measures a change that happens only when the job is done. IEEE Spectrum notes that the same basic principle is still used in rice cookers today.",
+          },
+          {
+            kind: "p",
+            text: "Toshiba describes its 1955 cooker as using a patented indirect, triple-layered structure.",
+            cite: ["toshiba-museum-cooker"],
+          },
+        ],
+      },
+      {
+        step: "turning-point",
+        heading: "Slow start, then 200,000 a month",
+        blocks: [
+          {
+            kind: "p",
+            text: "The ER-4 went on sale on 10 December 1955 for ¥3,200 — roughly a third of an average monthly salary — and sales started slowly. Within a year Toshiba was selling more than 200,000 cookers a month, many of them made at the Minamis' factory, which was rescued in the process.",
+            cite: ["ieee-spectrum-rice-cooker"],
+          },
+          {
+            kind: "facts",
+            items: [
+              { label: "Model", value: "Toshiba ER-4", cite: ["ieee-spectrum-rice-cooker"] },
+              { label: "On sale", value: "10 December 1955", cite: ["ieee-spectrum-rice-cooker"] },
+              { label: "Price", value: "¥3,200", cite: ["ieee-spectrum-rice-cooker"] },
+              { label: "Switch", value: "Bimetallic, trips above 100 °C", cite: ["ieee-spectrum-rice-cooker"] },
+            ],
+          },
+        ],
+      },
+      {
+        step: "world-today",
+        heading: "Credit, revisited",
+        blocks: [
+          {
+            kind: "p",
+            text: "Popular accounts increasingly credit Fumiko Minami, a mother of six, with years of research and testing that established a reliable method and toughened the design. Historian Allison Marsh notes, however, finding no mention of her role before a 2012 book chapter.",
+            cite: ["ieee-spectrum-rice-cooker"],
+          },
+          {
+            kind: "uncertain",
+            text: "How credit should be shared between Toshiba, Yoshitada Minami and Fumiko Minami is still being discussed, including in the draft IEEE Milestone citation. We name all three and mark the evidence for each.",
+            cite: ["ieee-milestone-rice-cooker"],
+          },
+        ],
+      },
+      {
+        step: "lessons",
+        heading: "What designers can learn",
+        blocks: [
+          { kind: "interpretation", text: "Sense the outcome, not the input. The cooker measures \"done\" rather than asking the user to predict time." },
+          { kind: "interpretation", text: "Testing is design work. Much of the product's reliability came from patient, unglamorous experiments." },
+          { kind: "interpretation", text: "Look again at who gets credit. Histories of invention often leave out the people who did the testing and the domestic work." },
+        ],
+      },
+    ],
+    related: ["cup-noodles", "walkman", "naoto-fukasawa-cd-player"],
+    principles: ["material-and-making"],
+    sources: ["ieee-spectrum-rice-cooker", "toshiba-museum-cooker", "ieee-milestone-rice-cooker"],
+    readingMinutes: 5,
+    reviewed: "2026-10-26",
+  },
 ];

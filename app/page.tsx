@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PersonCard, StoryCard } from "@/components/Cards";
+import { PersonCard, StoryCard, StoryVisual } from "@/components/Cards";
 import { Figure } from "@/components/Figure";
 import { Journey, JourneyLegend } from "@/components/Journey";
 import { RandomStoryButton } from "@/components/RandomStory";
@@ -186,7 +186,7 @@ export default function HomePage() {
               {more.map((s) => (
                 <li key={s.id} className="mini-item">
                   <Link href={storyHref(s)}>
-                    <Figure id={s.cardImage ?? s.heroImage} bare className="mini-item__img mono" sizes="128px" />
+                    <StoryVisual story={s} className="mini-item__img mono" sizes="128px" />
                     <span>
                       <span className="kicker kicker--accent">{s.category} · {s.originDateLabel}</span>
                       <span className="mini-item__title" style={{ display: "block", marginTop: "0.35rem" }}>{s.title}</span>
@@ -216,7 +216,7 @@ export default function HomePage() {
               <p>It&rsquo;s a growing project, and I&rsquo;m always looking for stories, perspectives, and people I should know about.</p>
             </div>
             <div className="note__sign">
-              <Link href="/about#corrections" className="link-arrow">Suggest a story or a correction</Link>
+              <Link href="/submit" className="link-arrow">Suggest a story or a correction</Link>
               <Link href="/sources" className="link-arrow">How the research works</Link>
             </div>
           </div>

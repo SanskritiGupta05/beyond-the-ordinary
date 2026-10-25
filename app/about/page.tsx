@@ -71,20 +71,11 @@ export default function AboutPage() {
               <li>People and stories that belong here, especially from disciplines and regions we haven&rsquo;t covered.</li>
               <li>Licensed images, or rights holders willing to share them.</li>
             </ul>
-            {site.contactEmail ? (
-              <p style={{ marginTop: "1.5rem" }}>
-                <a className="btn" href={`mailto:${site.contactEmail}?subject=${encodeURIComponent(`${site.name}: suggestion`)}`}>
-                  Email {site.contactEmail} <span className="arrow" aria-hidden="true">→</span>
-                </a>
-              </p>
-            ) : (
-              <div className="notice" style={{ marginTop: "1.5rem" }}>
-                <p>
-                  <strong>Submissions open soon.</strong> A contact address hasn&rsquo;t been published yet, so there is no form here
-                  that would quietly go nowhere. If you were sent this link directly, please reply to whoever shared it with you.
-                </p>
-              </div>
-            )}
+            <p style={{ marginTop: "1.5rem" }}>
+              <Link className="btn" href="/submit">
+                Open the suggestion form <span className="arrow" aria-hidden="true">→</span>
+              </Link>
+            </p>
             <p className="small muted" style={{ marginTop: "1rem" }}>
               Every story page has its own &ldquo;Suggest a correction&rdquo; link. We note significant corrections on the affected
               page by updating its review date.

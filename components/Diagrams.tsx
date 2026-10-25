@@ -168,12 +168,103 @@ function PosterSystem() {
   );
 }
 
+function EmojiGrid() {
+  // A generic heart on a 12×12 grid, for illustration only.
+  const heart = [
+    "............",
+    "..XX....XX..",
+    ".XXXX..XXXX.",
+    "XXXXXXXXXXXX",
+    "XXXXXXXXXXXX",
+    "XXXXXXXXXXXX",
+    ".XXXXXXXXXX.",
+    "..XXXXXXXX..",
+    "...XXXXXX...",
+    "....XXXX....",
+    ".....XX.....",
+    "............",
+  ];
+  const c = 16, ox = 40, oy = 22;
+  return (
+    <svg viewBox="0 0 520 260" role="img" aria-labelledby="dg-e-title">
+      <title id="dg-e-title">A 12 by 12 grid of square pixels with a simple heart shape filled in, beside the same heart shown at actual small size.</title>
+      {heart.map((row, y) =>
+        row.split("").map((ch, x) => (
+          <rect key={`${x}-${y}`} x={ox + x * c} y={oy + y * c} width={c} height={c} fill={ch === "X" ? ACC : PAPER} stroke="var(--rule)" strokeWidth="1" />
+        )),
+      )}
+      <text x={ox} y={oy + 12 * c + 22} style={label}>12 × 12 = 144 PIXELS</text>
+      <g transform="translate(330 70)">
+        {heart.map((row, y) => row.split("").map((ch, x) => (ch === "X" ? <rect key={`s${x}-${y}`} x={x * 2} y={y * 2} width={2} height={2} fill={INK} /> : null)))}
+        <text x="0" y="50" style={label}>ACTUAL SIZE (APPROX.)</text>
+        <text x="0" y="90" style={big}>One symbol,</text>
+        <text x="0" y="112" style={big}>144 decisions</text>
+      </g>
+    </svg>
+  );
+}
+
+function RiceCooker() {
+  return (
+    <svg viewBox="0 0 520 280" role="img" aria-labelledby="dg-r-title">
+      <title id="dg-r-title">Cross-section of a cooker: an inner pot of rice sits inside an outer pot containing a little water, above a heater. A bimetallic switch under the outer pot cuts the power when the water has boiled away and the temperature rises above 100 degrees.</title>
+      {/* outer pot */}
+      <path d="M90 60 V200 H330 V60" fill="none" stroke={INK} strokeWidth="2" />
+      <rect x="92" y="170" width="236" height="28" fill="#cfe3ea" />
+      {/* inner pot */}
+      <path d="M130 40 V160 H290 V40" fill={PAPER} stroke={INK} strokeWidth="2" />
+      {Array.from({ length: 60 }).map((_, i) => (
+        <ellipse key={i} cx={140 + (i % 15) * 10} cy={110 + Math.floor(i / 15) * 11} rx="4" ry="2.4" fill="var(--paper-3)" stroke={MUTE} strokeWidth="0.6" />
+      ))}
+      {/* heater */}
+      <path d="M100 214 h220" stroke={ACC} strokeWidth="4" strokeDasharray="10 6" />
+      {/* switch */}
+      <rect x="200" y="224" width="22" height="10" fill={YEL} />
+      <text x="350" y="186" style={label}>WATER IN OUTER POT</text>
+      <text x="350" y="200" style={label}>HOLDS 100 °C</text>
+      <text x="350" y="120" style={label}>RICE, HEATED</text>
+      <text x="350" y="134" style={label}>INDIRECTLY</text>
+      <text x="350" y="218" style={label}>HEATER</text>
+      <text x="236" y="252" style={label}>BIMETALLIC SWITCH</text>
+      <text x="236" y="266" style={label}>WATER GONE → HOTTER → OFF</text>
+      <line x1="232" y1="248" x2="216" y2="236" stroke={MUTE} />
+    </svg>
+  );
+}
+
+function CupSuspension() {
+  return (
+    <svg viewBox="0 0 520 270" role="img" aria-labelledby="dg-c-title">
+      <title id="dg-c-title">Two cross-sections. Left: a tapering cup with a noodle block wedged in the middle, leaving empty space below. Right: the filling method, with the block upside down and the cup being lowered over it.</title>
+      <g transform="translate(40 20)">
+        <path d="M0 0 L160 0 L135 200 L25 200 Z" fill="none" stroke={INK} strokeWidth="2" />
+        <path d="M10 60 L150 60 L141 130 L19 130 Z" fill={YEL} opacity="0.75" />
+        {Array.from({ length: 6 }).map((_, i) => (
+          <path key={i} d={`M${22 + i * 2} ${70 + i * 10} q 30 -8 60 0 t 60 0`} fill="none" stroke={INK} strokeWidth="1" opacity="0.5" />
+        ))}
+        <text x="0" y="230" style={label}>BLOCK WEDGED MID-CUP</text>
+        <text x="40" y="172" style={label}>SPACE</text>
+      </g>
+      <g transform="translate(300 20)">
+        <path d="M10 130 L150 130 L141 60 L19 60 Z" fill={YEL} opacity="0.75" />
+        <path d="M0 140 L160 140 L135 -40 L25 -40 Z" transform="translate(0 -10)" fill="none" stroke={INK} strokeWidth="2" strokeDasharray="6 4" />
+        <path d="M80 -10 v30 m-7 -8 l7 9 l7 -9" stroke={ACC} strokeWidth="2" fill="none" />
+        <line x1="-10" y1="132" x2="170" y2="132" stroke={MUTE} />
+        <text x="0" y="230" style={label}>FLIP THE BLOCK, LOWER THE CUP</text>
+      </g>
+    </svg>
+  );
+}
+
 const diagrams: Record<DiagramId, () => React.ReactElement> = {
   "tactile-blocks": TactileBlocks,
   "qr-finder": QrFinder,
   "butterfly-halves": ButterflyHalves,
   "pull-cord": PullCord,
   "poster-system": PosterSystem,
+  "emoji-grid": EmojiGrid,
+  "rice-cooker": RiceCooker,
+  "cup-suspension": CupSuspension,
 };
 
 export function Diagram({ id, caption }: { id: DiagramId; caption: string }) {

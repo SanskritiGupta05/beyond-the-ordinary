@@ -11,4 +11,9 @@ export const discoveries: { story: string; fact: string; cite: string[] }[] = [
   { story: "butterfly-stool", fact: "Early Butterfly Stool prototypes had flat feet that would have damaged tatami. The final design touches the floor at just two points per leg.", cite: ["vam-butterfly-stool"] },
   { story: "qr-code", fact: "DENSO WAVE holds patents on the QR Code but declared from the start that it would not exercise them.", cite: ["denso-qr-history"] },
   { story: "tactile-paving", fact: "Tactile blocks speak two words: raised bars mean \"follow this way\", raised dots mean \"stop\".", cite: ["vam-tactile-slab"] },
+  { story: "exit-sign", fact: "The running man on exit signs exists in 58 drafts; its legs were adjusted so it would not look like it was sprinting.", cite: ["slate-exit-sign"] },
+  { story: "emoji", fact: "Each of DOCOMO's original 176 emoji was drawn on a grid of just 12 by 12 pixels.", cite: ["wikipedia-kurita"] },
+  { story: "cup-noodles", fact: "Cup Noodles are loaded upside down: the noodle block is flipped and the cup lowered over it, so the block wedges in the middle of the cup.", cite: ["nissin-founder"] },
+  { story: "walkman", fact: "The first Walkman had two headphone sockets and a \"hotline\" button so two listeners could talk over the music.", cite: ["vam-walkman"] },
+  { story: "rice-cooker", fact: "Toshiba's 1955 automatic rice cooker used boiling water as its timer: when the outer pot ran dry, a bimetallic switch cut the power.", cite: ["ieee-spectrum-rice-cooker"] },
 ];

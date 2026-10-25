@@ -2,7 +2,7 @@
 
 **Japanese Design, Ideas & Global Influence** — an independent editorial archive about Japanese design, the people behind it, and ideas that travelled far beyond where they began.
 
-The first release is deliberately small: five researched stories, five profiles and five design principles. Every factual claim is tied to a recorded source.
+The archive is deliberately small: ten researched stories, eight profiles and five design principles. Every factual claim is tied to a recorded source.
 
 ## Running it
 
@@ -48,6 +48,7 @@ app/
   archive/                  Search + filters (client side, URL-synced)
   sources/                  Research method, bibliography, image credits
   about/                    Project, creator's note, corrections
+  submit/                   Suggestion form (email or GitHub issue, no backend)
   opengraph-image.tsx       Default social preview
   sitemap.ts, robots.ts, not-found.tsx, error.tsx
 components/                 Editorial components (cards, figures, diagrams, timeline, sources…)
@@ -75,12 +76,13 @@ Defined in [`lib/types.ts`](lib/types.ts):
 - Archive search with type and category filters, diacritic-insensitive matching, Japanese-script matching, and filter state kept in the URL.
 - "Discover an unexpected story": a random-story button, plus a card that deals one sourced fact at a time.
 - Story pages: a journey index that tracks the active section, a reading progress bar, numbered citations linking to expandable source records, and related-story navigation.
+- A suggestion form at `/submit`. Submitting opens the visitor's own mail app (when `NEXT_PUBLIC_CONTACT_EMAIL` is set) or a pre-filled GitHub issue on the repo set in `lib/site.ts`. The site stores nothing. Links like `/submit?type=correction&subject=…` pre-fill the form.
 - Respects `prefers-reduced-motion`. Every control is a real button or link with a visible focus state.
 
 ## Known limitations (first release)
 
 - **Some sources are "corroborated", not "verified".** A few sites (MoMA, the British Museum, the Japan Times and some standards bodies) block automated reading or are paywalled. For those, claims were confirmed through catalogue summaries or search excerpts plus a second independent source, and they are labelled that way on the site. An editor should read them in full before wide publication.
-- **Images:** all photographs are from Wikimedia Commons under public-domain or Creative Commons licences. There are no licensed portraits of Seiichi Miyake or Masahiro Hara, so their profiles use typographic placeholders. A Commons file described as a portrait of Miyake was left out because its provenance is unclear. Museum images (V&A, MoMA) were deliberately not reproduced, because their terms restrict reuse.
+- **Images:** all photographs are from Wikimedia Commons under public-domain or Creative Commons licences. The emoji and rice cooker stories have no licensed photograph, so they show a typographic placeholder and editorial diagrams. There are no licensed portraits of Seiichi Miyake, Masahiro Hara, Yukio Ota, Shigetaka Kurita or Momofuku Ando, so their profiles use typographic placeholders. A Commons file described as a portrait of Miyake was left out because its provenance is unclear. Museum images (V&A, MoMA) were deliberately not reproduced, because their terms restrict reuse.
 - **No posters reproduced.** Kamekura's Tokyo 1964 posters are still under copyright. The story uses a documentary photograph of event programmes and an editorial diagram instead.
 - **Corrections inbox:** no contact address is configured yet (see `NEXT_PUBLIC_CONTACT_EMAIL`).
 - **Not yet covered:** ma, wabi-sabi and kanso. The Thinking page explains why.

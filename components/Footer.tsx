@@ -29,7 +29,8 @@ export function Footer() {
             <ul>
               <li><Link href="/about">About the project</Link></li>
               <li><Link href="/sources">Sources &amp; research approach</Link></li>
-              <li><Link href="/about#corrections">Suggestions &amp; corrections</Link></li>
+              <li><Link href="/submit">Suggest a story</Link></li>
+              <li><Link href="/submit?type=correction">Report a correction</Link></li>
               <li><Link href="/sources#image-credits">Image credits</Link></li>
             </ul>
           </div>

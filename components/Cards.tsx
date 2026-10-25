@@ -3,11 +3,29 @@ import { getPerson, personHref, storyHref } from "@/lib/content";
 import type { Person, Story } from "@/lib/types";
 import { Figure } from "./Figure";
 
+/** A story's image, or a typographic placeholder when no licensed image exists. */
+export function StoryVisual({ story, imageId, className = "", sizes, priority, bare = true }: { story: Story; imageId?: string; className?: string; sizes?: string; priority?: boolean; bare?: boolean }) {
+  const id = imageId ?? story.cardImage ?? story.heroImage;
+  if (id) return <Figure id={id} bare={bare} className={className} sizes={sizes} priority={priority} />;
+  return (
+    <div className={`figure__img placeholder ${className.replace(/\bmono\b/, "")}`} role="img" aria-label={`No licensed photograph of ${story.subject} yet`}>
+      <div>
+        {story.subjectJa ? (
+          <span className="placeholder__ja" lang="ja" aria-hidden="true">
+            {story.subjectJa}
+          </span>
+        ) : null}
+        <p className="placeholder__note">No licensed photograph yet</p>
+      </div>
+    </div>
+  );
+}
+
 export function StoryCard({ story, size, imageId, sizes, index }: { story: Story; size?: "lg"; imageId?: string; sizes?: string; index?: number }) {
   const names = story.people.map((id) => getPerson(id)?.name).filter(Boolean).join(", ");
   return (
     <Link href={storyHref(story)} className={`card ${size === "lg" ? "card--lg" : ""}`}>
-      <Figure id={imageId ?? story.cardImage ?? story.heroImage} bare className="card__img mono" sizes={sizes ?? "(max-width: 900px) 100vw, 40vw"} />
+      <StoryVisual story={story} imageId={imageId} className="card__img mono" sizes={sizes ?? "(max-width: 900px) 100vw, 40vw"} />
       <div className="card__body">
         {index !== undefined ? (
           <span className="card__num" aria-hidden="true">
