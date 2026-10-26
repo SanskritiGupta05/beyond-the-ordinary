@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku, Zen_Old_Mincho } from "next/font/google";
 import { Footer } from "@/components/Footer";
+import { InkWriter } from "@/components/InkWriter";
 import { Dock } from "@/components/Dock";
 import { Masthead } from "@/components/Masthead";
 import { Sheet } from "@/components/Sheet";
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
         </Sheet>
         <Dock />
+        <InkWriter />
       </body>
     </html>
   );

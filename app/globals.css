@@ -109,7 +109,7 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 
 :focus-visible { outline: none; box-shadow: var(--focus); }
 
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: var(--ink); color: var(--paper); -webkit-text-fill-color: var(--paper); }
 
 /* Japanese runs (see components/Ja.tsx). lang="ja" selects Japanese glyph forms. */
 .ja, [lang="ja"] { font-family: var(--font-ja); font-feature-settings: "palt"; letter-spacing: 0.04em; }
@@ -448,7 +448,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .card__meta { display: flex; justify-content: space-between; gap: var(--space-3); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
 .card__meta .meta { font-size: 0.7rem; }
 .card__title { font-family: var(--font-display); font-size: var(--step-2); font-weight: 500; line-height: 1; letter-spacing: -0.045em; text-wrap: balance; }
-.card:hover .card__title { text-decoration: none; color: var(--accent); }
 .card__dek { color: var(--ink-2); font-size: 0.9rem; line-height: 1.5; }
 .card--lg .card__title { font-size: var(--step-3); }
 
@@ -459,7 +458,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .person-card:nth-child(even) { margin-top: var(--space-8); }
 .person-card__img { aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper-2); }
 .person-card__name { font-family: var(--font-display); font-size: var(--step-1); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; }
-.person-card:hover .person-card__name { text-decoration: none; color: var(--accent); }
 .person-card__role { font-size: var(--step--1); color: var(--ink-2); line-height: 1.5; }
 @media (max-width: 1000px) { .people-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .person-card:nth-child(even) { margin-top: 0; } }
 
@@ -468,8 +466,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .journey { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: var(--gutter); padding-block: var(--space-6); border-bottom: 1px solid var(--band-rule); }
 .journey__title { font-family: var(--font-display); font-size: var(--step-2); font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin-top: 0.5rem; }
 .journey__title a { text-decoration: none; }
-.journey__title a:hover { text-decoration: none; color: var(--accent); }
-.section--ink .journey__title a:hover { color: #f08b72; }
 .journey__ja { display: block; font-family: var(--font-ja); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--band-ink-2); margin-top: var(--space-3); }
 .journey__track { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(8.5rem, 1fr); gap: var(--space-3); list-style: none; overflow-x: auto; padding-bottom: var(--space-2); scrollbar-width: thin; }
 .journey__track::before { content: ""; position: absolute; left: 0; right: 0; top: 0.5rem; height: 1px; background: var(--band-rule); }
@@ -491,7 +487,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .principle-list { list-style: none; border-top: 1px solid var(--ink); }
 .principle-item a { display: grid; grid-template-columns: 4rem minmax(0, 5fr) minmax(0, 5fr) 2rem; gap: var(--gutter); align-items: baseline; padding: var(--space-5) 0; border-bottom: 1px solid var(--rule); text-decoration: none; transition: background 0.2s var(--ease); }
 .principle-item a:hover { background: var(--white); text-decoration: none; }
-.principle-item a:hover .principle-item__name { text-decoration: none; color: var(--accent); }
 .principle-item__num { font-family: var(--font-display); font-size: var(--step-2); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
 .principle-item__name { font-family: var(--font-display); font-size: var(--step-3); font-weight: 500; letter-spacing: -0.045em; line-height: 1; }
 .principle-item__q { color: var(--ink-2); font-size: 0.92rem; }
@@ -505,7 +500,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .mini-item a:hover { text-decoration: none; }
 .mini-item__img { aspect-ratio: 1; overflow: hidden; }
 .mini-item__title { font-family: var(--font-display); font-size: var(--step-2); font-weight: 500; line-height: 1; letter-spacing: -0.045em; }
-.mini-item a:hover .mini-item__title { text-decoration: none; color: var(--accent); }
 
 .serendipity { position: relative; background: var(--white); padding: var(--space-6); display: grid; gap: var(--space-5); margin: 10px; overflow: hidden; }
 .serendipity__head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); position: relative; z-index: 1; }
@@ -594,6 +588,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 
 .cite { font-size: 0.66em; vertical-align: super; line-height: 0; margin-left: 0.1em; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .cite a { text-decoration: none; color: var(--accent); font-weight: 600; padding: 0 0.1em; }
+.cite__item { position: relative; }
 .cite a:hover { text-decoration: underline; }
 
 .callout { max-width: var(--measure); padding: var(--space-4) var(--space-5); }
@@ -645,7 +640,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .explore h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--space-4); }
 .explore ul { list-style: none; display: grid; gap: var(--space-3); }
 .explore li a { font-family: var(--font-display); font-size: var(--step-1); font-weight: 500; letter-spacing: -0.03em; text-decoration: none; }
-.explore li a:hover { text-decoration: none; color: var(--accent); }
 @media (max-width: 800px) { .explore { grid-template-columns: 1fr; } }
 
 .rel-list { list-style: none; display: grid; border-top: 1px solid var(--ink); }
@@ -717,7 +711,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .results { list-style: none; border-top: 1px solid var(--ink); }
 .result a { display: grid; grid-template-columns: 5.5rem 8rem minmax(0, 1fr) 4.5rem; gap: var(--space-5); padding: var(--space-4) 0; border-bottom: 1px solid var(--rule); text-decoration: none; align-items: center; }
 .result a:hover { text-decoration: none; background: var(--white); }
-.result a:hover .result__title { text-decoration: none; color: var(--accent); }
 .result__img { aspect-ratio: 1; background: var(--white); overflow: hidden; display: grid; place-items: center; }
 .result__img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
 .result a:hover .result__img img { filter: none; }
@@ -837,8 +830,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .spread::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--rule); }
 .spread__page { display: grid; gap: var(--space-5); align-content: start; min-width: 0; }
 .hed { font-family: var(--font-display); font-weight: 900; line-height: 1; letter-spacing: -0.01em; text-wrap: balance; }
-.hed a { text-decoration: none; transition: color 0.2s var(--ease); }
-.hed a:hover { text-decoration: none; color: var(--accent); }
+.hed a { text-decoration: none; }
 .hed--xl { font-size: clamp(2rem, 1.2rem + 2.1vw, 3.3rem); }
 .hed--l { font-size: clamp(1.6rem, 1rem + 1.4vw, 2.5rem); }
 .hed--m { font-size: 1.35rem; }
@@ -889,7 +881,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .edition-index__img { aspect-ratio: 4 / 3; }
 .edition-index__pg { font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; color: var(--ink-3); }
 .edition-index__sub { font-size: 0.82rem; color: var(--ink-2); line-height: 1.4; }
-.edition-index a:hover .hed { text-decoration: none; color: var(--accent); }
 
 @media (max-width: 1440px) {
   .front__lead { grid-template-columns: 1fr; }
@@ -909,6 +900,92 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   .edition-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 480px) { .edition-index { grid-template-columns: 1fr; } }
+
+/* ---------- Micro-interactions ---------- */
+
+/* Ink bleed: on hover or focus, vermilion soaks through a headline from left to
+   right, like ink spreading into paper. Each wrapped line bleeds on its own. */
+.hed a, .card__title, .person-card__name, .journey__title a, .principle-item__name, .mini-item__title,
+.explore li a, .result__title {
+  --ink-from: var(--accent); --ink-to: var(--ink);
+  color: var(--ink-to); -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, var(--ink-from) 0 42%, var(--ink-to) 58% 100%);
+  background-size: 240% 100%; background-position: 100% 0; background-repeat: no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  text-decoration: none; transition: background-position 0.85s cubic-bezier(0.45, 0.05, 0.3, 1);
+}
+.section--ink .journey__title a { --ink-from: #f08b72; --ink-to: var(--band-ink); }
+.hed a:hover, .hed a:focus-visible, .card:hover .card__title, .card:focus-visible .card__title,
+.person-card:hover .person-card__name, .person-card:focus-visible .person-card__name,
+.journey__title a:hover, .journey__title a:focus-visible,
+.principle-item a:hover .principle-item__name, .principle-item a:focus-visible .principle-item__name,
+.mini-item a:hover .mini-item__title, .mini-item a:focus-visible .mini-item__title,
+.explore li a:hover, .explore li a:focus-visible,
+.result a:hover .result__title, .result a:focus-visible .result__title,
+.edition-index a:hover .hed, .edition-index a:focus-visible .hed { background-position: 0 0; text-decoration: none; }
+/* Index titles are plain spans inside the link */
+.edition-index .hed {
+  color: var(--ink); -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, var(--accent) 0 42%, var(--ink) 58% 100%);
+  background-size: 240% 100%; background-position: 100% 0; background-repeat: no-repeat;
+  -webkit-background-clip: text; background-clip: text; transition: background-position 0.85s cubic-bezier(0.45, 0.05, 0.3, 1);
+}
+@media (forced-colors: active) {
+  .hed a, .card__title, .person-card__name, .journey__title a, .principle-item__name, .mini-item__title,
+  .explore li a, .result__title, .edition-index .hed { -webkit-text-fill-color: currentColor; background: none; }
+}
+
+/* Margin notes: hovering or focusing a citation slides out a clipped slip with
+   the source, instead of jumping to the bottom of the page. */
+.cite__note {
+  position: absolute; z-index: 20; left: 50%; top: calc(100% + 1rem);
+  width: min(17rem, 70vw); display: grid; gap: 0.3rem;
+  padding: 0.8rem 0.9rem 0.85rem; background: var(--white); border: 1px solid var(--rule);
+  box-shadow: 0 14px 26px -14px rgba(0, 0, 0, 0.4);
+  font-size: 0.8rem; line-height: 1.4; font-weight: 400; text-align: left; white-space: normal; color: var(--ink);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translate(-50%, -8px) rotate(-1.2deg);
+  transition: opacity 0.2s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
+}
+.cite__note::before { /* a strip of tape holding the slip */
+  content: ""; position: absolute; top: -8px; left: 50%; width: 46px; height: 15px;
+  transform: translateX(-50%) rotate(3deg); background: rgba(214, 199, 160, 0.75); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.cite__item:hover .cite__note, .cite__item:focus-within .cite__note {
+  opacity: 1; visibility: visible; transform: translate(-50%, 0) rotate(-1.2deg); transition-delay: 0s;
+}
+.cite__note-n { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
+.cite__note-title { font-family: var(--font-display); font-weight: 900; font-size: 0.98rem; line-height: 1.15; }
+.cite__note-pub { font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; color: var(--ink-3); }
+@media (max-width: 700px) {
+  /* On phones the slip appears pinned above the dock, clear of the screen edges */
+  .cite__note {
+    position: fixed; left: var(--space-4); right: var(--space-4); top: auto; width: auto;
+    bottom: calc(var(--sheet-bleed) + 96px); transform: translateY(8px) rotate(-0.8deg);
+  }
+  .cite__item:hover .cite__note, .cite__item:focus-within .cite__note { transform: translateY(0) rotate(-0.8deg); }
+}
+
+/* Brush writing: vertical Japanese names are inked in from top to bottom the
+   first time they scroll into view (components/InkWriter.tsx). */
+@property --ink-p { syntax: "<percentage>"; inherits: false; initial-value: 115%; }
+[data-write] {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(var(--ink-p) - 15%), transparent var(--ink-p));
+  mask-image: linear-gradient(to bottom, #000 calc(var(--ink-p) - 15%), transparent var(--ink-p));
+}
+[data-write="pending"] { --ink-p: 0%; }
+[data-write="done"] { animation: ink-write 1.3s cubic-bezier(0.35, 0.1, 0.25, 1) both; }
+@keyframes ink-write {
+  from { --ink-p: 0%; filter: blur(1.4px); }
+  70% { filter: blur(0.3px); }
+  to { --ink-p: 115%; filter: none; }
+}
+
+/* Paper-sound toggle in the dock */
+.dock__sound { background: none; border-top: 0; border-right: 0; border-bottom: 0; color: var(--ink); cursor: pointer; }
+.dock__sound:hover { background: var(--paper); }
+.dock__sound[aria-pressed="true"] { color: var(--accent); }
 
 /* ---------- Page transition: the top sheet slides off the pile ----------
    Navigations run as view transitions. The old page (a snapshot of the sheet)
@@ -944,7 +1021,10 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 @media print {
   html, body { height: auto; overflow: visible; }
   .desk, .sheet, .sheet__scroll { position: static; padding: 0; transform: none; overflow: visible; box-shadow: none; }
-  .stack__under, .sheet::before, .sheet::after { display: none; }
+  .stack__under, .sheet::before, .sheet::after, .cite__note { display: none; }
+  [data-write] { -webkit-mask-image: none; mask-image: none; }
+  .hed a, .card__title, .person-card__name, .journey__title a, .principle-item__name, .mini-item__title,
+  .explore li a, .result__title, .edition-index .hed { -webkit-text-fill-color: currentColor; background: none; }
   .dock, .site-footer, .story-rail, .progress, .correction-cta { display: none !important; }
   .story-layout { display: block; }
   body { background: #fff; }

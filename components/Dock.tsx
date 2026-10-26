@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { playRustle, setSoundEnabled, soundEnabled } from "@/lib/paperSound";
 import { sheetScroll } from "@/lib/sheet";
 import { nav, navAction, site } from "@/lib/site";
 
@@ -20,7 +21,21 @@ export function Dock() {
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
   const [hidden, setHidden] = useState(false);
+  // Paper sound is off by default; read the saved choice after mount (localStorage is client-only).
+  const [sound, setSound] = useState(false);
   const dockRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync with localStorage once on mount
+    setSound(soundEnabled());
+  }, []);
+
+  const toggleSound = () => {
+    const next = !sound;
+    setSound(next);
+    setSoundEnabled(next);
+    if (next) playRustle();
+  };
 
   useEffect(() => {
     const sheet = sheetScroll();
@@ -114,6 +129,23 @@ export function Dock() {
         </li>
       </ul>
 
+      <button
+        type="button"
+        className="dock__icon dock__sound"
+        aria-pressed={sound}
+        aria-label="Paper sound on page turns"
+        title={sound ? "Paper sound on" : "Paper sound off"}
+        onClick={toggleSound}
+      >
+        <svg width="18" height="16" viewBox="0 0 18 16" aria-hidden="true">
+          <path d="M2 5.5h3l4-3.5v12l-4-3.5H2z" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+          {sound ? (
+            <path d="M12 5.2c1 .8 1.5 1.7 1.5 2.8s-.5 2-1.5 2.8M14.4 3c1.7 1.3 2.6 3 2.6 5s-.9 3.7-2.6 5" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          ) : (
+            <path d="M12.5 5.5l4 5M16.5 5.5l-4 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          )}
+        </svg>
+      </button>
       <Link href="/archive" className="dock__icon" aria-label="Search the archive" aria-current={isCurrent("/archive") ? "page" : undefined}>
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
           <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" />
