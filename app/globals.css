@@ -271,17 +271,21 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 .sheet {
   transform: rotate(var(--tilt)); overflow: hidden;
   background-color: var(--paper);
-  background-image: var(--grain), linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.04));
-  background-blend-mode: multiply, normal;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.04));
   box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8), 0 3px 10px rgba(0, 0, 0, 0.35);
   transition: transform 0.6s var(--ease);
 }
-/* Centre fold on the front page */
-.desk[data-front="true"] .sheet {
-  background-image: var(--grain),
-    linear-gradient(90deg, transparent 48.6%, rgba(0, 0, 0, 0.09) 49.8%, rgba(255, 255, 255, 0.35) 50.2%, transparent 51.4%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.04));
-  background-blend-mode: multiply, normal, normal;
+/* Paper grain and the front-page centre fold sit in overlays ABOVE the content,
+   so photos, boxed panels and dark bands show them too. They stay put while the
+   content scrolls, like marks on the paper itself. */
+.sheet::before, .sheet::after { content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+.sheet::before { background-image: var(--grain); mix-blend-mode: multiply; }
+.desk[data-front="true"] .sheet::before {
+  background-image: var(--grain), linear-gradient(90deg, transparent 48.4%, rgba(0, 0, 0, 0.12) 49.85%, transparent 50.15%);
+}
+.desk[data-front="true"] .sheet::after {
+  background: linear-gradient(90deg, transparent 49.85%, rgba(255, 255, 255, 0.2) 50.2%, transparent 51.8%);
+  mix-blend-mode: screen;
 }
 .sheet__scroll {
   position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
@@ -315,7 +319,8 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 }
 @media (max-width: 900px) {
   /* Single column: no centre fold */
-  .desk[data-front="true"] .sheet { background-image: var(--grain), linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.04)); background-blend-mode: multiply, normal; }
+  .desk[data-front="true"] .sheet::before { background-image: var(--grain); }
+  .desk[data-front="true"] .sheet::after { display: none; }
 }
 
 /* ---------- Dock: floating bottom navigation ---------- */
@@ -939,7 +944,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 @media print {
   html, body { height: auto; overflow: visible; }
   .desk, .sheet, .sheet__scroll { position: static; padding: 0; transform: none; overflow: visible; box-shadow: none; }
-  .stack__under { display: none; }
+  .stack__under, .sheet::before, .sheet::after { display: none; }
   .dock, .site-footer, .story-rail, .progress, .correction-cta { display: none !important; }
   .story-layout { display: block; }
   body { background: #fff; }
