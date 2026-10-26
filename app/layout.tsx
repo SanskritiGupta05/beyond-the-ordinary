@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
+import { Dela_Gothic_One, IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Dock } from "@/components/Dock";
 import { Masthead } from "@/components/Masthead";
@@ -7,10 +7,11 @@ import { Sheet } from "@/components/Sheet";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Newspaper type: Anton for condensed headlines, PT Serif for text,
-// Playfair Display only for the nameplate in the masthead.
-const anton = Anton({
-  variable: "--font-anton",
+// Newspaper type: Dela Gothic One (a heavy Japanese display gothic, Latin
+// glyphs only) for headlines, PT Serif for text, and Playfair Display only for
+// the nameplate in the masthead.
+const dela = Dela_Gothic_One({
+  variable: "--font-dela",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
@@ -81,7 +82,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${anton.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
+    <html lang="en" className={`${dela.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
