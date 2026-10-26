@@ -9,12 +9,6 @@ import { Ja } from "./Ja";
 export type CiteMap = Map<string, number>;
 export const makeCiteMap = (ids: string[]): CiteMap => new Map(ids.map((id, i) => [id, i + 1]));
 
-const verificationLabel: Record<Source["verification"], string> = {
-  verified: "Verified",
-  corroborated: "Corroborated",
-  "needs-review": "Needs review",
-};
-
 export function Cites({ ids, map }: { ids?: string[]; map: CiteMap }) {
   if (!ids?.length) return null;
   return (
@@ -28,13 +22,11 @@ export function Cites({ ids, map }: { ids?: string[]; map: CiteMap }) {
             <a href={`#src-${id}`} aria-label={`Source ${n}: ${src.title}`}>
               [{n}]
             </a>
-            {/* Margin note: a clipped slip that slides out on hover or focus. The link's label already names the source. */}
+            {/* Proofreader's note: a small typed label above the number on a hairline, on hover or focus. The link's label already names the source. */}
             <span className="cite__note" aria-hidden="true">
-              <span className="cite__note-n">Source {n} · {verificationLabel[src.verification]}</span>
-              <span className="cite__note-title">{src.title}</span>
-              <span className="cite__note-pub">
-                {[src.author, src.publisher, src.published?.slice(0, 4)].filter(Boolean).join(" · ")}
-              </span>
+              <i>{n}</i>
+              {src.title}
+              {src.publisher ? ` — ${src.publisher}` : ""}
             </span>
           </span>
         );

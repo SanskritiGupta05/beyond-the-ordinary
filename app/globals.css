@@ -936,36 +936,31 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   .explore li a, .result__title, .edition-index .hed { -webkit-text-fill-color: currentColor; background: none; }
 }
 
-/* Margin notes: hovering or focusing a citation slides out a clipped slip with
-   the source, instead of jumping to the bottom of the page. */
+/* Proofreader's notes: hovering or focusing a citation floats a small typed
+   label above the number on a hairline, like a printer's margin mark.
+   components/CiteFit.tsx nudges it sideways (--dx) to stay on the paper. */
 .cite__note {
-  position: absolute; z-index: 20; left: 50%; top: calc(100% + 1rem);
-  width: min(17rem, 70vw); display: grid; gap: 0.3rem;
-  padding: 0.8rem 0.9rem 0.85rem; background: var(--white); border: 1px solid var(--rule);
-  box-shadow: 0 14px 26px -14px rgba(0, 0, 0, 0.4);
-  font-size: 0.8rem; line-height: 1.4; font-weight: 400; text-align: left; white-space: normal; color: var(--ink);
+  position: absolute; z-index: 20; left: 50%; bottom: calc(100% + 1.55rem);
+  max-width: min(24rem, 80vw); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 400; line-height: 1.5; letter-spacing: 0; color: var(--ink);
+  background: var(--paper); padding: 0.1rem 0.4rem; border-bottom: 1px solid var(--ink);
   opacity: 0; visibility: hidden; pointer-events: none;
-  transform: translate(-50%, -8px) rotate(-1.2deg);
-  transition: opacity 0.2s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
+  transform: translate(calc(-50% + var(--dx, 0px)), 4px);
+  transition: opacity 0.18s var(--ease), transform 0.25s var(--ease), visibility 0s linear 0.25s;
 }
-.cite__note::before { /* a strip of tape holding the slip */
-  content: ""; position: absolute; top: -8px; left: 50%; width: 46px; height: 15px;
-  transform: translateX(-50%) rotate(3deg); background: rgba(214, 199, 160, 0.75); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+.cite__note i { font-style: normal; color: var(--accent); margin-right: 0.45rem; }
+/* The hairline leader drops from the label to the number */
+.cite__item::after {
+  content: ""; position: absolute; left: 50%; bottom: calc(100% + 0.2rem); width: 1px; height: 1.35rem;
+  background: var(--ink); transform-origin: top; transform: scaleY(0); pointer-events: none;
+  transition: transform 0.25s var(--ease);
 }
 .cite__item:hover .cite__note, .cite__item:focus-within .cite__note {
-  opacity: 1; visibility: visible; transform: translate(-50%, 0) rotate(-1.2deg); transition-delay: 0s;
+  opacity: 1; visibility: visible; transform: translate(calc(-50% + var(--dx, 0px)), 0); transition-delay: 0s;
 }
-.cite__note-n { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
-.cite__note-title { font-family: var(--font-display); font-weight: 900; font-size: 0.98rem; line-height: 1.15; }
-.cite__note-pub { font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; color: var(--ink-3); }
-@media (max-width: 700px) {
-  /* On phones the slip appears pinned above the dock, clear of the screen edges */
-  .cite__note {
-    position: fixed; left: var(--space-4); right: var(--space-4); top: auto; width: auto;
-    bottom: calc(var(--sheet-bleed) + 96px); transform: translateY(8px) rotate(-0.8deg);
-  }
-  .cite__item:hover .cite__note, .cite__item:focus-within .cite__note { transform: translateY(0) rotate(-0.8deg); }
-}
+.cite__item:hover::after, .cite__item:focus-within::after { transform: scaleY(1); transition-delay: 0.08s; }
+.section--ink .cite__note { background: var(--band); color: var(--band-ink); border-color: var(--band-ink); }
+.section--ink .cite__item::after { background: var(--band-ink); }
 
 /* Brush writing: vertical Japanese names are inked in from top to bottom the
    first time they scroll into view (components/InkWriter.tsx). */
@@ -1021,7 +1016,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 @media print {
   html, body { height: auto; overflow: visible; }
   .desk, .sheet, .sheet__scroll { position: static; padding: 0; transform: none; overflow: visible; box-shadow: none; }
-  .stack__under, .sheet::before, .sheet::after, .cite__note { display: none; }
+  .stack__under, .sheet::before, .sheet::after, .cite__note, .cite__item::after { display: none; }
   [data-write] { -webkit-mask-image: none; mask-image: none; }
   .hed a, .card__title, .person-card__name, .journey__title a, .principle-item__name, .mini-item__title,
   .explore li a, .result__title, .edition-index .hed { -webkit-text-fill-color: currentColor; background: none; }

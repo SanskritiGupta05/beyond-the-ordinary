@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku, Zen_Old_Mincho } from "next/font/google";
+import { CiteFit } from "@/components/CiteFit";
 import { Footer } from "@/components/Footer";
 import { InkWriter } from "@/components/InkWriter";
 import { Dock } from "@/components/Dock";
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </Sheet>
         <Dock />
         <InkWriter />
+        <CiteFit />
       </body>
     </html>
   );
