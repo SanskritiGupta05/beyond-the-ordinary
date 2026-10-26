@@ -4,6 +4,7 @@ import { Figure } from "@/components/Figure";
 import { Journey, JourneyLegend } from "@/components/Journey";
 import { RandomStoryButton } from "@/components/RandomStory";
 import { Serendipity } from "@/components/Serendipity";
+import { TodayInDesign, type DatedEvent } from "@/components/TodayInDesign";
 import { sectionJa } from "@/lib/site";
 import { getDiscoveries, getPeople, getPerson, getPrinciples, getSources, getStories, getStory, principleHref, storyHref } from "@/lib/content";
 import type { Story } from "@/lib/types";
@@ -41,6 +42,12 @@ export default function HomePage() {
     const s = getStory(d.story)!;
     return { fact: d.fact, storyTitle: s.title, subject: s.subject, href: storyHref(s) };
   });
+  // Timeline events with a full date, for "Today in Japanese design"
+  const dated: DatedEvent[] = stories.flatMap((s) =>
+    s.timeline
+      .filter((e) => /^\d{4}-\d{2}-\d{2}$/.test(e.date))
+      .map((e) => ({ date: e.date, label: e.label, story: s.subject, storyJa: s.subjectJa, href: storyHref(s) })),
+  );
   const byline = (s: Story) =>
     [s.subject, s.people.map((id) => getPerson(id)?.name).filter(Boolean).join(" & "), `${s.readingMinutes} min read`, `Reviewed ${s.reviewed}`]
       .filter(Boolean)
@@ -68,6 +75,8 @@ export default function HomePage() {
               <RandomStoryButton hrefs={hrefs} />
             </div>
           </div>
+
+          <TodayInDesign events={dated} />
 
           <div className="spread">
             {/* Left page: the lead story */}

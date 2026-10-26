@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Blocks, ImageCredits, RelationshipList, SourceList, Timeline, makeCiteMap } from "@/components/Article";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { StoryCard, StoryVisual } from "@/components/Cards";
+import { ClipButton } from "@/components/ClipButton";
+import { ShareClipping } from "@/components/ShareClipping";
 import { CorrectionCta } from "@/components/CorrectionCta";
 import { Figure } from "@/components/Figure";
 import { Ja } from "@/components/Ja";
@@ -139,7 +141,9 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
             </div>
           ) : null}
         </dl>
+        <ClipButton clip={{ id: story.id, href: storyHref(story), title: story.title, subject: story.subject, subjectJa: story.subjectJa, category: story.category }} />
       </header>
+      <ShareClipping containerId="story-body" title={story.title} path={storyHref(story)} />
 
       <div className="wrap story-hero">
         {story.heroImage ? <Figure id={story.heroImage} priority sizes="100vw" /> : <StoryVisual story={story} className="story-hero__placeholder" />}

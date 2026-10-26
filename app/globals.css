@@ -375,6 +375,14 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 .dock__mark:hover .dock__ja span, .dock__mark:focus-visible .dock__ja span { opacity: 0; filter: blur(6px); transform: translateY(-8px); }
 .dock__mark:hover .dock__en span, .dock__mark:focus-visible .dock__en span { opacity: 1; filter: none; transform: none; }
 
+/* Small phones: a smaller wordmark and narrower icons so all dock buttons fit */
+@media (max-width: 540px) {
+  .dock .dock__mark { padding: 0 10px; }
+  .dock__ja { font-size: 21px; }
+  .dock__icon { width: 42px; }
+  .dock__menu { padding: 10px 12px; }
+}
+
 /* Medium screens: drop the Japanese sub-labels to save width */
 @media (max-width: 1180px) {
   .dock__label-ja { display: none; }
@@ -982,6 +990,107 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .dock__sound:hover { background: var(--paper); }
 .dock__sound[aria-pressed="true"] { color: var(--accent); }
 
+/* ---------- Clippings ---------- */
+.story-head > .clip-row { position: static; } /* so the cut line wraps the whole header */
+.clip-row { grid-column: 1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-top: var(--space-5); }
+.clip-btn {
+  display: inline-flex; align-items: center; gap: 0.55rem; min-height: 40px; padding: 0 0.95rem;
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--ink); background: transparent; border: 1px dashed var(--ink); cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.clip-btn:hover { background: var(--ink); color: var(--paper); border-style: solid; }
+.clip-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.clip-btn[aria-pressed="true"]:hover { background: var(--accent); color: #fff; }
+.clip-note { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-3); }
+.clip-note:empty { display: none; }
+/* The cut: a dashed line is drawn around the header while scissors run along the top */
+.cut-line { position: absolute; inset: 18px 12px 12px; border: 2px dashed var(--ink); pointer-events: none; opacity: 0; clip-path: inset(0 100% 0 0); z-index: 3; }
+.cut-line__scissors { position: absolute; top: -0.95rem; left: 0; font-size: 1.7rem; line-height: 1; color: var(--ink); background: var(--paper); padding: 0 0.15rem; transform: rotate(90deg); }
+.story-head.is-cutting .cut-line { opacity: 1; animation: cut-draw 0.9s cubic-bezier(0.5, 0, 0.4, 1) forwards; }
+.story-head.is-cutting .cut-line__scissors { animation: cut-run 0.9s cubic-bezier(0.5, 0, 0.4, 1) forwards; }
+.story-head.is-lifting { animation: clip-lift 0.65s var(--ease); }
+.story-head.is-lifting .cut-line { opacity: 1; clip-path: none; animation: cut-fade 0.65s ease forwards; }
+@keyframes cut-draw { to { clip-path: inset(0 0 0 0); } }
+@keyframes cut-run { from { left: 0; } to { left: calc(100% - 1rem); } }
+@keyframes clip-lift {
+  0% { transform: none; box-shadow: none; }
+  40% { transform: translateY(-8px) rotate(-0.6deg); box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.45); background: var(--paper); }
+  100% { transform: none; box-shadow: none; }
+}
+@keyframes cut-fade { to { opacity: 0; } }
+
+.dock__clips { position: relative; background: none; border-top: 0; border-right: 0; border-bottom: 0; color: var(--ink); cursor: pointer; }
+.dock__clips:hover, .dock__clips[aria-expanded="true"] { background: var(--paper); }
+.dock__badge {
+  position: absolute; top: 9px; right: 7px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px;
+  background: var(--accent); color: #fff; font-family: var(--font-mono); font-size: 0.6rem; line-height: 16px; text-align: center;
+}
+.clippings {
+  position: absolute; right: -1px; bottom: calc(100% + 8px); width: min(26rem, calc(100vw - 24px));
+  max-height: min(70vh, 34rem); overflow-y: auto; background: var(--paper); border: 1px solid var(--ink);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.55); padding: var(--space-4) var(--space-4) var(--space-3);
+  animation: drawer-up 0.3s var(--ease);
+}
+@keyframes drawer-up { from { opacity: 0; transform: translateY(10px); } }
+.clippings__head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px double var(--ink); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
+.clippings__head h2 { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; outline: none; }
+.clippings__head h2 span { font-size: 0.8rem; color: var(--ink-3); margin-left: 0.4rem; }
+.clippings__close { background: none; border: 0; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--ink); padding: 0 0.3rem; }
+.clippings__close:hover { color: var(--accent); }
+.clippings__list { list-style: none; display: grid; gap: var(--space-4); }
+.clipping {
+  position: relative; background: var(--white); border: 1px dashed var(--ink-3); transform: rotate(var(--r, 0deg));
+  box-shadow: 0 6px 14px -10px rgba(0, 0, 0, 0.4);
+}
+.clipping a { display: grid; gap: 0.25rem; padding: 0.75rem 2.4rem 0.8rem 0.9rem; text-decoration: none; }
+.clipping__meta { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--ink-3); }
+.clipping__ja { font-family: var(--font-display); font-weight: 900; font-size: 0.95rem; }
+.clipping__title { font-family: var(--font-display); font-weight: 900; font-size: 1.02rem; line-height: 1.15; }
+.clipping a:hover .clipping__title { color: var(--accent); }
+.clipping__remove { position: absolute; top: 0.4rem; right: 0.4rem; background: none; border: 0; font-size: 1.1rem; cursor: pointer; color: var(--ink-3); padding: 0.2rem 0.4rem; }
+.clipping__remove:hover { color: var(--accent); }
+.clippings__empty { font-size: 0.92rem; color: var(--ink-2); }
+.clippings__foot { margin-top: var(--space-4); font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--ink-3); }
+
+/* ---------- Today in Japanese design ---------- */
+.today { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-5); align-items: center; padding: var(--space-3) 0 var(--space-4); margin-bottom: var(--space-6); border-bottom: 1px solid var(--ink); }
+.today--empty { min-height: 0; padding: 0; margin: 0; border: 0; }
+.today__label { display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.today__seal {
+  display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border: 2px solid var(--accent); border-radius: 50%;
+  color: var(--accent); font-family: var(--font-display); font-weight: 900; font-size: 0.78rem; letter-spacing: 0; transform: rotate(-8deg);
+}
+.today__list { list-style: none; display: grid; gap: var(--space-2); }
+.today__list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.9rem; }
+.today__date { font-family: var(--font-display); font-weight: 900; font-size: 1.15rem; }
+.today__text { font-style: italic; color: var(--ink-2); }
+.today__link { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+@media (max-width: 700px) { .today { grid-template-columns: 1fr; gap: var(--space-3); } }
+
+/* ---------- Share a clipping ---------- */
+.share-chip {
+  position: fixed; z-index: 200; transform: translate(-50%, calc(-100% - 10px));
+  font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.02em;
+  background: var(--ink); color: var(--paper); border: 0; padding: 0.5rem 0.75rem; cursor: pointer;
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6); animation: chip-in 0.18s var(--ease);
+}
+.share-chip::after { content: ""; position: absolute; left: 50%; top: 100%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--ink); }
+.share-chip:hover { background: var(--accent); }
+.share-chip:hover::after { border-top-color: var(--accent); }
+@keyframes chip-in { from { opacity: 0; transform: translate(-50%, calc(-100% - 2px)); } }
+.share-dialog {
+  width: min(30rem, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: var(--space-5); border: 1px solid var(--ink);
+  background: var(--paper); color: var(--ink); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
+}
+.share-dialog::backdrop { background: rgba(20, 20, 18, 0.6); }
+.share-dialog__head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px double var(--ink); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
+.share-dialog__head h2 { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; }
+.share-dialog__img { width: 100%; height: auto; border: 1px solid var(--rule); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.45); }
+.share-dialog__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
+.share-dialog__status { margin-top: var(--space-3); font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-3); }
+.share-dialog__status:empty { display: none; }
+
 /* ---------- Page transition: the top sheet slides off the pile ----------
    Navigations run as view transitions. The old page (a snapshot of the sheet)
    lifts and is pulled off the stack, revealing the new page underneath. The
@@ -1016,7 +1125,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 @media print {
   html, body { height: auto; overflow: visible; }
   .desk, .sheet, .sheet__scroll { position: static; padding: 0; transform: none; overflow: visible; box-shadow: none; }
-  .stack__under, .sheet::before, .sheet::after, .cite__note, .cite__item::after { display: none; }
+  .stack__under, .sheet::before, .sheet::after, .cite__note, .cite__item::after, .clip-row, .share-chip { display: none; }
   [data-write] { -webkit-mask-image: none; mask-image: none; }
   .hed a, .card__title, .person-card__name, .journey__title a, .principle-item__name, .mini-item__title,
   .explore li a, .result__title, .edition-index .hed { -webkit-text-fill-color: currentColor; background: none; }

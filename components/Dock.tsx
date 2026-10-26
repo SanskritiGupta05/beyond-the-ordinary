@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useClippings } from "@/lib/clippings";
 import { playRustle, setSoundEnabled, soundEnabled } from "@/lib/paperSound";
+import { ClippingsDrawer } from "./ClippingsDrawer";
 import { sheetScroll } from "@/lib/sheet";
 import { nav, navAction, site } from "@/lib/site";
 
@@ -20,6 +22,10 @@ export function Dock() {
   // The menu is open only for the page it was opened on, so navigating closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
+  // The Clippings drawer, like the menu, belongs to the page it was opened on.
+  const [clipsOn, setClipsOn] = useState<string | null>(null);
+  const clipsOpen = clipsOn === pathname;
+  const clipCount = useClippings().length;
   const [hidden, setHidden] = useState(false);
   // Paper sound is off by default; read the saved choice after mount (localStorage is client-only).
   const [sound, setSound] = useState(false);
@@ -74,7 +80,7 @@ export function Dock() {
       className="dock"
       style={{ viewTransitionName: "dock" }}
       aria-label="Main"
-      data-hidden={hidden && !open}
+      data-hidden={hidden && !open && !clipsOpen}
       data-open={open}
       onFocus={() => setHidden(false)}
     >
@@ -131,6 +137,24 @@ export function Dock() {
 
       <button
         type="button"
+        className="dock__icon dock__clips"
+        aria-expanded={clipsOpen}
+        aria-controls="clippings-drawer"
+        aria-label={`Clippings (${clipCount})`}
+        title="Clippings"
+        onClick={() => {
+          setOpenOn(null);
+          setClipsOn(clipsOpen ? null : pathname);
+        }}
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+          <path d="M3 2.5h9l3 3v10H3z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeDasharray="2.2 1.6" />
+          <path d="M6 7.5h6M6 10h6M6 12.5h4" stroke="currentColor" strokeWidth="1.2" />
+        </svg>
+        {clipCount ? <span className="dock__badge" aria-hidden="true">{clipCount}</span> : null}
+      </button>
+      <button
+        type="button"
         className="dock__icon dock__sound"
         aria-pressed={sound}
         aria-label="Paper sound on page turns"
@@ -158,10 +182,14 @@ export function Dock() {
         className="dock__menu"
         aria-expanded={open}
         aria-controls="dock-links"
-        onClick={() => setOpenOn(open ? null : pathname)}
+        onClick={() => {
+          setClipsOn(null);
+          setOpenOn(open ? null : pathname);
+        }}
       >
         {open ? "Close" : "Menu"}
       </button>
+      {clipsOpen ? <ClippingsDrawer onClose={() => setClipsOn(null)} /> : null}
     </nav>
   );
 }
