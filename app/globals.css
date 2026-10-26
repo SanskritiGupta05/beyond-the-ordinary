@@ -805,7 +805,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
    a Japanese newspaper front page. Quotes stay in serif italic. */
 .display, .card__title, .step__heading, .journey__title, .principle-item__name, .mini-item__title,
 .result__title, .two-col h2, .prose h3, .compare caption, .footer-brand, .person-card__name, .explore li a {
-  font-weight: 900; letter-spacing: -0.01em; line-height: 1.1;
+  font-weight: 900; letter-spacing: -0.01em; line-height: 1;
 }
 .display.h2 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.4rem); }
 .ghost-num, .card__num, .step__num, .principle-item__num, .serendipity__count, .facts dd, .source__n {
@@ -836,7 +836,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .spread { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: calc(var(--gutter) * 2.4); position: relative; }
 .spread::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--rule); }
 .spread__page { display: grid; gap: var(--space-5); align-content: start; min-width: 0; }
-.hed { font-family: var(--font-display); font-weight: 900; line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+.hed { font-family: var(--font-display); font-weight: 900; line-height: 1; letter-spacing: -0.01em; text-wrap: balance; }
 .hed a { text-decoration: none; transition: color 0.2s var(--ease); }
 .hed a:hover { text-decoration: none; color: var(--accent); }
 .hed--xl { font-size: clamp(2rem, 1.2rem + 2.1vw, 3.3rem); }
