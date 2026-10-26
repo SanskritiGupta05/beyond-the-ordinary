@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Dela_Gothic_One, IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
+import { IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku, Zen_Old_Mincho } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Dock } from "@/components/Dock";
 import { Masthead } from "@/components/Masthead";
@@ -7,13 +7,15 @@ import { Sheet } from "@/components/Sheet";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Newspaper type: Dela Gothic One (a heavy Japanese display gothic, Latin
-// glyphs only) for headlines, PT Serif for text, and Playfair Display only for
-// the nameplate in the masthead.
-const dela = Dela_Gothic_One({
-  variable: "--font-dela",
-  subsets: ["latin"],
-  weight: "400",
+// Newspaper type: Zen Old Mincho Black, a heavy Japanese broadsheet mincho,
+// for headlines and the vertical Japanese story names beside them; PT Serif
+// for text; Playfair Display only for the nameplate in the masthead. The
+// Japanese glyphs are large, so the font is not preloaded and the browser
+// fetches only the character ranges a page uses.
+const zenOldMincho = Zen_Old_Mincho({
+  variable: "--font-zen-old-mincho",
+  weight: "900",
+  preload: false,
   display: "swap",
 });
 
@@ -82,7 +84,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${dela.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
+    <html lang="en" className={`${zenOldMincho.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content

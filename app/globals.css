@@ -32,7 +32,7 @@
   --band-rule: rgba(255, 255, 255, 0.14);
 
   /* Type */
-  --font-display: var(--font-dela), "Hiragino Kaku Gothic StdN", "Arial Black", sans-serif;   /* heavy Japanese display gothic */
+  --font-display: var(--font-zen-old-mincho), "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;   /* heavy Japanese broadsheet mincho */
   --font-text: var(--font-pt-serif), Georgia, "Times New Roman", var(--font-shippori), serif;
   --font-nameplate: var(--font-playfair), "Didot", Georgia, serif;
   --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; /* the typewriter layer */
@@ -794,16 +794,21 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
 
 /* ---------- Newspaper headline type ----------
-   Dela Gothic One is a single-weight heavy Japanese gothic: headlines are set
-   in sentence case with slightly tight tracking. Quotes stay in serif italic. */
+   Zen Old Mincho Black: a heavy Japanese broadsheet mincho, used for English
+   headlines and for the Japanese story names set vertically beside them, as on
+   a Japanese newspaper front page. Quotes stay in serif italic. */
 .display, .card__title, .step__heading, .journey__title, .principle-item__name, .mini-item__title,
 .result__title, .two-col h2, .prose h3, .compare caption, .footer-brand, .person-card__name, .explore li a {
-  font-weight: 400; letter-spacing: -0.015em; line-height: 1.12;
+  font-weight: 900; letter-spacing: -0.01em; line-height: 1.1;
 }
 .display.h2 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.4rem); }
 .ghost-num, .card__num, .step__num, .principle-item__num, .serendipity__count, .facts dd, .source__n {
-  font-weight: 400; letter-spacing: 0;
+  font-weight: 900; letter-spacing: 0;
 }
+/* Japanese story names in the headline face */
+.ja-hed { font-family: var(--font-display); font-weight: 900; font-feature-settings: "palt"; letter-spacing: 0.04em; line-height: 1; color: var(--ink); }
+.ja-hed--tate { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.08em; border-inline: 1px solid var(--ink); padding: 0.45rem 0.3rem; justify-self: start; }
+.story-head__tate { font-family: var(--font-display); font-weight: 900; border-inline: 1px solid var(--ink); padding: 0.6rem 0.4rem; }
 .display.h1 { font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4.6rem); }
 .philosophy { font-family: var(--font-text) !important; font-style: italic; text-transform: none; letter-spacing: 0 !important; }
 .search-field input { font-family: var(--font-text); }
@@ -825,14 +830,14 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .spread { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: calc(var(--gutter) * 2.4); position: relative; }
 .spread::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--rule); }
 .spread__page { display: grid; gap: var(--space-5); align-content: start; min-width: 0; }
-.hed { font-family: var(--font-display); font-weight: 400; line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+.hed { font-family: var(--font-display); font-weight: 900; line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
 .hed a { text-decoration: none; transition: color 0.2s var(--ease); }
 .hed a:hover { text-decoration: none; color: var(--green); }
-.hed--xl { font-size: clamp(1.9rem, 1.15rem + 2vw, 3.2rem); }
+.hed--xl { font-size: clamp(2rem, 1.2rem + 2.1vw, 3.3rem); }
 .hed--l { font-size: clamp(1.6rem, 1rem + 1.4vw, 2.5rem); }
-.hed--m { font-size: 1.25rem; }
-.hed--s { font-size: 1rem; }
-.spread__page > .kicker, .front__second-head > div > .kicker { margin-bottom: calc(var(--space-3) * -1); }
+.hed--m { font-size: 1.35rem; }
+.hed--s { font-size: 1.08rem; }
+.spread__page > .kicker { margin-bottom: calc(var(--space-3) * -1); }
 .dek { font-style: italic; font-size: var(--step-1); line-height: 1.4; color: var(--ink-2); }
 .byline { font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-2); border-block: 1px solid var(--ink); padding: 0.3rem 0; }
 .columns { column-gap: var(--space-5); column-rule: 1px solid var(--rule); }
@@ -849,9 +854,12 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .front__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
 .brief { border-top: 1px solid var(--ink); padding-top: var(--space-3); display: grid; gap: 0.45rem; }
 .brief p:last-child { font-size: 0.88rem; line-height: 1.5; }
-.front__second-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-5); align-items: start; }
-.front__second-head > div { display: grid; gap: var(--space-5); }
-.front__tate { font-weight: 700; font-size: clamp(1.5rem, 2.2vw, 2.1rem); border-inline: 1px solid var(--ink); padding: 0.5rem 0.35rem; }
+.front__head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.front__head .ja-hed--tate { font-size: clamp(2.2rem, 1.4rem + 1.8vw, 3.4rem); }
+.front__head .ja-hed--tate.is-small { font-size: clamp(1.8rem, 1.2rem + 1.4vw, 2.7rem); }
+.front__head > div { display: grid; gap: var(--space-4); }
+.brief__ja { font-size: 1.5rem; }
+.edition-index__ja { font-size: 1.25rem; }
 .front__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); }
 .front__stats div { padding: 0.6rem 0.8rem; border-left: 1px solid var(--rule); }
 .front__stats div:first-child { border-left: 0; padding-left: 0; }
@@ -891,7 +899,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   .spread::before { display: none; }
   .front__row { grid-template-columns: 1fr; }
   .columns--2, .columns--3 { column-count: 1; }
-  .front__tate { display: none; }
+  .front__head .ja-hed--tate { font-size: 2rem; }
   .edition-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 480px) { .edition-index { grid-template-columns: 1fr; } }

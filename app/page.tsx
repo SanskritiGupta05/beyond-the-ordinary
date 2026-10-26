@@ -21,6 +21,7 @@ function Brief({ story }: { story: Story }) {
   return (
     <div className="brief">
       <p className="kicker">{story.category} · {story.originDateLabel}</p>
+      {story.subjectJa ? <p className="ja-hed brief__ja" lang="ja">{story.subjectJa}</p> : null}
       <h3 className="hed hed--m"><Link href={storyHref(story)}>{story.title}</Link></h3>
       <p>{story.dek}</p>
     </div>
@@ -72,8 +73,13 @@ export default function HomePage() {
             {/* Left page: the lead story */}
             <article className="spread__page" aria-labelledby="lead-title">
               <p className="kicker">{lead.category} · {lead.originLocation}, {lead.originDateLabel}</p>
-              <h2 id="lead-title" className="hed hed--xl"><Link href={storyHref(lead)}>{lead.title}</Link></h2>
-              <p className="dek">{lead.dek}</p>
+              <div className="front__head">
+                <p className="ja-hed ja-hed--tate" lang="ja">{lead.subjectJa}</p>
+                <div>
+                  <h2 id="lead-title" className="hed hed--xl"><Link href={storyHref(lead)}>{lead.title}</Link></h2>
+                  <p className="dek">{lead.dek}</p>
+                </div>
+              </div>
               <p className="byline">{byline(lead)}</p>
               <div className="front__lead">
                 <div className="columns columns--2">
@@ -92,13 +98,13 @@ export default function HomePage() {
 
             {/* Right page: second story and briefs */}
             <article className="spread__page" aria-labelledby="second-title">
-              <div className="front__second-head">
+              <p className="kicker">{second.category} · {second.originDateLabel}</p>
+              <div className="front__head">
+                <p className="ja-hed ja-hed--tate is-small" lang="ja">{second.subjectJa}</p>
                 <div>
-                  <p className="kicker">{second.category} · {second.originDateLabel}</p>
                   <h2 id="second-title" className="hed hed--l"><Link href={storyHref(second)}>{second.title}</Link></h2>
                   <p className="dek">{second.dek}</p>
                 </div>
-                <p className="tate front__tate" lang="ja">{sectionJa.overlooked}</p>
               </div>
               <Figure id="exit-sign-running-man" className="front__wide" sizes="(max-width: 900px) 100vw, 40vw" />
               <div className="columns columns--3">
@@ -139,6 +145,7 @@ export default function HomePage() {
                 <Link href={storyHref(s)}>
                   <StoryVisual story={s} className="edition-index__img mono" sizes="(max-width: 900px) 50vw, 18vw" />
                   <span className="edition-index__pg">A{i + 1} · {s.category}</span>
+                  {s.subjectJa ? <span className="ja-hed edition-index__ja" lang="ja">{s.subjectJa}</span> : null}
                   <span className="hed hed--s">{s.title}</span>
                   <span className="edition-index__sub">{s.subject} · {s.originDateLabel}</span>
                 </Link>
