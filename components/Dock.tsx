@@ -57,6 +57,7 @@ export function Dock() {
     <nav
       ref={dockRef}
       className="dock"
+      style={{ viewTransitionName: "dock" }}
       aria-label="Main"
       data-hidden={hidden && !open}
       data-open={open}

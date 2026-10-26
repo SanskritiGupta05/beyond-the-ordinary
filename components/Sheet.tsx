@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, ViewTransition } from "react";
 import { SHEET_SCROLL_ID } from "@/lib/sheet";
 
 const SCROLL_KEYS = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "]);
@@ -17,7 +17,8 @@ export function Sheet({ children }: { children: React.ReactNode }) {
   const front = pathname === "/";
 
   // Each new page starts at the top of the sheet, unless it opens at an anchor.
-  useEffect(() => {
+  // A layout effect, so the page-turn snapshot shows the new page from the top.
+  useLayoutEffect(() => {
     if (!window.location.hash) scroller.current?.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname]);
 
@@ -48,11 +49,14 @@ export function Sheet({ children }: { children: React.ReactNode }) {
         <div className="stack__under stack__under--3" aria-hidden="true" />
         <div className="stack__under stack__under--2" aria-hidden="true" />
         <div className="stack__under stack__under--1" aria-hidden="true" />
-        <div className="sheet">
-          <div className="sheet__scroll" id={SHEET_SCROLL_ID} ref={scroller} tabIndex={-1}>
-            {children}
+        {/* Page turn: on navigation the old sheet slides off the pile (see globals.css). */}
+        <ViewTransition name="sheet" update={{ "in-place": "none", default: "sheet-turn" }} default="none">
+          <div className="sheet">
+            <div className="sheet__scroll" id={SHEET_SCROLL_ID} ref={scroller} tabIndex={-1}>
+              {children}
+            </div>
           </div>
-        </div>
+        </ViewTransition>
       </div>
     </div>
   );

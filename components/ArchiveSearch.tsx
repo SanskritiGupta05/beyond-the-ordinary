@@ -58,7 +58,8 @@ export function ArchiveSearch({ entries }: { entries: SearchEntry[] }) {
     if (qs === lastQs.current) return;
     const t = setTimeout(() => {
       lastQs.current = qs;
-      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+      // "in-place" keeps the page-turn transition from playing while filtering.
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false, transitionTypes: ["in-place"] });
     }, 250);
     return () => clearTimeout(t);
   }, [q, types, cats, pathname, router]);

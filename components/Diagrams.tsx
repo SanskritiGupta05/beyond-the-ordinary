@@ -7,7 +7,7 @@ import type { DiagramId } from "@/lib/types";
 
 const INK = "var(--ink)";
 const PAPER = "var(--paper)";
-const ACC = "var(--green)";
+const ACC = "var(--accent)";
 const MUTE = "var(--ink-3)";
 const YEL = "var(--ochre)";
 const label = { fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.06em", fill: MUTE } as const;
