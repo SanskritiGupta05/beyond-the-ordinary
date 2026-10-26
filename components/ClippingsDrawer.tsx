@@ -44,9 +44,10 @@ export function ClippingsDrawer({ onClose }: { onClose: () => void }) {
                     {c.subjectJa}
                   </span>
                 ) : null}
+                {c.quote ? <span className="clipping__quote">“{c.quote}”</span> : null}
                 <span className="clipping__title">{c.title}</span>
               </Link>
-              <button type="button" className="clipping__remove" onClick={() => removeClipping(c.id)} aria-label={`Remove ${c.subject} from clippings`}>
+              <button type="button" className="clipping__remove" onClick={() => removeClipping(c.id)} aria-label={`Remove ${c.quote ? "passage from " : ""}${c.subject} from clippings`}>
                 ×
               </button>
             </li>

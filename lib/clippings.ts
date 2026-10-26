@@ -12,6 +12,8 @@ export interface Clipping {
   subject: string;
   subjectJa?: string;
   category: string;
+  /** A passage the reader selected; absent when the whole story was clipped. */
+  quote?: string;
   clippedAt: string;
 }
 

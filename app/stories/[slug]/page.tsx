@@ -72,6 +72,7 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
   const related = story.related.map((id) => getStory(id)!);
   const principles = story.principles.map((id) => getPrinciple(id)!);
   const rels = relationshipsFor({ kind: "story", id: story.id });
+  const clip = { id: story.id, href: storyHref(story), title: story.title, subject: story.subject, subjectJa: story.subjectJa, category: story.category };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -141,9 +142,9 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
             </div>
           ) : null}
         </dl>
-        <ClipButton clip={{ id: story.id, href: storyHref(story), title: story.title, subject: story.subject, subjectJa: story.subjectJa, category: story.category }} />
+        <ClipButton clip={clip} dek={story.dek} kicker={`${story.category} · ${story.originDateLabel}`} />
       </header>
-      <ShareClipping containerId="story-body" title={story.title} path={storyHref(story)} />
+      <ShareClipping containerId="story-body" clip={clip} />
 
       <div className="wrap story-hero">
         {story.heroImage ? <Figure id={story.heroImage} priority sizes="100vw" /> : <StoryVisual story={story} className="story-hero__placeholder" />}

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useClippings } from "@/lib/clippings";
 import { playRustle, setSoundEnabled, soundEnabled } from "@/lib/paperSound";
+import { CLIP_LANDED } from "./ClippingSheet";
 import { ClippingsDrawer } from "./ClippingsDrawer";
 import { sheetScroll } from "@/lib/sheet";
 import { nav, navAction, site } from "@/lib/site";
@@ -27,6 +28,16 @@ export function Dock() {
   const clipsOpen = clipsOn === pathname;
   const clipCount = useClippings().length;
   const [hidden, setHidden] = useState(false);
+  // Restart the badge's bump animation each time a clipping drops into the dock.
+  const [landed, setLanded] = useState(0);
+  useEffect(() => {
+    const onLand = () => {
+      setHidden(false);
+      setLanded((n) => n + 1);
+    };
+    window.addEventListener(CLIP_LANDED, onLand);
+    return () => window.removeEventListener(CLIP_LANDED, onLand);
+  }, []);
   // Paper sound is off by default; read the saved choice after mount (localStorage is client-only).
   const [sound, setSound] = useState(false);
   const dockRef = useRef<HTMLElement>(null);
@@ -151,7 +162,11 @@ export function Dock() {
           <path d="M3 2.5h9l3 3v10H3z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeDasharray="2.2 1.6" />
           <path d="M6 7.5h6M6 10h6M6 12.5h4" stroke="currentColor" strokeWidth="1.2" />
         </svg>
-        {clipCount ? <span className="dock__badge" aria-hidden="true">{clipCount}</span> : null}
+        {clipCount ? (
+          <span key={landed} className="dock__badge" data-landed={landed > 0} aria-hidden="true">
+            {clipCount}
+          </span>
+        ) : null}
       </button>
       <button
         type="button"

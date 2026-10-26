@@ -1002,23 +1002,13 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .clip-btn:hover { background: var(--ink); color: var(--paper); border-style: solid; }
 .clip-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
 .clip-btn[aria-pressed="true"]:hover { background: var(--accent); color: #fff; }
-.clip-note { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-3); }
-.clip-note:empty { display: none; }
 /* The cut: a dashed line is drawn around the header while scissors run along the top */
 .cut-line { position: absolute; inset: 18px 12px 12px; border: 2px dashed var(--ink); pointer-events: none; opacity: 0; clip-path: inset(0 100% 0 0); z-index: 3; }
 .cut-line__scissors { position: absolute; top: -0.95rem; left: 0; font-size: 1.7rem; line-height: 1; color: var(--ink); background: var(--paper); padding: 0 0.15rem; transform: rotate(90deg); }
 .story-head.is-cutting .cut-line { opacity: 1; animation: cut-draw 0.9s cubic-bezier(0.5, 0, 0.4, 1) forwards; }
 .story-head.is-cutting .cut-line__scissors { animation: cut-run 0.9s cubic-bezier(0.5, 0, 0.4, 1) forwards; }
-.story-head.is-lifting { animation: clip-lift 0.65s var(--ease); }
-.story-head.is-lifting .cut-line { opacity: 1; clip-path: none; animation: cut-fade 0.65s ease forwards; }
 @keyframes cut-draw { to { clip-path: inset(0 0 0 0); } }
 @keyframes cut-run { from { left: 0; } to { left: calc(100% - 1rem); } }
-@keyframes clip-lift {
-  0% { transform: none; box-shadow: none; }
-  40% { transform: translateY(-8px) rotate(-0.6deg); box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.45); background: var(--paper); }
-  100% { transform: none; box-shadow: none; }
-}
-@keyframes cut-fade { to { opacity: 0; } }
 
 .dock__clips { position: relative; background: none; border-top: 0; border-right: 0; border-bottom: 0; color: var(--ink); cursor: pointer; }
 .dock__clips:hover, .dock__clips[aria-expanded="true"] { background: var(--paper); }
@@ -1053,6 +1043,39 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .clippings__empty { font-size: 0.92rem; color: var(--ink-2); }
 .clippings__foot { margin-top: var(--space-4); font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--ink-3); }
 
+.clip-remove { background: none; border: 0; padding: 0; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; color: var(--ink-3); text-decoration: underline; text-underline-offset: 0.25em; cursor: pointer; }
+.clip-remove:hover { color: var(--accent); }
+.dock__badge[data-landed="true"] { animation: badge-bump 0.5s cubic-bezier(0.3, 1.8, 0.5, 1); }
+@keyframes badge-bump { 0% { transform: scale(0.4); } 60% { transform: scale(1.35); } 100% { transform: scale(1); } }
+.clipping__quote { font-style: italic; font-size: 0.88rem; line-height: 1.4; color: var(--ink-2); }
+
+/* The cut-out clipping card: pops out of the page, then drops into the dock */
+.clip-sheet {
+  width: min(28rem, calc(100vw - 32px)); max-height: calc(100vh - 24px); padding: var(--space-5);
+  border: 1px solid var(--ink); background: var(--paper); color: var(--ink);
+  box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.75); transform-origin: 50% 50%;
+}
+.clip-sheet::backdrop { background: rgba(20, 20, 18, 0.55); animation: backdrop-in 0.4s ease; }
+@keyframes backdrop-in { from { opacity: 0; } }
+.clip-sheet__head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px double var(--ink); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
+.clip-sheet__head h2 { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; }
+.clip-sheet__head h2 span { font-size: 0.8rem; color: var(--ink-3); margin-left: 0.4rem; }
+.clip-sheet__card { width: min(100%, calc((100vh - 330px) * 0.8)); margin-inline: auto; aspect-ratio: 4 / 5; background: var(--white); box-shadow: 0 12px 26px -14px rgba(0, 0, 0, 0.5); transform: rotate(-0.6deg); display: grid; place-items: center; }
+.clip-sheet__card img { width: 100%; height: 100%; object-fit: cover; }
+.clip-sheet__wait { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--ink-3); }
+.clip-sheet__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+.clip-sheet__to { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.4rem 0.9rem; margin-top: var(--space-4); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; }
+.clip-sheet__to span { color: var(--ink-3); }
+.clip-sheet__to a, .clip-sheet__to button { color: var(--ink); text-decoration: none; border: 0; border-bottom: 1px solid currentColor; background: none; padding: 0; font: inherit; text-transform: inherit; cursor: pointer; }
+.clip-sheet__to a:hover, .clip-sheet__to button:hover { color: var(--accent); }
+.clip-sheet__status { margin-top: var(--space-3); font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-3); }
+.clip-sheet__status:empty { display: none; }
+.clip-sheet__keep {
+  display: block; width: 100%; margin-top: var(--space-4); padding: 0.75rem; border: 1px dashed var(--ink); background: transparent;
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink); cursor: pointer;
+}
+.clip-sheet__keep:hover { background: var(--ink); color: var(--paper); border-style: solid; }
+
 /* ---------- Today in Japanese design ---------- */
 .today { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-5); align-items: center; padding: var(--space-3) 0 var(--space-4); margin-bottom: var(--space-6); border-bottom: 1px solid var(--ink); }
 .today--empty { min-height: 0; padding: 0; margin: 0; border: 0; }
@@ -1079,17 +1102,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 .share-chip:hover { background: var(--accent); }
 .share-chip:hover::after { border-top-color: var(--accent); }
 @keyframes chip-in { from { opacity: 0; transform: translate(-50%, calc(-100% - 2px)); } }
-.share-dialog {
-  width: min(30rem, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: var(--space-5); border: 1px solid var(--ink);
-  background: var(--paper); color: var(--ink); box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
-}
-.share-dialog::backdrop { background: rgba(20, 20, 18, 0.6); }
-.share-dialog__head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px double var(--ink); padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
-.share-dialog__head h2 { font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; }
-.share-dialog__img { width: 100%; height: auto; border: 1px solid var(--rule); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.45); }
-.share-dialog__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
-.share-dialog__status { margin-top: var(--space-3); font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-3); }
-.share-dialog__status:empty { display: none; }
 
 /* ---------- Page transition: the top sheet slides off the pile ----------
    Navigations run as view transitions. The old page (a snapshot of the sheet)
