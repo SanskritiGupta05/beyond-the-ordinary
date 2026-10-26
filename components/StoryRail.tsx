@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { sheetScroll } from "@/lib/sheet";
 
 /** Journey index with active-section tracking, plus a reading progress bar. */
 export function StoryRail({ items }: { items: { id: string; num: string; label: string }[] }) {
@@ -18,6 +19,7 @@ export function StoryRail({ items }: { items: { id: string; num: string; label: 
     );
     els.forEach((el) => io.observe(el));
 
+    const sheet = sheetScroll();
     let frame = 0;
     const onScroll = () => {
       cancelAnimationFrame(frame);
@@ -25,16 +27,16 @@ export function StoryRail({ items }: { items: { id: string; num: string; label: 
         const article = document.getElementById("story-body");
         if (!article || !bar.current) return;
         const rect = article.getBoundingClientRect();
-        const total = rect.height - window.innerHeight * 0.6;
-        const p = Math.min(1, Math.max(0, -rect.top / Math.max(total, 1)));
+        const total = rect.height - sheet.viewport() * 0.6;
+        const p = Math.min(1, Math.max(0, (sheet.edge() - rect.top) / Math.max(total, 1)));
         bar.current.style.transform = `scaleX(${p})`;
       });
     };
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    sheet.target.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       io.disconnect();
-      window.removeEventListener("scroll", onScroll);
+      sheet.target.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(frame);
     };
   }, [items]);

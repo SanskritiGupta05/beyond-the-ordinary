@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { sheetScroll } from "@/lib/sheet";
 import { nav, navAction, site } from "@/lib/site";
 
 /**
@@ -22,20 +23,21 @@ export function Dock() {
   const dockRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    let last = window.scrollY;
+    const sheet = sheetScroll();
+    let last = sheet.top();
     let frame = 0;
     const onScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const y = window.scrollY;
-        const nearBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 40;
+        const y = sheet.top();
+        const nearBottom = sheet.viewport() + y >= sheet.height() - 40;
         setHidden(y > last && y > 160 && !nearBottom);
         last = y;
       });
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
+    sheet.target.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      sheet.target.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(frame);
     };
   }, []);

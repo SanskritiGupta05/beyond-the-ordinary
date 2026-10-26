@@ -1,100 +1,150 @@
 import Link from "next/link";
-import { PersonCard, StoryCard, StoryVisual } from "@/components/Cards";
+import { PersonCard, StoryVisual } from "@/components/Cards";
 import { Figure } from "@/components/Figure";
 import { Journey, JourneyLegend } from "@/components/Journey";
 import { RandomStoryButton } from "@/components/RandomStory";
 import { Serendipity } from "@/components/Serendipity";
-import { site, sectionJa } from "@/lib/site";
-import { getDiscoveries, getImage, getPeople, getPrinciples, getSources, getStories, getStory, principleHref, storyHref } from "@/lib/content";
+import { sectionJa } from "@/lib/site";
+import { getDiscoveries, getPeople, getPerson, getPrinciples, getSources, getStories, getStory, principleHref, storyHref } from "@/lib/content";
+import type { Story } from "@/lib/types";
+
+/** The first documented paragraphs of a story, for front-page columns. */
+function opening(story: Story, count: number) {
+  return story.sections
+    .flatMap((section) => section.blocks)
+    .flatMap((block) => (block.kind === "p" ? [block.text] : []))
+    .slice(0, count);
+}
+
+/** A short story item: kicker, headline and dek. */
+function Brief({ story }: { story: Story }) {
+  return (
+    <div className="brief">
+      <p className="kicker">{story.category} · {story.originDateLabel}</p>
+      <h3 className="hed hed--m"><Link href={storyHref(story)}>{story.title}</Link></h3>
+      <p>{story.dek}</p>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const stories = getStories();
   const people = getPeople();
   const principles = getPrinciples();
-  const featured = getStory("tactile-paving")!;
-  const overlooked = ["tactile-paving", "qr-code", "butterfly-stool"].map((id) => getStory(id)!);
-  const more = stories.filter((s) => !overlooked.includes(s));
+  const lead = getStory("tactile-paving")!;
+  const second = getStory("exit-sign")!;
+  const briefs = ["qr-code", "cup-noodles", "walkman"].map((id) => getStory(id)!);
   const global = stories.filter((s) => s.globalReach);
   const hrefs = stories.map(storyHref);
   const discoveries = getDiscoveries().map((d) => {
     const s = getStory(d.story)!;
     return { fact: d.fact, storyTitle: s.title, subject: s.subject, href: storyHref(s) };
   });
+  const byline = (s: Story) =>
+    [s.subject, s.people.map((id) => getPerson(id)?.name).filter(Boolean).join(" & "), `${s.readingMinutes} min read`, `Reviewed ${s.reviewed}`]
+      .filter(Boolean)
+      .join(" · ");
 
   return (
     <>
-      {/* 1 · Hero */}
-      <section className="hero" aria-labelledby="hero-title">
-        <span className="ghost-num" aria-hidden="true">1967</span>
-        <div className="wrap grid">
-          <div className="hero__copy">
-            <div className="hero__labels">
-              <p className="kicker">
-                An independent
-                <br />
-                archive
-              </p>
-              <p className="big">2K26</p>
-              <p className="kicker">
-                Japanese design,
-                <br />
-                ideas &amp; influence
+      {/* 1 · Front page */}
+      <section className="front" aria-labelledby="front-title">
+        <div className="wrap">
+          <div className="front__promise">
+            <div>
+              <h1 id="front-title" className="front__promise-title">
+                The world is full of design stories we&rsquo;ve never stopped to notice.
+              </h1>
+              <p className="front__promise-text">
+                From the tactile paving beneath our feet to the technology in our pockets, discover the Japanese ideas,
+                people, and innovations that have shaped our everyday lives.
               </p>
             </div>
-            <h1 id="hero-title" className="display hero__title">
-              The world is full of design stories we&rsquo;ve never stopped to notice.
-            </h1>
-            <p className="hero__text">
-              From the tactile paving beneath our feet to the technology in our pockets, discover the Japanese ideas,
-              people, and innovations that have shaped our everyday lives.
-            </p>
-            <div className="hero__actions">
+            <div className="front__actions">
               <Link href="/archive" className="btn">
                 Explore the archive <span className="arrow" aria-hidden="true">→</span>
               </Link>
               <RandomStoryButton hrefs={hrefs} />
             </div>
-            <div className="hero__meta">
-              <div><strong>{String(stories.length).padStart(2, "0")}</strong><span className="meta">Stories</span></div>
-              <div><strong>{String(people.length).padStart(2, "0")}</strong><span className="meta">People</span></div>
-              <div><strong>{getSources().length}</strong><span className="meta">Cited sources</span></div>
-            </div>
           </div>
-          <div className="hero__visual">
-            <Figure id="okayama-birthplace-1" bare priority className="hero__main" sizes="(max-width: 900px) 100vw, 42vw" />
-            <Figure id="tactile-japan-yellow" bare className="hero__inset" sizes="(max-width: 900px) 34vw, 15vw" />
-            <p className="hero__label">
-              <span className="chip-label">18.3.1967</span>
-              <span>
-                Okayama: the street where tactile paving was first laid. <Link href={storyHref(featured)}>Read the story ↗</Link>
-                <br />
-                <span className="meta" style={{ fontSize: "0.68rem" }}>{getImage("okayama-birthplace-1").attribution}</span>
-              </span>
-            </p>
+
+          <div className="spread">
+            {/* Left page: the lead story */}
+            <article className="spread__page" aria-labelledby="lead-title">
+              <p className="kicker">{lead.category} · {lead.originLocation}, {lead.originDateLabel}</p>
+              <h2 id="lead-title" className="hed hed--xl"><Link href={storyHref(lead)}>{lead.title}</Link></h2>
+              <p className="dek">{lead.dek}</p>
+              <p className="byline">{byline(lead)}</p>
+              <div className="front__lead">
+                <div className="columns columns--2">
+                  {opening(lead, 4).map((t) => (
+                    <p key={t}>{t}</p>
+                  ))}
+                  <p className="continued"><Link href={storyHref(lead)}>Continued: read the full story →</Link></p>
+                </div>
+                <Figure id="okayama-birthplace-2" className="front__photo" sizes="(max-width: 900px) 100vw, 18vw" />
+              </div>
+              <div className="front__row">
+                <Brief story={briefs[0]} />
+                <Serendipity items={discoveries} />
+              </div>
+            </article>
+
+            {/* Right page: second story and briefs */}
+            <article className="spread__page" aria-labelledby="second-title">
+              <div className="front__second-head">
+                <div>
+                  <p className="kicker">{second.category} · {second.originDateLabel}</p>
+                  <h2 id="second-title" className="hed hed--l"><Link href={storyHref(second)}>{second.title}</Link></h2>
+                  <p className="dek">{second.dek}</p>
+                </div>
+                <p className="tate front__tate" lang="ja">{sectionJa.overlooked}</p>
+              </div>
+              <Figure id="exit-sign-running-man" className="front__wide" sizes="(max-width: 900px) 100vw, 40vw" />
+              <div className="columns columns--3">
+                {opening(second, 3).map((t) => (
+                  <p key={t}>{t}</p>
+                ))}
+                <p className="continued"><Link href={storyHref(second)}>Continued →</Link></p>
+              </div>
+              <div className="front__row">
+                <Brief story={briefs[1]} />
+                <Brief story={briefs[2]} />
+              </div>
+              <dl className="front__stats">
+                <div><dt>Stories</dt><dd>{String(stories.length).padStart(2, "0")}</dd></div>
+                <div><dt>People</dt><dd>{String(people.length).padStart(2, "0")}</dd></div>
+                <div><dt>Cited sources</dt><dd>{getSources().length}</dd></div>
+              </dl>
+            </article>
           </div>
-          <p className="tate hero__tate" lang="ja">
-            {site.nameJa}
-          </p>
         </div>
       </section>
 
-      {/* 2 · The things we overlook */}
-      <section className="section" aria-labelledby="overlooked-title">
+      {/* 2 · Inside this edition */}
+      <section className="section" aria-labelledby="index-title">
         <div className="wrap">
           <header className="section-head">
-            <p className="section-head__num">01 — Everyday innovations</p>
-            <p className="tate section-head__ja" lang="ja">{sectionJa.overlooked}</p>
-            <h2 id="overlooked-title" className="display h2 section-head__title">The things we overlook</h2>
+            <p className="section-head__num">01 — Index</p>
+            <p className="tate section-head__ja" lang="ja">{sectionJa.index}</p>
+            <h2 id="index-title" className="display h2 section-head__title">Inside this edition</h2>
             <div className="section-head__aside">
-              <p>You&rsquo;ve seen it a thousand times. Here&rsquo;s the story behind it.</p>
+              <p>Every story in the archive, from the pavement under your feet to the cooker on the counter.</p>
               <Link href="/stories" className="link-arrow">All everyday innovations →</Link>
             </div>
           </header>
-          <div className="grid overlooked">
-            <StoryCard story={overlooked[0]} index={1} size="lg" imageId="okayama-birthplace-2" sizes="(max-width: 900px) 100vw, 55vw" />
-            <StoryCard story={overlooked[1]} index={2} sizes="(max-width: 900px) 100vw, 30vw" />
-            <StoryCard story={overlooked[2]} index={3} sizes="(max-width: 900px) 100vw, 25vw" />
-          </div>
+          <ol className="edition-index">
+            {stories.map((s, i) => (
+              <li key={s.id}>
+                <Link href={storyHref(s)}>
+                  <StoryVisual story={s} className="edition-index__img mono" sizes="(max-width: 900px) 50vw, 18vw" />
+                  <span className="edition-index__pg">A{i + 1} · {s.category}</span>
+                  <span className="hed hed--s">{s.title}</span>
+                  <span className="edition-index__sub">{s.subject} · {s.originDateLabel}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -167,37 +217,6 @@ export default function HomePage() {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* 6 · More to discover */}
-      <section className="section section--tint" aria-labelledby="more-title">
-        <div className="wrap">
-          <header className="section-head">
-            <p className="section-head__num">05 — More to discover</p>
-            <p className="tate section-head__ja" lang="ja">{sectionJa.more}</p>
-            <h2 id="more-title" className="display h2 section-head__title">Keep exploring</h2>
-            <div className="section-head__aside">
-              <p>Graphic systems, everyday products, and the ideas that connect them.</p>
-            </div>
-          </header>
-          <div className="discover">
-            <ul className="mini-list">
-              {more.map((s) => (
-                <li key={s.id} className="mini-item">
-                  <Link href={storyHref(s)}>
-                    <StoryVisual story={s} className="mini-item__img mono" sizes="128px" />
-                    <span>
-                      <span className="kicker kicker--accent">{s.category} · {s.originDateLabel}</span>
-                      <span className="mini-item__title" style={{ display: "block", marginTop: "0.35rem" }}>{s.title}</span>
-                      <span className="muted small" style={{ display: "block", marginTop: "0.35rem" }}>{s.subject}</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Serendipity items={discoveries} />
-          </div>
         </div>
       </section>
 

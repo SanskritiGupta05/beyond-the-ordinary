@@ -1,21 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Inter, Inter_Tight, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
+import { Anton, IBM_Plex_Mono, PT_Serif, Playfair_Display, Shippori_Mincho_B1, Yuji_Syuku } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Dock } from "@/components/Dock";
+import { Masthead } from "@/components/Masthead";
+import { Sheet } from "@/components/Sheet";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Latin: a tight neo-grotesk for headlines, a neutral grotesk for text.
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+// Newspaper type: Anton for condensed headlines, PT Serif for text,
+// Playfair Display only for the nameplate in the masthead.
+const anton = Anton({
+  variable: "--font-anton",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "400",
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const ptSerif = PT_Serif({
+  variable: "--font-pt-serif",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: "900",
   display: "swap",
 });
 
@@ -64,20 +76,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7f7f5",
+  themeColor: "#262624",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${interTight.variable} ${inter.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
+    <html lang="en" className={`${anton.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <main id="main" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
+        <Sheet>
+          <Masthead />
+          <main id="main" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+        </Sheet>
         <Dock />
       </body>
     </html>

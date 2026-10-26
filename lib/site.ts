@@ -44,6 +44,7 @@ export const sectionJa = {
   world: "日本から世界へ",
   thinking: "考え方",
   more: "もっと見る",
+  index: "目次",
   note: "制作者より",
   about: "このサイトについて",
   sources: "出典",
