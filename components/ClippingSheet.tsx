@@ -27,7 +27,7 @@ const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matche
  * image with ways to share it, and on close shrinks and drops into the
  * Clippings button in the dock (where it is already saved).
  */
-export function ClippingSheet({ open, image, title, shareText, path, origin, onClose }: Props) {
+export function ClippingSheet({ open, image, title, shareText = "", path, origin, onClose }: Props) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [status, setStatus] = useState("");
   const closing = useRef(false);
