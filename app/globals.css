@@ -921,6 +921,11 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   background-size: 240% 100%; background-position: 100% 0; background-repeat: no-repeat;
   -webkit-background-clip: text; background-clip: text;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  /* The text is painted by a background clipped to it, and backgrounds stop at
+     the element's box. With tight line height, descenders (g, p, y) and
+     ascenders would fall outside it and vanish, so extend the box and cancel
+     the extra space with equal negative margins. */
+  padding-block: 0.12em 0.2em; margin-block: -0.12em -0.2em;
   text-decoration: none; transition: background-position 0.85s cubic-bezier(0.45, 0.05, 0.3, 1);
 }
 .section--ink .journey__title a { --ink-from: #f08b72; --ink-to: var(--band-ink); }
@@ -938,6 +943,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   background-image: linear-gradient(90deg, var(--accent) 0 42%, var(--ink) 58% 100%);
   background-size: 240% 100%; background-position: 100% 0; background-repeat: no-repeat;
   -webkit-background-clip: text; background-clip: text; transition: background-position 0.85s cubic-bezier(0.45, 0.05, 0.3, 1);
+  padding-block: 0.12em 0.2em; margin-block: -0.12em -0.2em;
 }
 @media (forced-colors: active) {
   .hed a, .card__title, .person-card__name, .journey__title a, .principle-item__name, .mini-item__title,
