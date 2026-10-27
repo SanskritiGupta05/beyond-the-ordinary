@@ -47,7 +47,9 @@ export function StoryRail({ items }: { items: { id: string; num: string; label: 
         <div className="progress__bar" ref={bar} />
       </div>
       <nav className="story-rail__inner" aria-label="The journey of an idea">
-        <h2>The journey of an idea</h2>
+        <h2>
+          The journey of an idea <span lang="ja">目次</span>
+        </h2>
         <ol className="toc" style={{ listStyle: "none" }}>
           {items.map((i) => (
             <li key={i.id}>

@@ -909,6 +909,82 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 }
 @media (max-width: 480px) { .edition-index { grid-template-columns: 1fr; } }
 
+/* ---------- Newspaper furniture: story contents, key, summary, fact file,
+   editor's notes and chronology, styled like the boxes and indexes of a
+   printed paper rather than interface components. ---------- */
+
+/* Contents box: reversed heading bar, entries with dot leaders and section
+   numbers set like page references; the current section prints in reverse. */
+.story-rail__inner { border: 1px solid var(--ink); border-top: 4px double var(--ink); padding: 0 var(--space-4) var(--space-3); background: var(--paper); }
+.story-rail h2 {
+  display: flex; justify-content: space-between; align-items: baseline; margin: 0 calc(var(--space-4) * -1) var(--space-3);
+  padding: 0.45rem var(--space-4); background: var(--ink); color: var(--paper); font-size: 0.66rem; letter-spacing: 0.06em;
+}
+.story-rail h2 span { font-family: var(--font-display); font-weight: 900; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--paper); }
+.toc { border-top: 0; gap: 0.1rem; }
+.toc a {
+  grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; padding: 0.32rem 0.35rem; border-bottom: 0;
+  font-size: 0.9rem; color: var(--ink); transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.toc a span:last-child { order: -1; display: flex; align-items: baseline; min-width: 0; }
+.toc a span:last-child::after { content: ""; flex: 1; min-width: 1rem; margin: 0 0.4rem; border-bottom: 1px dotted currentColor; opacity: 0.55; transform: translateY(-0.2em); }
+.toc a span:first-child { font-size: 0.72rem; color: var(--ink-2); padding-top: 0; }
+.toc a:hover { background: var(--paper-2); }
+.toc a[aria-current="true"] { background: var(--ink); color: var(--paper); font-weight: 400; }
+.toc a[aria-current="true"] span:first-child { color: var(--paper); }
+.toc a[aria-current="true"] span:last-child::after { content: ""; opacity: 0.5; }
+
+/* Reading key, like the legend box on a newspaper chart */
+.story-key { position: sticky; top: calc(var(--header-h) + 1.5rem); border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); padding: 0.5rem 0 0.6rem; display: grid; gap: 0.35rem; }
+.story-key__title { font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 0.15rem; }
+.story-key p { font-size: 0.74rem; }
+.story-key span[aria-hidden], .story-key__ref { display: inline-block; min-width: 1.4rem; font-family: var(--font-mono); color: var(--accent); }
+
+/* Summary: a standfirst box between double rules, with a reversed label */
+.summary-block { margin: 0 0 var(--space-8); padding: var(--space-4) 0 var(--space-5); background: none; border-top: 4px double var(--ink); border-bottom: 1px solid var(--ink); }
+.summary-block__label { display: inline-block; margin-bottom: var(--space-3); padding: 0.2rem 0.5rem; background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.summary-block p:not(.summary-block__label) { font-style: italic; font-size: var(--step-1); line-height: 1.55; max-width: 40rem; }
+.summary-block p:not(.summary-block__label)::first-letter { font-family: var(--font-nameplate); font-style: normal; font-weight: 900; float: left; font-size: 3.2em; line-height: 0.8; padding: 0.06em 0.12em 0 0; }
+
+/* Fact file: a ruled box with a reversed heading and column rules */
+.facts { border: 1px solid var(--ink); border-top: 4px double var(--ink); padding: 0 var(--space-4); gap: 0; position: relative; }
+.facts::before {
+  content: "Fact file"; grid-column: 1 / -1; margin: 0 calc(var(--space-4) * -1); padding: 0.35rem var(--space-4);
+  background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.facts div { padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px dotted var(--ink-3); }
+.facts div:nth-child(odd) { border-right: 1px solid var(--rule); }
+.facts div:nth-last-child(-n + 2) { border-bottom: 0; }
+.facts div:nth-child(even) { padding-left: var(--space-4); }
+.facts dd { font-size: var(--step-1); font-weight: 900; line-height: 1.15; }
+@media (max-width: 600px) {
+  .facts div:nth-child(odd) { border-right: 0; }
+  .facts div:nth-child(even) { padding-left: 0; }
+  .facts div:nth-last-child(2) { border-bottom: 1px dotted var(--ink-3); }
+}
+
+/* Editor's notes: interpretation and uncertainty as boxed sidebars */
+.callout { padding: var(--space-3) 0 var(--space-4); background: none; border: 0; border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); }
+.callout--interp { background: none; border-left: 0; }
+.callout__label { display: inline-flex; padding: 0.15rem 0.45rem; margin-bottom: var(--space-2); background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.06em; }
+.callout--interp p:not(.callout__label) { font-style: italic; }
+.callout--uncertain { background: none; border: 1px dashed var(--amber); border-top: 3px double var(--amber); padding: var(--space-3) var(--space-4) var(--space-4); }
+.callout--uncertain .callout__label { background: var(--amber); color: #fff; }
+
+/* Chronology: a two-column table of dates and events between rules */
+.timeline { border-left: 0; margin-left: 0; border-top: 4px double var(--ink); border-bottom: 1px solid var(--ink); }
+.timeline li { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); column-gap: var(--space-4); padding: 0.7rem 0; border-bottom: 1px dotted var(--ink-3); }
+.timeline li:last-child { border-bottom: 0; }
+.timeline li::before { position: static; grid-row: 1 / span 2; grid-column: 1; align-self: start; justify-self: start; margin-top: 0.35rem; width: 0.6rem; height: 0.6rem; }
+.timeline__date { grid-column: 1; grid-row: 1; padding-left: 1rem; font-weight: 900; font-size: 1.05rem; }
+.timeline__phase { grid-column: 1; grid-row: 2; margin-left: 0; padding-left: 1rem; }
+.timeline__label { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+@media (max-width: 600px) {
+  .timeline li { grid-template-columns: 1fr; }
+  .timeline li::before { grid-row: 1; }
+  .timeline__label { grid-column: 1; grid-row: 3; margin-top: 0.3rem; }
+}
+
 /* ---------- Micro-interactions ---------- */
 
 /* Ink bleed: on hover or focus, vermilion soaks through a headline from left to

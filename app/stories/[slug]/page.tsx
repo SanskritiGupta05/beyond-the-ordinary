@@ -156,8 +156,8 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
         </div>
 
         <div className="story-body" id="story-body">
-          <div className="summary-block bracket">
-            <p className="kicker" style={{ marginBottom: "0.75rem" }}>In short</p>
+          <div className="summary-block">
+            <p className="summary-block__label">In short</p>
             <p>{story.summary}</p>
           </div>
 
@@ -267,11 +267,11 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
         </div>
 
         <aside className="story-aside" aria-label="Reading notes">
-          <div style={{ position: "sticky", top: "calc(var(--header-h) + 1.5rem)" }}>
-            <p className="kicker" style={{ marginBottom: "0.75rem" }}>How to read</p>
+          <div className="story-key">
+            <p className="story-key__title">How to read</p>
             <p><span aria-hidden="true">◇</span> Editorial interpretation</p>
-            <p style={{ marginTop: "0.4rem" }}><span aria-hidden="true">?</span> Uncertain or unverified</p>
-            <p style={{ marginTop: "0.4rem" }}>[1] Numbered source</p>
+            <p><span aria-hidden="true">?</span> Uncertain or unverified</p>
+            <p><span className="story-key__ref">[1]</span> Numbered source</p>
           </div>
         </aside>
       </div>
