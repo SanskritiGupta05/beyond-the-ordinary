@@ -40,11 +40,24 @@ export function Sheet({ children }: { children: React.ReactNode }) {
     const onKey = (e: KeyboardEvent) => {
       if (e.target === document.body && SCROLL_KEYS.has(e.key)) el.focus({ preventScroll: true });
     };
+    // The browser aborts a page-turn view transition if the window resizes or
+    // the tab is hidden mid-turn. The page still updates; only the animation is
+    // skipped, so silence that one harmless rejection (capture runs before
+    // other listeners, including the dev overlay).
+    const onRejection = (e: PromiseRejectionEvent) => {
+      const r: unknown = e.reason;
+      if (r instanceof DOMException && /^(InvalidStateError|AbortError)$/.test(r.name) && /transition was (aborted|skipped)/i.test(r.message)) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    };
     window.addEventListener("wheel", onWheel, { passive: true });
     window.addEventListener("keydown", onKey);
+    window.addEventListener("unhandledrejection", onRejection, { capture: true });
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKey);
+      window.removeEventListener("unhandledrejection", onRejection, { capture: true });
     };
   }, []);
 

@@ -985,6 +985,100 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   .timeline__label { grid-column: 1; grid-row: 3; margin-top: 0.3rem; }
 }
 
+/* ---------- Newspaper furniture across the site: cards, profiles, archive,
+   sources and the suggestion form, in the same language as the story pages
+   (double rules, reversed label bars, dotted dividers, column rules). ---------- */
+
+/* Shared reversed label, as on the story pages */
+.profile-section h2, .filter-group legend, .profile-facts::before {
+  display: inline-block; padding: 0.2rem 0.5rem; background: var(--ink); color: var(--paper);
+  font-family: var(--font-mono); font-size: 0.64rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4;
+}
+
+/* Story cards: an article teaser under a double rule, with a printed caption line */
+.card { border-top: 3px double var(--ink); padding-top: var(--space-3); }
+.card__img { border: 1px solid var(--ink); }
+.card__body { padding-top: var(--space-3); }
+.card__num { font-weight: 900; font-size: var(--step-1); line-height: 1; padding: 0.15rem 0.35rem; border: 1px solid var(--ink); align-self: start; }
+.card__meta { padding-bottom: 0.35rem; border-bottom: 1px dotted var(--ink-3); }
+.card__dek { font-style: italic; }
+.story-grid { row-gap: var(--space-7); }
+
+/* Person cards: a portrait column under a double rule */
+.person-card { border-top: 3px double var(--ink); padding-top: var(--space-3); }
+.person-card__img { border: 1px solid var(--ink); }
+.person-card__role { font-style: italic; }
+
+/* Profiles: a fact file, sections under double rules, selected work as a chronology */
+.profile-head__ja { font-family: var(--font-display); font-weight: 900; border-inline: 1px solid var(--ink); padding: 0.6rem 0.4rem; }
+.profile-body { border-top: 4px double var(--ink); }
+.profile-facts { align-self: start; gap: 0; border: 1px solid var(--ink); border-top: 4px double var(--ink); padding: 0 var(--space-4) var(--space-2); }
+.profile-facts::before { content: "Fact file"; display: block; margin: 0 calc(var(--space-4) * -1) var(--space-2); padding: 0.35rem var(--space-4); }
+.profile-facts > div { padding: var(--space-3) 0; border-bottom: 1px dotted var(--ink-3); }
+.profile-facts > div:last-child { border-bottom: 0; }
+.profile-facts dd { font-size: 0.92rem; }
+.profile-section { border-top: 4px double var(--ink); padding-top: var(--space-3); }
+.profile-section h2 { margin-bottom: var(--space-4); padding-bottom: 0.2rem; border: 0; }
+.works { border-bottom: 1px solid var(--ink); }
+.works li { border-bottom: 1px dotted var(--ink-3); }
+.works li:last-child { border-bottom: 0; }
+.works .meta { font-family: var(--font-display); font-weight: 900; font-size: 1rem; color: var(--ink); }
+
+/* Archive: a search box set like a classifieds header, filters as ruled
+   index tabs, results as a listings table */
+.search-field { border: 1px solid var(--ink); border-top: 4px double var(--ink); padding: 0 0 0 var(--space-4); background: var(--paper); }
+.search-field input { font-family: var(--font-display); font-weight: 900; font-size: var(--step-2); }
+.search-field button { align-self: stretch; padding: 0 var(--space-4); background: var(--ink); color: var(--paper); }
+.search-field button:hover { background: var(--accent); }
+.search-field:focus-within { border-color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
+.filters { gap: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--ink); }
+.filter-group legend { margin-bottom: var(--space-3); }
+.chip {
+  min-height: 34px; padding: 0 0.75rem; border: 1px solid var(--ink); border-radius: 0;
+  font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.02em;
+}
+.chip:hover { background: var(--paper-2); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.chip__count { color: var(--accent); opacity: 1; }
+.chip[aria-pressed="true"] .chip__count { color: #f08b72; }
+.results-meta { border-bottom: 1px solid var(--ink); }
+.results { border-top: 0; border-bottom: 1px solid var(--ink); }
+.result a { border-bottom: 1px dotted var(--ink-3); }
+.results li:last-child a { border-bottom: 0; }
+.result a:hover { background: var(--paper-2); }
+.result__img { border: 1px solid var(--ink); }
+.result__year { font-weight: 900; }
+
+/* Sources: endnotes between rules, numbers in boxes, open notes indented on a rule */
+.sources-list { border-top: 4px double var(--ink); border-bottom: 1px solid var(--ink); }
+.sources-list > li { border-bottom: 1px dotted var(--ink-3); }
+.sources-list > li:last-child { border-bottom: 0; }
+.source summary { align-items: start; }
+.source__n { font-weight: 900; font-size: 0.95rem; text-align: center; border: 1px solid var(--ink); padding: 0.15rem 0; width: 2rem; line-height: 1.2; }
+.source[open] .source__n { background: var(--ink); color: var(--paper); }
+.source__detail { margin-left: 1rem; padding-left: calc(2.5rem - 1rem); border-left: 1px solid var(--ink); }
+.source:target { background: var(--paper-2); }
+.badge[data-v="verified"] { transform: rotate(-2deg); }
+
+/* Suggestion form: a reader's form printed in the paper, with ruled fields */
+.submit-form { background: none; margin: 0; border: 1px solid var(--ink); border-top: 4px double var(--ink); }
+.submit-types { border-top: 1px solid var(--ink); }
+.type-option { border: 0; border-bottom: 1px dotted var(--ink-3); padding: var(--space-3) 0; grid-template-columns: 1.2rem 1fr; }
+.type-option:hover { border-color: var(--ink-3); background: var(--paper-2); }
+.type-option[data-checked="true"] { background: none; border-color: var(--ink-3); }
+.type-option[data-checked="true"] strong { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+.type-option input { appearance: none; width: 1rem; height: 1rem; margin-top: 0.25rem; border: 1px solid var(--ink); border-radius: 0; background: var(--paper); display: grid; place-items: center; }
+.type-option input:checked::after { content: "✕"; font-size: 0.75rem; line-height: 1; color: var(--accent); font-weight: 700; }
+.type-option input:focus-visible { box-shadow: var(--focus); }
+.field input, .field textarea { background: transparent; border: 0; border-bottom: 1px solid var(--ink); padding: 0.55rem 0.1rem; }
+.field textarea {
+  line-height: 2rem; padding-top: 0.1rem;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(2rem - 1px), var(--rule) calc(2rem - 1px) 2rem);
+  background-attachment: local;
+}
+.field input:focus, .field textarea:focus { background-color: var(--paper-2); box-shadow: inset 0 -2px 0 var(--accent); border-color: var(--ink); }
+.field-label { font-family: var(--font-mono); }
+
 /* ---------- Micro-interactions ---------- */
 
 /* Ink bleed: on hover or focus, vermilion soaks through a headline from left to
