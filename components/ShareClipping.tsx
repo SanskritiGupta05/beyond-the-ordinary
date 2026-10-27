@@ -7,13 +7,24 @@ import { addClipping, type Clipping } from "@/lib/clippings";
 import { ClippingSheet } from "./ClippingSheet";
 
 const MIN_CHARS = 12;
-const MAX_CHARS = 320;
+const MAX_CHARS = 1200;
 
 interface Props {
   /** Element id of the text readers can clip from. */
   containerId: string;
   /** The story the passage belongs to. */
   clip: Omit<Clipping, "clippedAt" | "quote">;
+}
+
+/** Labels and citation numbers that aren't part of the passage itself. */
+export const NOT_PASSAGE = '[aria-hidden="true"], .callout__label, .cite, .cite__note';
+
+/** The selected text without labels or citation numbers, with paragraph breaks as spaces. */
+function passageText(range: Range) {
+  const frag = range.cloneContents();
+  frag.querySelectorAll(NOT_PASSAGE).forEach((n) => n.remove());
+  frag.querySelectorAll("p, li, h1, h2, h3, h4, blockquote, figcaption, dd, dt").forEach((el) => el.append(" "));
+  return (frag.textContent ?? "").replace(/\s+/g, " ").trim();
 }
 
 /** Short stable id for a passage, so clipping the same text twice doesn't duplicate it. */
@@ -37,7 +48,7 @@ export function ShareClipping({ containerId, clip }: Props) {
       frame = requestAnimationFrame(() => {
         const sel = document.getSelection();
         const container = document.getElementById(containerId);
-        const text = sel?.toString().replace(/\s+/g, " ").trim() ?? "";
+        const text = sel && !sel.isCollapsed && sel.rangeCount ? passageText(sel.getRangeAt(0)) : "";
         if (!sel || sel.isCollapsed || !container || text.length < MIN_CHARS || !container.contains(sel.anchorNode) || !container.contains(sel.focusNode)) {
           setAnchor(null);
           return;

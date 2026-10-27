@@ -1252,6 +1252,32 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 }
 .clip-sheet__keep:hover { background: var(--ink); color: var(--paper); border-style: solid; }
 
+/* Returning to clippings: saved passages are marked; the one opened from the
+   drawer is marked strongly and labelled (components/ClipHighlight.tsx). */
+::highlight(clipping) { background-color: rgba(181, 64, 42, 0.1); text-decoration: underline 2px rgba(181, 64, 42, 0.45); text-underline-offset: 0.28em; }
+::highlight(clipping-active) { background-color: rgba(181, 64, 42, 0.24); text-decoration: underline 2px var(--accent); text-underline-offset: 0.28em; }
+.story-body { position: relative; }
+.clip-tag {
+  position: absolute; z-index: 4; transform: translateY(calc(-100% - 6px)); white-space: nowrap;
+  font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.04em;
+  background: var(--accent); color: #fff; padding: 0.2rem 0.5rem; animation: tag-in 0.4s var(--ease);
+}
+.clip-tag::after { content: ""; position: absolute; left: 0.8rem; top: 100%; border: 5px solid transparent; border-top-color: var(--accent); }
+@keyframes tag-in { from { opacity: 0; transform: translateY(calc(-100% + 4px)); } }
+/* The stamp on a clipped story's header; it presses in when reopened from the drawer */
+.clip-stamp {
+  position: relative; z-index: 2; display: grid; justify-items: center; gap: 0.1rem; margin-left: var(--space-2);
+  padding: 0.45rem 0.6rem 0.4rem; border: 2px solid var(--accent); border-radius: 4px; color: var(--accent);
+  transform: rotate(-8deg); pointer-events: none; mix-blend-mode: multiply;
+}
+.clip-stamp span { font-family: var(--font-display); font-weight: 900; font-size: 1.35rem; line-height: 1; letter-spacing: 0.08em; }
+.clip-stamp small { font-family: var(--font-mono); font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.story-head.is-revisited .clip-stamp { animation: stamp-press 0.55s cubic-bezier(0.3, 1.6, 0.5, 1); }
+.story-head.is-revisited .cut-line { opacity: 1; clip-path: none; animation: cut-flash 2.6s ease forwards; }
+@keyframes stamp-press { 0% { transform: rotate(-14deg) scale(1.8); opacity: 0; } 60% { transform: rotate(-7deg) scale(0.92); opacity: 1; } 100% { transform: rotate(-8deg) scale(1); } }
+@keyframes cut-flash { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
+.clipping__quote { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
 /* ---------- Today in Japanese design ---------- */
 .today { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-5); align-items: center; padding: var(--space-3) 0 var(--space-4); margin-bottom: var(--space-6); border-bottom: 1px solid var(--ink); }
 .today--empty { min-height: 0; padding: 0; margin: 0; border: 0; }

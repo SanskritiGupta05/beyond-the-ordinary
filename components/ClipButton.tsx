@@ -13,8 +13,9 @@ const CUT_MS = 900;
  * and on close it drops into the Clippings drawer in the dock (it is saved as
  * soon as it is cut). Once clipped, the button reopens the clipping to share.
  */
-export function ClipButton({ clip, dek, kicker }: { clip: Omit<Clipping, "clippedAt" | "quote">; dek: string; kicker: string }) {
-  const clipped = useClippings().some((c) => c.id === clip.id);
+export function ClipButton({ clip, dek, summary, kicker }: { clip: Omit<Clipping, "clippedAt" | "quote">; dek: string; summary: string; kicker: string }) {
+  const saved = useClippings().find((c) => c.id === clip.id);
+  const clipped = !!saved;
   const [cutting, setCutting] = useState(false);
   const [sheet, setSheet] = useState<{ origin: DOMRect | null } | null>(null);
   const [image, setImage] = useState<{ url: string; blob: Blob } | null>(null);
@@ -23,7 +24,7 @@ export function ClipButton({ clip, dek, kicker }: { clip: Omit<Clipping, "clippe
   useEffect(() => () => void (image && URL.revokeObjectURL(image.url)), [image]);
 
   const draw = async () => {
-    const blob = await renderClippingImage({ kind: "story", title: clip.title, text: dek, kicker, url: `${location.host}${clip.href}` });
+    const blob = await renderClippingImage({ kind: "story", title: clip.title, text: summary, kicker, url: `${location.host}${clip.href}` });
     if (blob) setImage({ url: URL.createObjectURL(blob), blob });
   };
 
@@ -68,6 +69,13 @@ export function ClipButton({ clip, dek, kicker }: { clip: Omit<Clipping, "clippe
         <button type="button" className="clip-remove" onClick={() => removeClipping(clip.id)}>
           Remove from clippings
         </button>
+      ) : null}
+      {/* A vermilion stamp on the header of a story the reader has clipped */}
+      {saved ? (
+        <span className="clip-stamp" aria-hidden="true">
+          <span lang="ja">切抜</span>
+          <small>Clipped {new Date(saved.clippedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</small>
+        </span>
       ) : null}
       {/* The cut line and scissors, shown around the header while cutting */}
       <span className="cut-line" aria-hidden="true">

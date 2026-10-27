@@ -41,14 +41,21 @@ function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number) {
   return lines;
 }
 
-/** Shrinks the font until the wrapped text fits in maxHeight. */
+/** Shrinks the font until the wrapped text fits in maxHeight; if it still doesn't fit at the smallest size, ends on "…". */
 function fit(ctx: CanvasRenderingContext2D, text: string, font: (size: number) => string, maxW: number, maxH: number, from: number, to: number, leading: number) {
   let size = from;
   let lines: string[] = [];
   for (; size >= to; size -= 2) {
     ctx.font = font(size);
     lines = wrap(ctx, text, maxW);
-    if (lines.length * size * leading <= maxH) break;
+    if (lines.length * size * leading <= maxH) return { size, lines };
+  }
+  size = to;
+  ctx.font = font(size);
+  const max = Math.max(1, Math.floor(maxH / (size * leading)));
+  if (lines.length > max) {
+    lines = lines.slice(0, max);
+    lines[max - 1] = `${lines[max - 1].replace(/[\s,.;:—-]*\S*$/, "")}…`;
   }
   return { size, lines };
 }
@@ -134,16 +141,16 @@ export async function renderClippingImage(art: ClippingArt): Promise<Blob | null
     }
     y += 50;
     ctx.fillStyle = "#3d3b36";
-    const dek = fit(ctx, art.text, (s) => `italic ${s}px ${serif}`, maxW, 1000 - y, 40, 30, 1.42);
+    const dek = fit(ctx, art.text, (s) => `italic ${s}px ${serif}`, maxW, 990 - y, 40, 26, 1.42);
     for (const line of dek.lines) {
       y += dek.size;
       ctx.fillText(line, x, y);
       y += dek.size * 0.42;
     }
   } else {
-    const q = fit(ctx, art.text, (s) => `italic ${s}px ${serif}`, maxW, 600, 52, 34, 1.42);
+    const q = fit(ctx, art.text, (s) => `italic ${s}px ${serif}`, maxW, 660, 52, 25, 1.42);
     const blockH = q.lines.length * q.size * 1.42;
-    let y = 330 + Math.max(0, (640 - blockH) / 2) + q.size;
+    let y = 320 + Math.max(0, (670 - blockH) / 2) + q.size;
     ctx.fillStyle = ACCENT;
     ctx.font = `900 140px ${display}`;
     ctx.fillText("“", x - 18, y - q.size * 0.35);

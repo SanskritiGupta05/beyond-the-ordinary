@@ -5,6 +5,7 @@ import { Blocks, ImageCredits, RelationshipList, SourceList, Timeline, makeCiteM
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { StoryCard, StoryVisual } from "@/components/Cards";
 import { ClipButton } from "@/components/ClipButton";
+import { ClipHighlight } from "@/components/ClipHighlight";
 import { ShareClipping } from "@/components/ShareClipping";
 import { CorrectionCta } from "@/components/CorrectionCta";
 import { Figure } from "@/components/Figure";
@@ -142,9 +143,10 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
             </div>
           ) : null}
         </dl>
-        <ClipButton clip={clip} dek={story.dek} kicker={`${story.category} · ${story.originDateLabel}`} />
+        <ClipButton clip={clip} dek={story.dek} summary={story.summary} kicker={`${story.category} · ${story.originDateLabel}`} />
       </header>
       <ShareClipping containerId="story-body" clip={clip} />
+      <ClipHighlight storyId={story.id} containerId="story-body" />
 
       <div className="wrap story-hero">
         {story.heroImage ? <Figure id={story.heroImage} priority sizes="100vw" /> : <StoryVisual story={story} className="story-hero__placeholder" />}

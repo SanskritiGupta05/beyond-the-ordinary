@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { removeClipping, useClippings } from "@/lib/clippings";
+import { openClipping, removeClipping, useClippings } from "@/lib/clippings";
 
 /** The reader's saved clippings, opened from the dock. */
 export function ClippingsDrawer({ onClose }: { onClose: () => void }) {
@@ -35,7 +35,13 @@ export function ClippingsDrawer({ onClose }: { onClose: () => void }) {
         <ul className="clippings__list">
           {clippings.map((c, i) => (
             <li key={c.id} className="clipping" style={{ "--r": `${[-1.2, 0.8, -0.5, 1.1][i % 4]}deg` } as React.CSSProperties}>
-              <Link href={c.href} onClick={onClose}>
+              <Link
+                href={c.href}
+                onClick={() => {
+                  openClipping(c.id);
+                  onClose();
+                }}
+              >
                 <span className="clipping__meta">
                   {c.category} · clipped {new Date(c.clippedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
                 </span>
