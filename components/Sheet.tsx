@@ -12,7 +12,7 @@ const SCROLL_KEYS = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home
  * content scrolls inside it. The homepage is the front page (tilted more, with
  * a centre fold); other pages sit a little straighter for comfortable reading.
  */
-export function Sheet({ children }: { children: React.ReactNode }) {
+export function Sheet({ children, back }: { children: React.ReactNode; back?: React.ReactNode }) {
   const pathname = usePathname();
   const scroller = useRef<HTMLDivElement>(null);
   const front = pathname === "/";
@@ -67,6 +67,8 @@ export function Sheet({ children }: { children: React.ReactNode }) {
         <div className="stack__under stack__under--3" aria-hidden="true" />
         <div className="stack__under stack__under--2" aria-hidden="true" />
         <div className="stack__under stack__under--1" aria-hidden="true" />
+        {/* The back of the paper, shown only while it unfolds on a first visit. */}
+        {back}
         {/* Page turn: on navigation the old sheet slides off the pile (see globals.css). */}
         <ViewTransition name="sheet" update={{ "in-place": "none", default: "sheet-turn" }} default="none">
           <div className="sheet">

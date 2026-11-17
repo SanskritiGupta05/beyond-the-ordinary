@@ -293,6 +293,86 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 }
 .sheet__scroll:focus, .sheet__scroll:focus-visible { outline: none; box-shadow: none; }
 
+/* ---------- Opening animation: the paper unfolds (components/Unfold.tsx) ---------- */
+/* Folded state before first paint: only the top-right panel shows, centred on the desk. */
+/* Matches the animation's first frame: folded, lifted slightly above the desk. */
+html.unfolding .stack { transform: translate(-25%, 22.5%) scale(0.9315); perspective: 2400px; perspective-origin: 50% 45%; will-change: transform; }
+html.unfolding .stack > .sheet { clip-path: inset(0 0 50% 50%); box-shadow: none; }
+/* Templates live in the stack. Before the script starts, the folded paper shows
+   its outside (the back page), not the front page under it. */
+.unfold-templates > .sheet { box-shadow: none; }
+html.unfolding:not([data-unfold-started]) .unfold-templates { display: block; position: absolute; inset: 0; z-index: 1; }
+html.unfolding:not([data-unfold-started]) .unfold-templates > [data-unfold="half"] { display: none; }
+html.unfolding:not([data-unfold-started]) .unfold-templates > [data-unfold="quarter"] { clip-path: inset(0 0 50% 50%); }
+html.unfolding .stack__under,
+html.unfolding .dock { opacity: 0; }
+/* The dock's frosted glass would re-blur the moving paper every frame. */
+html.unfolding .dock { visibility: hidden; }
+/* The base sheet is drawn once and then only moved. */
+html.unfolding .stack > .sheet { will-change: transform; }
+/* Its shadow on the desk before the script takes over with its own. */
+html.unfolding:not([data-unfold-started]) .stack::after {
+  content: ""; position: absolute; z-index: -1; top: 0; right: 0; bottom: 50%; left: 50%; pointer-events: none;
+  box-shadow: 0 34px 70px -22px rgba(0, 0, 0, 0.75), 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+/* The paper's shadow on the desk while it is folded; the script stretches it as the paper opens. */
+.unfold-shadow {
+  position: absolute; inset: 0; pointer-events: none; transform-origin: 100% 0; transform: scale(0.5, 0.5); will-change: transform, opacity;
+  box-shadow: 0 40px 80px -18px rgba(0, 0, 0, 0.9), 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+.unfold-strip { position: absolute; transform-style: preserve-3d; pointer-events: none; will-change: transform; }
+.unfold-face { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; transform-origin: 50% 50%; backface-visibility: hidden; }
+.unfold-face > .sheet { box-shadow: none; }
+/* Copies keep the paper grain, but without blend modes (costly in 3D), and drop the crease highlight. */
+.unfold-face > .sheet::before { mix-blend-mode: normal; opacity: 0.85; }
+.unfold-face > .sheet::after { display: none; }
+/* Its own layer, so changing the light never re-draws the printed page under it. */
+.unfold-face__shade { position: absolute; inset: 0; z-index: 7; background: #0d0c09; opacity: 0; pointer-events: none; will-change: opacity; }
+/* Shadows a lifted half throws on the paper below: darkest at the fold, fading out. */
+.unfold-cast { position: absolute; pointer-events: none; opacity: 0; will-change: transform, opacity; }
+.unfold-cast--left { transform-origin: 0 50%; background: linear-gradient(90deg, rgba(10, 8, 5, 0.78) 0%, rgba(10, 8, 5, 0.5) 18%, rgba(10, 8, 5, 0.18) 55%, rgba(10, 8, 5, 0) 100%); }
+.unfold-cast--bottom { transform-origin: 50% 100%; background: linear-gradient(0deg, rgba(10, 8, 5, 0.78) 0%, rgba(10, 8, 5, 0.5) 18%, rgba(10, 8, 5, 0.18) 55%, rgba(10, 8, 5, 0) 100%); }
+
+/* The back page, printed on the outside of the folded paper (components/BackPage.tsx) */
+.backpage { overflow: hidden; }
+.backpage__half, .backpage__quarter {
+  position: absolute; top: 0; left: 50%; width: 50%; container-type: inline-size;
+  padding: clamp(14px, 6cqw, 56px) clamp(14px, 7cqw, 72px); display: flex; flex-direction: column; gap: clamp(8px, 2.6cqw, 22px);
+}
+.backpage__half { height: 100%; }
+.backpage__quarter { height: 50%; }
+.backpage__quarter .backpage__kicker--big { margin-top: auto; }
+.backpage__quarter .backpage__fact--big { margin-bottom: auto; }
+.backpage__mast { display: grid; gap: 0; }
+.backpage__mast-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(6px, 2.4cqw, 20px); padding-bottom: 0.5em; border-bottom: 3px double var(--ink); }
+.backpage__ear { justify-self: start; white-space: nowrap; font-family: var(--font-mono); font-size: clamp(0.36rem, 1.25cqw, 0.62rem); line-height: 1.45; text-transform: uppercase; letter-spacing: 0.02em; border: 1px solid var(--ink); padding: 0.35em 0.5em; }
+.backpage__ear--right { justify-self: end; text-align: right; }
+.backpage__nameplate { display: grid; justify-items: center; gap: 0.25em; text-align: center; }
+.backpage__en { font-family: var(--font-nameplate); font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; font-size: clamp(0.8rem, 4.4cqw, 2.2rem); }
+.backpage__ja { font-family: var(--font-yuji), var(--font-ja); font-size: clamp(0.5rem, 1.9cqw, 0.95rem); letter-spacing: 0.1em; filter: url(#dock-ink); -webkit-text-stroke: 0.5px currentColor; font-feature-settings: normal; }
+.backpage__dateline { display: flex; justify-content: space-between; gap: 0.6rem; font-family: var(--font-mono); font-size: clamp(0.36rem, 1.25cqw, 0.62rem); text-transform: uppercase; letter-spacing: 0.03em; padding: 0.4em 0; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+/* Narrow panels (phones): nameplate alone, like the front page's masthead there. */
+@container (max-width: 420px) {
+  .backpage__mast-top { grid-template-columns: 1fr; }
+  .backpage__ear { display: none; }
+  .backpage__dateline span:nth-child(odd) { display: none; }
+  .backpage__dateline { justify-content: center; }
+  .backpage__index { columns: 1; font-size: clamp(0.6rem, 5.4cqw, 0.8rem); }
+  .backpage__index li:nth-child(n + 11) { display: none; }
+}
+.backpage__hed { font-family: var(--font-display); font-weight: 900; line-height: 1; font-size: clamp(1rem, 6.4cqw, 3rem); letter-spacing: -0.03em; border-bottom: 1px solid var(--ink); padding-bottom: 0.4em; }
+.backpage__index { list-style: none; columns: 2; column-gap: clamp(10px, 4cqw, 36px); column-rule: 1px solid var(--rule); font-size: clamp(0.55rem, 2.1cqw, 0.92rem); line-height: 1.35; }
+.backpage__index li { display: flex; justify-content: space-between; gap: 0.5rem; break-inside: avoid; padding: 0.22em 0; border-bottom: 1px dotted var(--rule); }
+.backpage__year { font-family: var(--font-mono); font-size: 0.85em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.backpage__box { border: 1px solid var(--ink); padding: clamp(8px, 3cqw, 22px); background: var(--white); }
+.backpage__kicker { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.5rem, 1.7cqw, 0.72rem); margin-bottom: 0.5em; }
+.backpage__kicker--big { font-family: var(--font-display); font-weight: 900; text-transform: none; letter-spacing: -0.03em; line-height: 0.95; font-size: clamp(1.4rem, 11cqw, 5rem); margin: 0; }
+.backpage__fact { font-style: italic; font-size: clamp(0.6rem, 2.4cqw, 1.05rem); line-height: 1.4; }
+.backpage__fact--big { font-size: clamp(0.75rem, 3.6cqw, 1.6rem); line-height: 1.35; border-top: 1px solid var(--ink); padding-top: 0.6em; }
+.backpage__colophon { margin-top: auto; font-family: var(--font-mono); font-size: clamp(0.5rem, 1.6cqw, 0.7rem); line-height: 1.5; color: var(--ink-3); border-top: 1px solid var(--ink); padding-top: 0.6em; }
+/* Only one fact shows on each face; the script picks which. */
+.backpage__fact:not([data-show]) { display: none; }
+
 /* ---------- Masthead ---------- */
 .masthead { padding-top: var(--space-6); }
 .masthead__top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-5); padding-bottom: var(--space-3); border-bottom: 3px double var(--ink); }
@@ -415,6 +495,14 @@ a:hover { color: var(--ink); text-decoration-thickness: 2px; }
 .footer-grid ul { list-style: none; display: grid; gap: var(--space-2); font-size: 0.88rem; }
 .footer-brand { font-family: var(--font-display); font-size: var(--step-3); font-weight: 500; letter-spacing: -0.05em; line-height: 0.95; }
 .footer-brand-ja { font-size: 1rem; color: var(--ink-2); margin-top: var(--space-3); }
+/* Maker credit: a byline row above the small print. */
+.footer-maker { margin-top: var(--space-8); padding-top: var(--space-5); border-top: 3px double var(--ink); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.footer-maker p { font-style: italic; font-size: var(--step-0); }
+.footer-maker strong { font-style: normal; font-weight: 700; }
+.footer-maker__links { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.footer-maker__links a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.75rem; border: 1px solid var(--ink); font-family: var(--font-mono); font-size: 0.75rem; text-decoration: none; }
+.footer-maker__links a:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+.footer-maker + .footer-bottom { margin-top: var(--space-5); }
 .footer-bottom { margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: space-between; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > :first-child { grid-column: 1 / -1; } }
 

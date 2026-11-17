@@ -20,6 +20,14 @@ export const site = {
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
   /** Public repository; submissions can also be opened as GitHub issues here. */
   repo: "SanskritiGupta05/beyond-the-ordinary",
+  /** The maker, credited in the footer. Each link is shown only when set. */
+  maker: {
+    name: "Sanskriti Gupta",
+    /** X username, without the @. */
+    x: "GuptaSanskritii",
+    /** Full LinkedIn profile URL. */
+    linkedin: "https://www.linkedin.com/in/sanskritiguptaa/",
+  },
   /** Optional social links. Only rendered when set. */
   social: [] as { label: string; href: string }[],
   /** Last time the whole dataset was reviewed. */

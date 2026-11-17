@@ -6,6 +6,8 @@ import { InkWriter } from "@/components/InkWriter";
 import { Dock } from "@/components/Dock";
 import { Masthead } from "@/components/Masthead";
 import { Sheet } from "@/components/Sheet";
+import { BackPage } from "@/components/BackPage";
+import { Unfold, UnfoldBootScript } from "@/components/Unfold";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -86,13 +88,18 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${zenOldMincho.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`}>
+    // suppressHydrationWarning: the head script may add the "unfolding" class before React loads.
+    <html lang="en" className={`${zenOldMincho.variable} ${ptSerif.variable} ${playfair.variable} ${plexMono.variable} ${shippori.variable} ${yuji.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Folds the paper before first paint on a visit's first load (see components/Unfold.tsx). */}
+        <UnfoldBootScript />
+      </head>
       {/* Browser extensions (e.g. Grammarly) add attributes to <body> before React loads; ignore those mismatches. */}
       <body suppressHydrationWarning>
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <Sheet>
+        <Sheet back={<BackPage />}>
           <Masthead />
           <main id="main" tabIndex={-1}>
             {children}
@@ -102,6 +109,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Dock />
         <InkWriter />
         <CiteFit />
+        <Unfold />
       </body>
     </html>
   );
