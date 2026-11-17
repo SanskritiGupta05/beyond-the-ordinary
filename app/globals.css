@@ -327,7 +327,7 @@ html.unfolding:not([data-unfold-started]) .stack::after {
 .unfold-face > .sheet::before { mix-blend-mode: normal; opacity: 0.85; }
 .unfold-face > .sheet::after { display: none; }
 /* Its own layer, so changing the light never re-draws the printed page under it. */
-.unfold-face__shade { position: absolute; inset: 0; z-index: 7; background: #0d0c09; opacity: 0; pointer-events: none; will-change: opacity; }
+.unfold-face__shade { position: absolute; inset: 0; z-index: 7; background: #0d0c09; opacity: 0; pointer-events: none; }
 /* Shadows a lifted half throws on the paper below: darkest at the fold, fading out. */
 .unfold-cast { position: absolute; pointer-events: none; opacity: 0; will-change: transform, opacity; }
 .unfold-cast--left { transform-origin: 0 50%; background: linear-gradient(90deg, rgba(10, 8, 5, 0.78) 0%, rgba(10, 8, 5, 0.5) 18%, rgba(10, 8, 5, 0.18) 55%, rgba(10, 8, 5, 0) 100%); }
