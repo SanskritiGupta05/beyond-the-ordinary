@@ -1195,10 +1195,12 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 
 /* Proofreader's notes: hovering or focusing a citation floats a small typed
    label above the number on a hairline, like a printer's margin mark.
-   components/CiteFit.tsx nudges it sideways (--dx) to stay on the paper. */
+   components/CiteFit.tsx keeps it within the column of text it belongs to
+   (--dx nudges it sideways, --note-max narrows it; long titles wrap to two lines). */
 .cite__note {
   position: absolute; z-index: 20; left: 50%; bottom: calc(100% + 1.55rem);
-  max-width: min(24rem, 80vw); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  width: max-content; max-width: var(--note-max, min(24rem, 80vw)); overflow: hidden; white-space: normal;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
   font-family: var(--font-mono); font-size: 0.68rem; font-weight: 400; line-height: 1.5; letter-spacing: 0; color: var(--ink);
   background: var(--paper); padding: 0.1rem 0.4rem; border-bottom: 1px solid var(--ink);
   opacity: 0; visibility: hidden; pointer-events: none;
