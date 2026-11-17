@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getSources, getStories } from "@/lib/content";
 import { site } from "@/lib/site";
 
-/** Newspaper nameplate and dateline at the top of every sheet; full size on the front page. */
-export function Masthead() {
+/** Newspaper nameplate and dateline at the top of every sheet; full size on the front page. `back` sets it for the back page shown while the paper unfolds. */
+export function Masthead({ back = false }: { back?: boolean } = {}) {
   const stories = getStories().length;
   const reviewed = new Date(site.datasetReviewed).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   return (
@@ -29,7 +29,7 @@ export function Masthead() {
         </div>
         <p className="masthead__dateline">
           <span>Reviewed {reviewed}</span>
-          <span>{site.subtitle}</span>
+          <span>{back ? <>Back page · <span lang="ja">裏面</span></> : site.subtitle}</span>
           <span>Free · corrections welcome</span>
         </p>
       </div>

@@ -335,31 +335,10 @@ html.unfolding:not([data-unfold-started]) .stack::after {
 
 /* The back page, printed on the outside of the folded paper (components/BackPage.tsx) */
 .backpage { overflow: hidden; }
-.backpage__half, .backpage__quarter {
-  position: absolute; top: 0; left: 50%; width: 50%; container-type: inline-size;
-  padding: clamp(14px, 6cqw, 56px) clamp(14px, 7cqw, 72px); display: flex; flex-direction: column; gap: clamp(8px, 2.6cqw, 22px);
-}
-.backpage__half { height: 100%; }
-.backpage__quarter { height: 50%; }
-.backpage__quarter .backpage__kicker--big { margin-top: auto; }
-.backpage__quarter .backpage__fact--big { margin-bottom: auto; }
-.backpage__mast { display: grid; gap: 0; }
-.backpage__mast-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(6px, 2.4cqw, 20px); padding-bottom: 0.5em; border-bottom: 3px double var(--ink); }
-.backpage__ear { justify-self: start; white-space: nowrap; font-family: var(--font-mono); font-size: clamp(0.36rem, 1.25cqw, 0.62rem); line-height: 1.45; text-transform: uppercase; letter-spacing: 0.02em; border: 1px solid var(--ink); padding: 0.35em 0.5em; }
-.backpage__ear--right { justify-self: end; text-align: right; }
-.backpage__nameplate { display: grid; justify-items: center; gap: 0.25em; text-align: center; }
-.backpage__en { font-family: var(--font-nameplate); font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; font-size: clamp(0.8rem, 4.4cqw, 2.2rem); }
-.backpage__ja { font-family: var(--font-yuji), var(--font-ja); font-size: clamp(0.5rem, 1.9cqw, 0.95rem); letter-spacing: 0.1em; filter: url(#dock-ink); -webkit-text-stroke: 0.5px currentColor; font-feature-settings: normal; }
-.backpage__dateline { display: flex; justify-content: space-between; gap: 0.6rem; font-family: var(--font-mono); font-size: clamp(0.36rem, 1.25cqw, 0.62rem); text-transform: uppercase; letter-spacing: 0.03em; padding: 0.4em 0; border-bottom: 1px solid var(--ink); white-space: nowrap; }
-/* Narrow panels (phones): nameplate alone, like the front page's masthead there. */
-@container (max-width: 420px) {
-  .backpage__mast-top { grid-template-columns: 1fr; }
-  .backpage__ear { display: none; }
-  .backpage__dateline span:nth-child(odd) { display: none; }
-  .backpage__dateline { justify-content: center; }
-  .backpage__index { columns: 1; font-size: clamp(0.6rem, 5.4cqw, 0.8rem); }
-  .backpage__index li:nth-child(n + 11) { display: none; }
-}
+/* Below the masthead, two columns meeting at the fold; only the right one is ever seen. */
+.backpage__body { display: grid; grid-template-columns: 1fr 1fr; column-gap: calc(var(--page-pad) * 2); padding-top: var(--space-6); height: calc(100% - 12rem); }
+.backpage__body--cover { height: calc(50% - 13rem); align-content: start; }
+.backpage__col { container-type: inline-size; display: flex; flex-direction: column; gap: clamp(8px, 2.6cqw, 22px); min-height: 0; overflow: hidden; }
 .backpage__hed { font-family: var(--font-display); font-weight: 900; line-height: 1; font-size: clamp(1rem, 6.4cqw, 3rem); letter-spacing: -0.03em; border-bottom: 1px solid var(--ink); padding-bottom: 0.4em; }
 .backpage__index { list-style: none; columns: 2; column-gap: clamp(10px, 4cqw, 36px); column-rule: 1px solid var(--rule); font-size: clamp(0.55rem, 2.1cqw, 0.92rem); line-height: 1.35; }
 .backpage__index li { display: flex; justify-content: space-between; gap: 0.5rem; break-inside: avoid; padding: 0.22em 0; border-bottom: 1px dotted var(--rule); }
@@ -370,6 +349,11 @@ html.unfolding:not([data-unfold-started]) .stack::after {
 .backpage__fact { font-style: italic; font-size: clamp(0.6rem, 2.4cqw, 1.05rem); line-height: 1.4; }
 .backpage__fact--big { font-size: clamp(0.75rem, 3.6cqw, 1.6rem); line-height: 1.35; border-top: 1px solid var(--ink); padding-top: 0.6em; }
 .backpage__colophon { margin-top: auto; font-family: var(--font-mono); font-size: clamp(0.5rem, 1.6cqw, 0.7rem); line-height: 1.5; color: var(--ink-3); border-top: 1px solid var(--ink); padding-top: 0.6em; }
+/* Narrow columns (phones): one column of stories, the first ten. */
+@container (max-width: 420px) {
+  .backpage__index { columns: 1; font-size: clamp(0.6rem, 5.4cqw, 0.8rem); }
+  .backpage__index li:nth-child(n + 11) { display: none; }
+}
 /* Only one fact shows on each face; the script picks which. */
 .backpage__fact:not([data-show]) { display: none; }
 
