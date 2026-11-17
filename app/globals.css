@@ -1250,10 +1250,6 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
   to { --ink-p: 115%; filter: none; }
 }
 
-/* Paper-sound toggle in the dock */
-.dock__sound { background: none; border-top: 0; border-right: 0; border-bottom: 0; color: var(--ink); cursor: pointer; }
-.dock__sound:hover { background: var(--paper); }
-.dock__sound[aria-pressed="true"] { color: var(--accent); }
 
 /* ---------- Clippings ---------- */
 .story-head > .clip-row { position: static; } /* so the cut line wraps the whole header */

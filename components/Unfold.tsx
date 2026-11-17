@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { playRustle } from "@/lib/paperSound";
 
 /** Session key: the paper unfolds once per visit, not on every reload or page turn. */
 export const UNFOLD_KEY = "bto-unfolded";
@@ -271,14 +270,12 @@ export function Unfold() {
     // ?unfold=slow plays it in slow motion, for looking at it closely.
     const speed = /[?&]unfold=slow([&]|$)/.test(location.search) ? 0.15 : 1;
     const running: Animation[] = [];
-    const timers: number[] = [];
     let done = false;
     const events = ["pointerdown", "keydown", "wheel", "touchstart"] as const;
 
     // Undo everything this run set up. The paper stays folded unless it has
     // finished opening, so React's development re-run can start it again cleanly.
     const teardown = () => {
-      timers.forEach(clearTimeout);
       events.forEach((e) => window.removeEventListener(e, end));
       running.forEach((a) => a.cancel());
       for (const el of [bottom.root, left.root, castL, castB, shadow, win.el]) el.remove();
@@ -335,7 +332,6 @@ export function Unfold() {
         }
         // Open fully when the timeline completes (a cancelled timeline rejects: ignore it).
         running[0]?.finished.then(end, () => {});
-        timers.push(window.setTimeout(playRustle, B_START / speed), window.setTimeout(playRustle, L_START / speed));
       });
     // Any click, key or scroll opens the paper at once.
     events.forEach((e) => window.addEventListener(e, end, { passive: true }));

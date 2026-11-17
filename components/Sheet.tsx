@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, ViewTransition } from "react";
-import { playRustle } from "@/lib/paperSound";
 import { SHEET_SCROLL_ID } from "@/lib/sheet";
 
 const SCROLL_KEYS = new Set(["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "]);
@@ -16,15 +15,11 @@ export function Sheet({ children, back }: { children: React.ReactNode; back?: Re
   const pathname = usePathname();
   const scroller = useRef<HTMLDivElement>(null);
   const front = pathname === "/";
-  const firstPage = useRef(true);
 
   // Each new page starts at the top of the sheet, unless it opens at an anchor.
   // A layout effect, so the page-turn snapshot shows the new page from the top.
   useLayoutEffect(() => {
     if (!window.location.hash) scroller.current?.scrollTo({ top: 0, behavior: "instant" });
-    // A page turned: rustle, if the reader switched the paper sound on.
-    if (firstPage.current) firstPage.current = false;
-    else playRustle();
   }, [pathname]);
 
   useEffect(() => {
