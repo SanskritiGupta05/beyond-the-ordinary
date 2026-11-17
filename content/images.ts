@@ -618,4 +618,38 @@ export const images: ImageAsset[] = [
     attribution: "Photo: Trogain, Wikimedia Commons, CC BY-SA 4.0",
     usageNotes: "Not every device in the case is a Bandai Tamagotchi; at least one is a different brand. Visitor sticky notes are visible at the right edge.",
   },
+
+  // tokuji-hayakawa
+  {
+    id: "portrait-tokuji-hayakawa",
+    src: "/images/portrait-tokuji-hayakawa.jpg",
+    width: 829,
+    height: 578,
+    alt: "Black-and-white photograph of a young man in shirtsleeves wearing headphones, seated at a desk of radio equipment while another young man stands beside him.",
+    caption: "Tokuji Hayakawa (right) testing a crystal radio, 1925.",
+    creator: "Unknown photographer (image published by Sharp Corporation)",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tokuji_Hayakawa_Testing_Crystal_Radio.jpg",
+    license: "Public domain",
+    attribution: "Photo: unknown photographer, via Wikimedia Commons (public domain in Japan)",
+    usageNotes:
+      "Tagged PD-Japan-oldphoto on Commons (photograph taken before 1947). The 1925 date and the identification of Hayakawa on the right come from the Commons description, which cites Sharp's founder history and its centenary history chapter 2 as the source. A working photo, not a formal portrait; crop to the right-hand figure. Confirm before commercial reuse.",
+    focus: "75% 45%",
+  },
+
+  // soichiro-honda
+  {
+    id: "portrait-soichiro-honda",
+    src: "/images/portrait-soichiro-honda.jpg",
+    width: 913,
+    height: 1200,
+    alt: "Black-and-white photograph of Soichiro Honda in glasses and a checked shirt, laughing, his forearms resting on a table.",
+    caption: "Soichiro Honda, photographed in 1954.",
+    creator: "The Asahi Shimbun Company",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Asahigraph-1955-Shinshun-1.jpg",
+    license: "Public domain",
+    attribution: "Photo: The Asahi Shimbun Company (Asahigraph, New Year 1955 issue), via Wikimedia Commons (public domain in Japan)",
+    usageNotes:
+      "Tagged PD-Japan-oldphoto and PD-Japan-organization on Commons: a photograph published before 1957, from the Asahigraph New Year 1955 issue. Downscaled from the Commons 1280 px rendition. Confirm before commercial reuse.",
+    focus: "50% 35%",
+  },
 ];
