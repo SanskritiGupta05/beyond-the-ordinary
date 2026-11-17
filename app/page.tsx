@@ -32,6 +32,10 @@ function Brief({ story }: { story: Story }) {
 export default function HomePage() {
   const stories = getStories();
   const people = getPeople();
+  // One row on the homepage, in order of their key work (1915 to 1999); the People page lists everyone.
+  const featuredPeople = ["tokuji-hayakawa", "sori-yanagi", "soichiro-honda", "seiichi-miyake", "naoto-fukasawa"]
+    .map((id) => getPerson(id))
+    .filter((p): p is NonNullable<typeof p> => !!p);
   const principles = getPrinciples();
   const lead = getStory("tactile-paving")!;
   const second = getStory("exit-sign")!;
@@ -180,10 +184,11 @@ export default function HomePage() {
             </div>
           </header>
           <div className="people-row">
-            {people.map((p) => (
+            {featuredPeople.map((p) => (
               <PersonCard key={p.id} person={p} />
             ))}
           </div>
+          <p className="journeys__more"><Link href="/people" className="link-arrow">Meet all {people.length} people →</Link></p>
         </div>
       </section>
 
