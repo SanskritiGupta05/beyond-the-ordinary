@@ -36,7 +36,10 @@ export default function HomePage() {
   const lead = getStory("tactile-paving")!;
   const second = getStory("exit-sign")!;
   const briefs = ["qr-code", "cup-noodles", "walkman"].map((id) => getStory(id)!);
-  const global = stories.filter((s) => s.globalReach);
+  const globalCount = stories.filter((s) => s.globalReach).length;
+  // A short teaser; the Influence page shows every journey. Chosen to cover
+  // different kinds of design and not repeat the stories featured above.
+  const global = ["shinkansen", "super-cub", "emoji"].map((id) => getStory(id)!).filter((s) => s.globalReach);
   const hrefs = stories.map(storyHref);
   const discoveries = getDiscoveries().map((d) => {
     const s = getStory(d.story)!;
@@ -201,6 +204,7 @@ export default function HomePage() {
               <Journey key={s.id} story={s} />
             ))}
           </div>
+          <p className="journeys__more"><Link href="/influence" className="link-arrow">See all {globalCount} journeys →</Link></p>
           <JourneyLegend />
         </div>
       </section>
