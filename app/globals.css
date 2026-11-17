@@ -367,6 +367,11 @@ html.unfolding:not([data-unfold-started]) .stack::after {
 .masthead__en { font-family: var(--font-nameplate); font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; font-size: clamp(1.9rem, 1rem + 3.6vw, 3.9rem); }
 .masthead__ja { font-family: var(--font-yuji), var(--font-ja); font-size: clamp(1rem, 0.8rem + 0.8vw, 1.4rem); letter-spacing: 0.1em; filter: url(#dock-ink); -webkit-text-stroke: 0.5px currentColor; font-feature-settings: normal; }
 .masthead__dateline { display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.03em; padding: 0.4rem 0; border-bottom: 1px solid var(--ink); }
+.masthead__right { display: inline-flex; align-items: center; gap: 0.9rem; }
+.readers { display: inline-flex; align-items: center; gap: 0.4rem; font-variant-numeric: tabular-nums; animation: readers-in 0.4s var(--ease) both; }
+.readers svg { flex: none; }
+.readers::after { content: "·"; margin-left: 0.5rem; }
+@keyframes readers-in { from { opacity: 0; } }
 /* Inside pages: a slimmer masthead */
 .desk:not([data-front="true"]) .masthead { padding-top: var(--space-5); }
 .desk:not([data-front="true"]) .masthead__en { font-size: clamp(1.4rem, 1rem + 1.4vw, 2.1rem); }
@@ -376,7 +381,8 @@ html.unfolding:not([data-unfold-started]) .stack::after {
 @media (max-width: 900px) {
   .masthead__top { grid-template-columns: 1fr; }
   .masthead__ear { display: none; }
-  .masthead__dateline span:nth-child(2) { display: none; }
+  .masthead__dateline > span:nth-child(2) { display: none; }
+  .masthead__right > span:last-child, .readers::after { display: none; }
 }
 @media (max-width: 960px) {
   :root { --tilt: 0.3deg; --dock-clear: 100px; }
