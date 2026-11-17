@@ -91,7 +91,7 @@ export function ClippingSheet({ open, image, title, shareText = "", path, origin
     const f = file();
     if (!f) return;
     try {
-      await navigator.share({ files: [f], title, text: `${title} — Beyond the Ordinary` });
+      await navigator.share({ files: [f], title, text: `${title} | Beyond the Ordinary` });
     } catch {
       /* the reader cancelled */
     }
@@ -107,7 +107,7 @@ export function ClippingSheet({ open, image, title, shareText = "", path, origin
   };
   const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(`“${shareText}” — ${title}, Beyond the Ordinary ${link()}`);
+      await navigator.clipboard.writeText(`“${shareText}”, from ${title}, Beyond the Ordinary ${link()}`);
       setStatus("Quote and link copied.");
     } catch {
       setStatus("Couldn't copy here.");
@@ -118,12 +118,12 @@ export function ClippingSheet({ open, image, title, shareText = "", path, origin
   const blurb = shareText.length > 200 ? `${shareText.slice(0, 200).replace(/\s+\S*$/, "")}…` : shareText;
   const links = () => {
     const url = link();
-    const text = `“${blurb}” — ${title}`;
+    const text = `“${blurb}”, from ${title}`;
     return [
       { label: "X", href: `https://twitter.com/intent/tweet?text=${enc(text)}&url=${enc(url)}` },
       { label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}` },
       { label: "WhatsApp", href: `https://wa.me/?text=${enc(`${text} ${url}`)}` },
-      { label: "Email", href: `mailto:?subject=${enc(`${title} — Beyond the Ordinary`)}&body=${enc(`${text}\n\n${url}`)}` },
+      { label: "Email", href: `mailto:?subject=${enc(`${title} | Beyond the Ordinary`)}&body=${enc(`${text}\n\n${url}`)}` },
     ];
   };
 

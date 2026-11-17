@@ -26,7 +26,7 @@ export function Cites({ ids, map }: { ids?: string[]; map: CiteMap }) {
             <span className="cite__note" aria-hidden="true">
               <i>{n}</i>
               {src.title}
-              {src.publisher ? ` — ${src.publisher}` : ""}
+              {src.publisher ? `, ${src.publisher}` : ""}
             </span>
           </span>
         );
@@ -135,7 +135,7 @@ export function Timeline({ events, map }: { events: TimelineEvent[]; map: CiteMa
           <span className="timeline__phase">{phaseText[e.phase]}</span>
           <span className="timeline__label">
             {e.label}
-            {e.place ? <span className="muted"> — {e.place}</span> : null}
+            {e.place ? <span className="muted">, {e.place}</span> : null}
             <Cites ids={e.cite} map={map} />
           </span>
         </li>
@@ -225,7 +225,7 @@ export function ImageCredits({ ids }: { ids: string[] }) {
             {img.attribution} ·{" "}
             {img.licenseUrl ? <a href={img.licenseUrl} rel="noopener license">{img.license}</a> : img.license} ·{" "}
             <a href={img.sourceUrl} rel="noopener">Original</a>
-            {img.usageNotes ? <span className="muted"> — {img.usageNotes}</span> : null}
+            {img.usageNotes ? <span className="muted">. {img.usageNotes}</span> : null}
           </li>
         );
       })}

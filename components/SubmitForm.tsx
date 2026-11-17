@@ -15,7 +15,7 @@ type TypeValue = (typeof TYPES)[number]["value"];
 
 /**
  * Suggestion form with no backend. Submitting composes a message the visitor
- * sends themselves — by email (when a contact address is configured) or as a
+ * sends themselves: by email (when a contact address is configured) or as a
  * GitHub issue. Nothing is stored or sent by this site.
  */
 export function SubmitForm({ contactEmail, repo, siteName }: { contactEmail: string; repo: string; siteName: string }) {
@@ -106,7 +106,7 @@ export function SubmitForm({ contactEmail, repo, siteName }: { contactEmail: str
         <label className="field-label" htmlFor="f-subject">
           Subject <span className="req">required</span>
         </label>
-        <p className="field-hint" id="h-subject">e.g. &ldquo;Shinkansen 0 Series&rdquo;, &ldquo;Kazumasa Nagai&rdquo; or &ldquo;Tactile paving — date of first installation&rdquo;</p>
+        <p className="field-hint" id="h-subject">e.g. &ldquo;Shinkansen 0 Series&rdquo;, &ldquo;Kazumasa Nagai&rdquo; or &ldquo;Tactile paving: date of first installation&rdquo;</p>
         <input id="f-subject" aria-describedby="h-subject" value={subject} onChange={(e) => setSubject(e.target.value)} maxLength={140} required />
       </div>
 
@@ -120,7 +120,7 @@ export function SubmitForm({ contactEmail, repo, siteName }: { contactEmail: str
 
       <div className="field">
         <label className="field-label" htmlFor="f-sources">Sources or links</label>
-        <p className="field-hint" id="h-sources">Museum records, books, interviews, archives — Japanese-language sources are especially welcome. One per line.</p>
+        <p className="field-hint" id="h-sources">Museum records, books, interviews, archives. Japanese-language sources are especially welcome. One per line.</p>
         <textarea id="f-sources" aria-describedby="h-sources" rows={3} value={sources} onChange={(e) => setSources(e.target.value)} maxLength={2000} />
       </div>
 
@@ -154,7 +154,7 @@ export function SubmitForm({ contactEmail, repo, siteName }: { contactEmail: str
         <p className="sent-note" role="status">
           {sent === "email"
             ? "Your mail app should have opened with the message ready. If it didn't, use the GitHub option or copy your text."
-            : "A new tab should have opened on GitHub with your suggestion filled in — press “Submit new issue” there to post it."}{" "}
+            : "A new tab should have opened on GitHub with your suggestion filled in. Press “Submit new issue” there to post it."}{" "}
           Thank you.
         </p>
       ) : null}

@@ -6,7 +6,7 @@ import { getPeople } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "People Behind the Design",
-  description: "Inventors, engineers and designers whose work has shaped everyday life — profiled with sources.",
+  description: "Inventors, engineers and designers whose work has shaped everyday life, profiled with sources.",
 };
 
 export default function PeoplePage() {

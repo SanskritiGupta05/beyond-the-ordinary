@@ -65,9 +65,9 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
   const explore = journeySteps.find((s) => s.step === "explore-further")!;
   const railItems = [
     ...sections.map(({ meta }) => ({ id: meta.step, num: meta.num, label: meta.label })),
-    { id: "timeline", num: "—", label: "Timeline" },
+    { id: "timeline", num: "·", label: "Timeline" },
     { id: explore.step, num: explore.num, label: explore.label },
-    { id: "sources", num: "—", label: "Sources & credits" },
+    { id: "sources", num: "·", label: "Sources & credits" },
   ];
   const people = story.people.map((id) => getPerson(id)!);
   const related = story.related.map((id) => getStory(id)!);
@@ -222,7 +222,7 @@ export default async function StoryPage(props: PageProps<"/stories/[slug]">) {
                     <h3 style={{ marginTop: "1.5rem" }}>Also credited</h3>
                     <ul className="small">
                       {story.collaborators.map((c) => (
-                        <li key={c.name}><strong style={{ fontWeight: 500 }}>{c.name}</strong> — <span className="muted">{c.role}</span></li>
+                        <li key={c.name}><strong style={{ fontWeight: 500 }}>{c.name}</strong>, <span className="muted">{c.role}</span></li>
                       ))}
                     </ul>
                   </>

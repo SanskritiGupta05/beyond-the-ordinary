@@ -1,6 +1,6 @@
 # Beyond the Ordinary
 
-**Japanese Design, Ideas & Global Influence** — an independent editorial archive about Japanese design, the people behind it, and ideas that travelled far beyond where they began.
+**Japanese Design, Ideas & Global Influence**: an independent editorial archive about Japanese design, the people behind it, and ideas that travelled far beyond where they began.
 
 The archive is deliberately small: ten researched stories, eight profiles and five design principles. Every factual claim is tied to a recorded source.
 
@@ -52,7 +52,7 @@ app/
   opengraph-image.tsx       Default social preview
   sitemap.ts, robots.ts, not-found.tsx, error.tsx
 components/                 Editorial components (cards, figures, diagrams, timeline, sources…)
-content/                    The dataset — see CONTENT_GUIDE.md
+content/                    The dataset; see CONTENT_GUIDE.md
 lib/types.ts                Content model
 lib/content.ts              Content access layer and search index
 scripts/validate-content.mts  Referential-integrity checks, run before every build
@@ -73,7 +73,7 @@ Defined in [`lib/types.ts`](lib/types.ts):
 ### Interactions
 
 - The site is a newspaper on a desk (`components/Sheet.tsx`): a stack of sheets with a tilted front sheet, and every page scrolls *inside* that sheet. The homepage is the front page (laid straight, centre fold, two-page spread); inside pages tilt 0.5°. Scroll-aware code reads position through `lib/sheet.ts`, not the window. A masthead (`components/Masthead.tsx`) tops every sheet. Navigating between pages plays a view transition: the old sheet slides off the pile, revealing the new page (`<ViewTransition name="sheet">` in `Sheet.tsx`, CSS in `globals.css`). Archive filtering passes the `in-place` transition type so it does not slide.
-- Reader features: **Clippings** — "Clip this story" draws a dashed cut line with scissors around the story header; the clipping then comes out of the page as a card (`components/ClippingSheet.tsx`) with Copy image, Download, links to X, LinkedIn, WhatsApp and email, and the native share sheet where the browser supports image sharing. Closing it drops the card into the Clippings drawer in the dock (`lib/clippings.ts`, localStorage, no accounts). Selecting a passage offers "Clip & share", which does the same for a quote. Images are drawn on a canvas in the browser (`lib/clippingImage.ts`); nothing is uploaded. **Today in Japanese design** — the front page shows any timeline event dated today, or the next anniversary (`components/TodayInDesign.tsx`).
+- Reader features: **Clippings**: "Clip this story" draws a dashed cut line with scissors around the story header; the clipping then comes out of the page as a card (`components/ClippingSheet.tsx`) with Copy image, Download, links to X, LinkedIn, WhatsApp and email, and the native share sheet where the browser supports image sharing. Closing it drops the card into the Clippings drawer in the dock (`lib/clippings.ts`, localStorage, no accounts). Selecting a passage offers "Clip & share", which does the same for a quote. Images are drawn on a canvas in the browser (`lib/clippingImage.ts`); nothing is uploaded. **Today in Japanese design**: the front page shows any timeline event dated today, or the next anniversary (`components/TodayInDesign.tsx`).
 - Micro-interactions: headline links fill with vermilion from left to right on hover ("ink bleed"); citation numbers float a small typed "proofreader's note" with the source above the number on a hairline (`components/CiteFit.tsx` keeps it on the paper); vertical Japanese story names are inked in top to bottom as they scroll into view (`components/InkWriter.tsx`); and an optional paper-rustle sound on page turns, off by default, toggled from the dock and synthesised with the Web Audio API (`lib/paperSound.ts`). All motion is skipped for reduced-motion users.
 - A floating bottom navigation dock (`components/Dock.tsx`). The wordmark shows 日常の向こう側 in brushed ink (Yuji Syuku plus an SVG ink filter) and dissolves into "Beyond the Ordinary" on hover or keyboard focus. The dock hides while scrolling down and returns on scroll up or focus. On narrow screens the links open as a sheet above the bar.
 - Archive search with type and category filters, diacritic-insensitive matching, Japanese-script matching, and filter state kept in the URL.

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Beyond the Ordinary — design foundation
+   Beyond the Ordinary: design foundation
    A newspaper on a desk: newsprint, ink, condensed headlines, serif text,
    a typewriter layer for labels, vertical mincho for Japanese, thin rules.
    Tokens → base → layout → components. Plain CSS, no framework.
@@ -694,7 +694,7 @@ a:hover .mono img, a:focus-visible .mono img { filter: grayscale(0) contrast(1);
 
 .limits { list-style: none; display: grid; gap: var(--space-3); max-width: var(--measure); }
 .limits li { padding-left: var(--space-5); position: relative; }
-.limits li::before { content: "—"; position: absolute; left: 0; }
+.limits li::before { content: "·"; position: absolute; left: 0; }
 
 .correction-cta { display: flex; flex-wrap: wrap; gap: var(--space-5); justify-content: space-between; align-items: center; padding: var(--space-6); margin: 10px; background: var(--white); }
 

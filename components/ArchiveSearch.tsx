@@ -141,7 +141,7 @@ export function ArchiveSearch({ entries }: { entries: SearchEntry[] }) {
             <li key={e.type + e.id} className="result">
               <Link href={e.href}>
                 <span className="result__img">
-                  {e.image ? <Image src={e.image} alt="" width={160} height={160} /> : <span className="meta" aria-hidden="true">{e.type === "Principle" ? "◇" : "—"}</span>}
+                  {e.image ? <Image src={e.image} alt="" width={160} height={160} /> : <span className="meta" aria-hidden="true">{e.type === "Principle" ? "◇" : "·"}</span>}
                 </span>
                 <span className="result__type">{e.type} · {e.category}</span>
                 <span>

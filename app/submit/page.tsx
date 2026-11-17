@@ -27,14 +27,14 @@ export default function SubmitPage() {
           <div className="prose">
             <h2>What helps most</h2>
             <ul>
-              <li>A specific object, system, person or decision — not just a theme.</li>
+              <li>A specific object, system, person or decision, not just a theme.</li>
               <li>Where you learned about it, ideally with a link or reference.</li>
               <li>For corrections, the page and the exact sentence.</li>
             </ul>
             <h3>What happens next</h3>
             <p>
               Suggestions go into a research queue. A story is published only once its key claims are supported by identifiable
-              sources — see <Link href="/sources">how the research works</Link>. We may not be able to cover everything, and we
+              sources; see <Link href="/sources">how the research works</Link>. We may not be able to cover everything, and we
               never publish your name without asking.
             </p>
           </div>

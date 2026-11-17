@@ -24,9 +24,9 @@ export default function AboutPage() {
           <div className="prose">
             <p>
               {site.name} is an independent editorial archive about Japanese design, the people behind it, and ideas that have
-              travelled far beyond where they began. It is built around three things: <strong>discovery</strong> — finding the
-              stories behind familiar objects; <strong>understanding</strong> — the problems, decisions and context behind them;
-              and <strong>influence</strong> — how ideas developed in Japan were adopted or adapted elsewhere.
+              travelled far beyond where they began. It is built around three things: <strong>discovery</strong>, finding the
+              stories behind familiar objects; <strong>understanding</strong>, the problems, decisions and context behind them;
+              and <strong>influence</strong>, how ideas developed in Japan were adopted or adapted elsewhere.
             </p>
             <p>
               Not every entry is about global impact. Some simply document work that is worth understanding. Not everyone featured
@@ -66,7 +66,7 @@ export default function AboutPage() {
           <div className="prose">
             <p>Especially welcome:</p>
             <ul>
-              <li>Corrections to names, dates, roles or attributions — with a source if you have one.</li>
+              <li>Corrections to names, dates, roles or attributions, with a source if you have one.</li>
               <li>Primary sources, archives or Japanese-language material we should read.</li>
               <li>People and stories that belong here, especially from disciplines and regions we haven&rsquo;t covered.</li>
               <li>Licensed images, or rights holders willing to share them.</li>

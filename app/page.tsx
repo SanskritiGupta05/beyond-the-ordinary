@@ -140,7 +140,7 @@ export default function HomePage() {
       <section className="section" aria-labelledby="index-title">
         <div className="wrap">
           <header className="section-head">
-            <p className="section-head__num">01 — Index</p>
+            <p className="section-head__num">01 · Index</p>
             <p className="tate section-head__ja" lang="ja">{sectionJa.index}</p>
             <h2 id="index-title" className="display h2 section-head__title">Inside this edition</h2>
             <div className="section-head__aside">
@@ -168,11 +168,11 @@ export default function HomePage() {
       <section className="section section--tint" aria-labelledby="people-title">
         <div className="wrap">
           <header className="section-head">
-            <p className="section-head__num">02 — People</p>
+            <p className="section-head__num">02 · People</p>
             <p className="tate section-head__ja" lang="ja">{sectionJa.people}</p>
             <h2 id="people-title" className="display h2 section-head__title">People behind the ideas</h2>
             <div className="section-head__aside">
-              <p>Inventors, engineers and designers. Not everyone here would call themselves a designer — design is simply the lens we use to look at their work.</p>
+              <p>Inventors, engineers and designers. Not everyone here would call themselves a designer; design is simply the lens we use to look at their work.</p>
               <Link href="/people" className="link-arrow">Meet everyone →</Link>
             </div>
           </header>
@@ -188,11 +188,11 @@ export default function HomePage() {
       <section className="section section--ink" aria-labelledby="world-title">
         <div className="wrap">
           <header className="section-head">
-            <p className="section-head__num">03 — Influence</p>
+            <p className="section-head__num">03 · Influence</p>
             <p className="tate section-head__ja" lang="ja">{sectionJa.world}</p>
             <h2 id="world-title" className="display h2 section-head__title">From Japan to the world</h2>
             <div className="section-head__aside">
-              <p>How ideas that began in Japan were adopted and adapted elsewhere — traced through documented events, not assumptions.</p>
+              <p>How ideas that began in Japan were adopted and adapted elsewhere, traced through documented events, not assumptions.</p>
               <Link href="/influence" className="link-arrow">See every documented connection →</Link>
             </div>
           </header>
@@ -209,11 +209,11 @@ export default function HomePage() {
       <section className="section" aria-labelledby="thinking-title">
         <div className="wrap">
           <header className="section-head">
-            <p className="section-head__num">04 — Design thinking</p>
+            <p className="section-head__num">04 · Design thinking</p>
             <p className="tate section-head__ja" lang="ja">{sectionJa.thinking}</p>
             <h2 id="thinking-title" className="display h2 section-head__title">The thinking behind the work</h2>
             <div className="section-head__aside">
-              <p>Principles drawn from real decisions in real objects — each one traced back to the stories where it appears.</p>
+              <p>Principles drawn from real decisions in real objects, each one traced back to the stories where it appears.</p>
             </div>
           </header>
           <ol className="principle-list">

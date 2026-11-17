@@ -70,7 +70,7 @@ export default async function PersonPage(props: PageProps<"/people/[slug]">) {
               <ul style={{ listStyle: "none", display: "grid", gap: "0.4rem" }}>
                 {p.organisations.map((o) => (
                   <li key={o.name + o.role}>
-                    {o.name} <span className="muted">— {o.role}{o.date ? `, ${o.date}` : ""}</span>
+                    {o.name} <span className="muted">, {o.role}{o.date ? `, ${o.date}` : ""}</span>
                     <Cites ids={o.cite} map={cites} />
                   </li>
                 ))}
@@ -114,7 +114,7 @@ export default async function PersonPage(props: PageProps<"/people/[slug]">) {
                   <span className="meta">{w.date}</span>
                   <span>
                     <strong style={{ fontWeight: 500 }}>{w.title}</strong>
-                    {w.note ? <span className="muted"> — {w.note}</span> : null}
+                    {w.note ? <span className="muted">: {w.note}</span> : null}
                     <Cites ids={w.cite} map={cites} />
                   </span>
                 </li>

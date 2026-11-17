@@ -12,7 +12,7 @@ export const people: Person[] = [
     disciplines: ["Invention", "Accessibility"],
     role: "Inventor of tactile paving",
     intro:
-      "An inventor from Okayama who designed the first tactile paving blocks in 1965 — an innovation now built into streets and stations in many countries.",
+      "An inventor from Okayama who designed the first tactile paving blocks in 1965, an innovation now built into streets and stations in many countries.",
     biography: [
       { text: "Seiichi Miyake was born in Kurashiki, in Okayama Prefecture, in 1926.", cite: ["wikipedia-miyake"] },
       {
@@ -46,7 +46,7 @@ export const people: Person[] = [
     disciplines: ["Engineering", "Information design"],
     role: "Engineer who led development of the QR Code",
     intro:
-      "A DENSO WAVE engineer who led the two-person team behind the QR Code in 1994 — a factory tool that became everyday infrastructure.",
+      "A DENSO WAVE engineer who led the two-person team behind the QR Code in 1994: a factory tool that became everyday infrastructure.",
     biography: [
       { text: "Masahiro Hara was born in 1957.", cite: ["jahfa-hara"] },
       {
@@ -66,7 +66,7 @@ export const people: Person[] = [
       { title: "QR Code", date: "1994", note: "Developed at DENSO WAVE; standardised by AIM (1997), JIS (1999) and ISO (2000).", cite: ["denso-qr-history"] },
     ],
     philosophy: {
-      text: "Hara describes the QR Code as having \"originated from requests from our manufacturing sites\" — a design shaped by the people who would use it daily.",
+      text: "Hara describes the QR Code as having \"originated from requests from our manufacturing sites\", a design shaped by the people who would use it daily.",
       cite: ["denso-qr-story"],
     },
     organisations: [{ name: "DENSO WAVE", role: "Engineer; development lead for QR Code", cite: ["denso-qr-history"] }],
@@ -172,7 +172,7 @@ export const people: Person[] = [
     disciplines: ["Product design", "Interaction design"],
     role: "Product designer",
     intro:
-      "A product designer whose work starts from the things people already do — most famously a CD player that switches on like a kitchen fan.",
+      "A product designer whose work starts from the things people already do, most famously a CD player that switches on like a kitchen fan.",
     biography: [
       { text: "Naoto Fukasawa was born in 1956 in Yamanashi Prefecture and graduated in product design from Tama Art University in 1980.", cite: ["wikipedia-fukasawa"] },
       {
@@ -184,7 +184,7 @@ export const people: Person[] = [
         text: "In 2003 he founded Naoto Fukasawa Design and the household brand ±0, and designed the first INFOBAR phone for au. He co-curated Super Normal with Jasper Morrison in 2006.",
         cite: ["wikipedia-fukasawa", "mynavi-infobar"],
       },
-      { text: "In July 2012 he became director of the Japan Folk Crafts Museum — a post Sori Yanagi had held from 1977.", cite: ["pen-fukasawa-mingei"] },
+      { text: "In July 2012 he became director of the Japan Folk Crafts Museum, a post Sori Yanagi had held from 1977.", cite: ["pen-fukasawa-mingei"] },
     ],
     keyWorks: [
       { title: "Wall-mounted CD player (MUJI)", date: "1999", cite: ["vam-cd-player", "moma-cd-player"] },
@@ -258,7 +258,7 @@ export const people: Person[] = [
     disciplines: ["Interaction design", "Digital product"],
     role: "Designer of DOCOMO's original emoji set",
     intro:
-      "A member of NTT DOCOMO's i-mode team who drew a set of 176 tiny pictograms in 1998–99 — one of the sets that led to the emoji used worldwide.",
+      "A member of NTT DOCOMO's i-mode team who drew a set of 176 tiny pictograms in 1998–99, one of the sets that led to the emoji used worldwide.",
     biography: [
       { text: "Shigetaka Kurita was born in 1972 in Gifu Prefecture.", cite: ["wikipedia-kurita"] },
       {
@@ -288,7 +288,7 @@ export const people: Person[] = [
     disciplines: ["Food innovation", "Entrepreneurship", "Packaging"],
     role: "Inventor of instant ramen and Cup Noodles",
     intro:
-      "An entrepreneur who, after losing almost everything at 47, developed instant ramen in a backyard shed — and later turned its package into the bowl.",
+      "An entrepreneur who, after losing almost everything at 47, developed instant ramen in a backyard shed, and later turned its package into the bowl.",
     biography: [
       { text: "Momofuku Ando was born in 1910.", cite: ["nissin-founder"] },
       {
@@ -309,7 +309,7 @@ export const people: Person[] = [
     },
     organisations: [{ name: "Nissin Foods", role: "Founder", cite: ["nissin-founder"] }],
     context:
-      "Ando was not trained as a designer. His work is included here because the product's form — the dried block, the cup, the way the two fit — is a sequence of design decisions.",
+      "Ando was not trained as a designer. His work is included here because the product's form (the dried block, the cup, the way the two fit) is a sequence of design decisions.",
     stories: ["cup-noodles"],
     related: ["seiichi-miyake"],
     sources: ["nissin-founder"],

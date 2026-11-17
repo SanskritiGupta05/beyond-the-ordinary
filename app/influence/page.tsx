@@ -8,7 +8,7 @@ import { getRelationships, getStories, storyHref } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "From Japan to the World",
-  description: "How selected ideas developed in Japan were adopted, adapted and standardised elsewhere — mapped as sourced relationships, not scores.",
+  description: "How selected ideas developed in Japan were adopted, adapted and standardised elsewhere, mapped as sourced relationships, not scores.",
 };
 
 const kinds = [
@@ -31,8 +31,8 @@ export default function InfluencePage() {
         <Breadcrumbs items={[{ label: "From Japan to the World" }]} />
         <h1 className="display page-head__title">From Japan to the world</h1>
         <p className="lede page-head__lede">
-          Some ideas leave home. This section traces how a few of them travelled — who adopted them, who adapted them, and who
-          wrote them into standards — using documented events rather than assumed influence.
+          Some ideas leave home. This section traces how a few of them travelled: who adopted them, who adapted them, and who
+          wrote them into standards. It uses documented events rather than assumed influence.
         </p>
       </header>
 
@@ -68,9 +68,9 @@ export default function InfluencePage() {
               ))}
             </dl>
             <p style={{ marginTop: "1.5rem" }}>
-              Evidence labels: <span className="evidence" data-e="documented">Documented</span> — a source states it;{" "}
-              <span className="evidence" data-e="reported">Reported</span> — widely repeated, primary confirmation pending;{" "}
-              <span className="evidence" data-e="editorial-inference">Our inference</span> — our reading of the context.
+              Evidence labels: <span className="evidence" data-e="documented">Documented</span>: a source states it;{" "}
+              <span className="evidence" data-e="reported">Reported</span>: widely repeated, primary confirmation pending;{" "}
+              <span className="evidence" data-e="editorial-inference">Our inference</span>: our reading of the context.
             </p>
           </div>
         </div>

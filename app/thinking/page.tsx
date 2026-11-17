@@ -18,7 +18,7 @@ export default function ThinkingPage() {
         <Breadcrumbs items={[{ label: "Thinking" }]} />
         <h1 className="display page-head__title">The thinking behind the work</h1>
         <p className="lede page-head__lede">
-          Principles you can see in real decisions — a texture, a ratio, a pull cord. Each is grounded in the stories where it
+          Principles you can see in real decisions: a texture, a ratio, a pull cord. Each is grounded in the stories where it
           appears, and each comes with its limits.
         </p>
       </header>
@@ -51,7 +51,7 @@ export default function ThinkingPage() {
           <div className="prose">
             <p>
               These are distinct ideas with their own histories in Japanese aesthetics, religion and everyday language. They are
-              often flattened into a single word — &ldquo;minimalism&rdquo; — and attributed to every Japanese designer at once.
+              often flattened into a single word, &ldquo;minimalism&rdquo;, and attributed to every Japanese designer at once.
             </p>
             <p>
               We have not written about them yet because we would rather do it properly: with sources on their origins, on how

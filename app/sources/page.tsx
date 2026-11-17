@@ -24,7 +24,7 @@ export default function SourcesPage() {
         <Breadcrumbs items={[{ label: "Sources & research" }]} />
         <h1 className="display page-head__title">Sources &amp; research approach</h1>
         <p className="lede page-head__lede">
-          The archive aims to be trustworthy enough to share with designers and researchers. That means showing our working —
+          The archive aims to be trustworthy enough to share with designers and researchers. That means showing our working:
           including where we are unsure.
         </p>
       </header>

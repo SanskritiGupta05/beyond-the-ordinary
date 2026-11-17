@@ -14,7 +14,7 @@ export const stories: Story[] = [
     alternativeNames: ["Tenji blocks (点字ブロック)", "Braille blocks", "Tactile walking surface indicators", "Detectable warnings"],
     dek: "A grid of raised dots and bars, first laid on one street in Okayama in 1967, became a language that millions of feet and canes now read every day.",
     summary:
-      "Seiichi Miyake designed tactile blocks in 1965 so that people with visual impairments could feel where a safe path ran and where a hazard began. From one crossing in Okayama the idea spread across Japan's railways and, decades later, into national standards on several continents — each adapting it in its own way.",
+      "Seiichi Miyake designed tactile blocks in 1965 so that people with visual impairments could feel where a safe path ran and where a hazard began. From one crossing in Okayama the idea spread across Japan's railways and, decades later, into national standards on several continents, each adapting it in its own way.",
     category: "Accessibility",
     tags: ["accessibility", "public space", "wayfinding", "standards", "urban design"],
     originDate: "1965",
@@ -56,12 +56,12 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Seiichi Miyake, an Okayama inventor, designed a paving block with a raised surface pattern in 1965 and paid for the first blocks himself. The original blocks were cast in cement. In Japan they became known as tenji burokku — braille blocks — after the Japanese word for braille.",
+            text: "Seiichi Miyake, an Okayama inventor, designed a paving block with a raised surface pattern in 1965 and paid for the first blocks himself. The original blocks were cast in cement. In Japan they became known as tenji burokku (braille blocks), after the Japanese word for braille.",
             cite: ["vam-tactile-slab", "wikipedia-miyake"],
           },
           {
             kind: "p",
-            text: "The distinctive move was to give the ground itself a vocabulary. Rather than a single warning texture, the system distinguishes two messages: raised bars that say \"follow this way\" and raised dots that say \"stop — something changes here\".",
+            text: "The distinctive move was to give the ground itself a vocabulary. Rather than a single warning texture, the system distinguishes two messages: raised bars that say \"follow this way\" and raised dots that say \"stop, something changes here\".",
             cite: ["vam-tactile-slab"],
           },
           { kind: "diagram", diagram: "tactile-blocks", caption: "The two basic messages. Guiding blocks (left) carry parallel bars aligned with the direction of travel. Warning blocks (right) carry a grid of dots. Editorial diagram, not to scale." },
@@ -90,7 +90,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "The system rests on two distinct textures — raised lines that mark a path to follow and raised domes that signal a place to stop — and on colour: the blocks were made yellow so that they would also help people with partial sight.",
+            text: "The system rests on two distinct textures (raised lines that mark a path to follow and raised domes that signal a place to stop) and on colour: the blocks were made yellow so that they would also help people with partial sight.",
             cite: ["vam-tactile-slab"],
           },
           {
@@ -131,7 +131,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Tactile paving reached the United Kingdom in 1990 and the United States in the early 1990s, where the Americans with Disabilities Act created requirements for detectable warning surfaces. Today the international standard ISO 23599 describes the same two families Miyake started with — attention patterns and guiding patterns — while acknowledging that countries use their own designs.",
+            text: "Tactile paving reached the United Kingdom in 1990 and the United States in the early 1990s, where the Americans with Disabilities Act created requirements for detectable warning surfaces. Today the international standard ISO 23599 describes the same two families Miyake started with, attention patterns and guiding patterns, while acknowledging that countries use their own designs.",
             cite: ["vam-tactile-slab", "wikipedia-tactile-paving", "iso-23599"],
           },
           {
@@ -170,7 +170,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "interpretation",
-            text: "A small vocabulary goes a long way. Two textures — go, and stop — are easy to learn and hard to confuse. Much of the system's portability comes from that restraint.",
+            text: "A small vocabulary goes a long way. Two textures, go and stop, are easy to learn and hard to confuse. Much of the system's portability comes from that restraint.",
           },
           {
             kind: "interpretation",
@@ -185,7 +185,7 @@ export const stories: Story[] = [
     ],
     limitations: [
       { text: "Some wheelchair users and older pedestrians report that raised blocks can be uncomfortable or a trip risk.", cite: ["wikipedia-tactile-paving"] },
-      { text: "Inconsistent installation — mixed patterns, misplaced warning fields, broken blocks — can mislead the people the system is meant to help.", cite: ["wikipedia-tactile-paving"] },
+      { text: "Inconsistent installation (mixed patterns, misplaced warning fields, broken blocks) can mislead the people the system is meant to help.", cite: ["wikipedia-tactile-paving"] },
       { text: "National standards differ in colour, texture and layout, so a traveller's learned expectations may not transfer between countries.", cite: ["iso-23599", "wikipedia-tactile-paving"] },
     ],
     related: ["qr-code", "tokyo-1964-design"],
@@ -208,7 +208,7 @@ export const stories: Story[] = [
     alternativeNames: ["Quick Response code", "QRコード"],
     dek: "Built in 1994 to speed up a car-parts factory floor, the QR Code became public infrastructure partly because its makers chose not to enforce their patent.",
     summary:
-      "A small team at DENSO WAVE led by Masahiro Hara designed the QR Code to hold far more information than a barcode — including kanji and kana — and to be found and read quickly at any angle. Standardisation, camera phones and an open patent policy carried it from kanban labels to menus, tickets and payments.",
+      "A small team at DENSO WAVE led by Masahiro Hara designed the QR Code to hold far more information than a barcode, including kanji and kana, and to be found and read quickly at any angle. Standardisation, camera phones and an open patent policy carried it from kanban labels to menus, tickets and payments.",
     category: "Information design",
     tags: ["information design", "manufacturing", "standards", "mobile", "open technology"],
     originDate: "1994",
@@ -257,7 +257,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Hara led a team of two. Their answer was a two-dimensional matrix: instead of reading information along one line, a scanner reads it across a grid, horizontally and vertically. Two-dimensional codes already existed — the Japan Automotive Hall of Fame notes that QR Code succeeded an earlier 2D code, used alongside it for a while — so the contribution was less the matrix itself than the way this one was engineered to be found and read fast.",
+            text: "Hara led a team of two. Their answer was a two-dimensional matrix: instead of reading information along one line, a scanner reads it across a grid, horizontally and vertically. Two-dimensional codes already existed. The Japan Automotive Hall of Fame notes that QR Code succeeded an earlier 2D code, used alongside it for a while, so the contribution was less the matrix itself than the way this one was engineered to be found and read fast.",
             cite: ["denso-qr-history", "jahfa-hara"],
           },
           {
@@ -273,7 +273,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "The most recognisable part of a QR Code — the three nested squares in its corners — is also its cleverest. To find a code quickly in a cluttered image, a scanner needs a shape that is unlikely to appear anywhere else. The team surveyed printed material to find the black-and-white sequence that occurred least often. The answer was a ratio of 1:1:3:1:1.",
+            text: "The most recognisable part of a QR Code, the three nested squares in its corners, is also its cleverest. To find a code quickly in a cluttered image, a scanner needs a shape that is unlikely to appear anywhere else. The team surveyed printed material to find the black-and-white sequence that occurred least often. The answer was a ratio of 1:1:3:1:1.",
             cite: ["denso-qr-history", "denso-qr-story"],
           },
           { kind: "diagram", diagram: "qr-finder", caption: "A finder pattern crossed by a scan line in any direction yields the same 1:1:3:1:1 sequence of dark and light. Three of them fix the code's position and rotation. Editorial diagram." },
@@ -299,7 +299,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "The first major users were in the automotive industry, where QR Codes were used on electronic kanban — the cards that signal what parts to produce and move in a just-in-time system. Food, pharmaceutical and contact-lens makers then adopted them for traceability.",
+            text: "The first major users were in the automotive industry, where QR Codes were used on electronic kanban: the cards that signal what parts to produce and move in a just-in-time system. Food, pharmaceutical and contact-lens makers then adopted them for traceability.",
             cite: ["denso-qr-history"],
           },
         ],
@@ -331,7 +331,7 @@ export const stories: Story[] = [
           },
           {
             kind: "uncertain",
-            text: "Later large-scale uses — such as QR-based mobile payment systems built by companies outside Japan, or contact-tracing check-ins during the COVID-19 pandemic — were developed independently by other organisations using the open standard. They show the code's reach, not DENSO WAVE's design intent, and we have not yet sourced them in detail.",
+            text: "Later large-scale uses, such as QR-based mobile payment systems built by companies outside Japan, or contact-tracing check-ins during the COVID-19 pandemic, were developed independently by other organisations using the open standard. They show the code's reach, not DENSO WAVE's design intent, and we have not yet sourced them in detail.",
           },
         ],
       },
@@ -367,7 +367,7 @@ export const stories: Story[] = [
     ],
     limitations: [
       { text: "A QR Code is unreadable to people without a compatible device, which matters when it replaces printed information such as menus.", cite: [] },
-      { text: "Because codes are not human-readable, people cannot see where a code leads before scanning — a known route for fraud.", cite: [] },
+      { text: "Because codes are not human-readable, people cannot see where a code leads before scanning, a known route for fraud.", cite: [] },
     ],
     related: ["tactile-paving", "tokyo-1964-design"],
     principles: ["designing-for-recognition", "standards-and-openness"],
@@ -418,7 +418,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "The V&A describes the Butterfly Stool as combining a Western stool form with a profile that evokes Japanese architecture and calligraphy — a piece of furniture made to sit between two ways of living.",
+            text: "The V&A describes the Butterfly Stool as combining a Western stool form with a profile that evokes Japanese architecture and calligraphy: a piece of furniture made to sit between two ways of living.",
             cite: ["vam-butterfly-stool"],
           },
           {
@@ -439,7 +439,7 @@ export const stories: Story[] = [
           { kind: "diagram", diagram: "butterfly-halves", caption: "Two identical moulded parts, mirrored and joined under the seat by a single brass rod. Editorial diagram." },
           {
             kind: "interpretation",
-            text: "Using one part twice halves the number of moulds and makes assembly straightforward — an elegant fit between the form and the economics of making it.",
+            text: "Using one part twice halves the number of moulds and makes assembly straightforward, an elegant fit between the form and the economics of making it.",
           },
         ],
       },
@@ -545,7 +545,7 @@ export const stories: Story[] = [
     subjectJa: "東京オリンピック",
     palette: ["#c8322b", "#23315a", "#e07a2e", "#efebe3"],
     alternativeNames: ["Tokyo Olympics 1964 posters", "1964 Olympic pictograms"],
-    dek: "A red disc, five gold rings and a set of pictograms that let visitors find their way without a shared language — the first time an Olympic Games was designed as a system.",
+    dek: "A red disc, five gold rings and a set of pictograms that let visitors find their way without a shared language. The first time an Olympic Games was designed as a system.",
     summary:
       "For the 1964 Tokyo Olympics, a team led by design critic Masaru Katsumi treated the Games as one communication problem. Yusaku Kamekura's emblem and posters gave it a voice; Yoshiro Yamashita's pictograms gave it a vocabulary. Every later host city has followed with a pictogram set of its own.",
     category: "Graphic design",
@@ -604,13 +604,13 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Kamekura's emblem places a large red disc above the five Olympic rings and the words TOKYO 1964 in gold. The first poster, issued in 1961, presented the emblem alone on white. Later posters in the series used dramatic action photography — credited to photographer Osamu Hayasaki and photo director Jo Murakoshi — with the emblem as a constant. The series won the Ministry of Education's Grand Prize.",
+            text: "Kamekura's emblem places a large red disc above the five Olympic rings and the words TOKYO 1964 in gold. The first poster, issued in 1961, presented the emblem alone on white. Later posters in the series used dramatic action photography, credited to photographer Osamu Hayasaki and photo director Jo Murakoshi, with the emblem as a constant. The series won the Ministry of Education's Grand Prize.",
             cite: ["british-museum-kamekura", "agi-tokyo-1964"],
           },
           { kind: "diagram", diagram: "poster-system", caption: "How the system held together: a fixed emblem block, a consistent typographic band and a changing image or pictogram. Editorial diagram based on surviving programmes; not a reproduction of any poster." },
           {
             kind: "p",
-            text: "Yoshiro Yamashita led the design of 59 pictograms: 20 for sports and 39 for services such as telephones, first aid, banks and toilets. Katsumi cited traditional Japanese family crests, kamon, as an inspiration — compact emblems that communicate identity at a glance.",
+            text: "Yoshiro Yamashita led the design of 59 pictograms: 20 for sports and 39 for services such as telephones, first aid, banks and toilets. Katsumi cited traditional Japanese family crests, kamon, as an inspiration: compact emblems that communicate identity at a glance.",
             cite: ["japanhouse-1964"],
           },
           { kind: "image", image: "tokyo1964-programmes", size: "wide" },
@@ -638,7 +638,7 @@ export const stories: Story[] = [
           },
           {
             kind: "uncertain",
-            text: "It is often said that specific later systems — notably the 1972 Munich pictograms — were directly modelled on Tokyo's. We have not yet sourced documentation of that relationship, so we only claim the continuation of the practice.",
+            text: "It is often said that specific later systems, notably the 1972 Munich pictograms, were directly modelled on Tokyo's. We have not yet sourced documentation of that relationship, so we only claim the continuation of the practice.",
           },
           {
             kind: "p",
@@ -653,7 +653,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "interpretation",
-            text: "Pictogram-based wayfinding is now so normal at airports, stations and stadiums that it is hard to see it as a design choice at all. Tokyo 1964 is one of the landmark moments in how that approach became visible to a global audience — alongside many other contributors to public information design worldwide.",
+            text: "Pictogram-based wayfinding is now so normal at airports, stations and stadiums that it is hard to see it as a design choice at all. Tokyo 1964 is one of the landmark moments in how that approach became visible to a global audience, alongside many other contributors to public information design worldwide.",
           },
         ],
       },
@@ -667,7 +667,7 @@ export const stories: Story[] = [
           },
           {
             kind: "interpretation",
-            text: "Design the boring parts too. The 39 service pictograms — telephones, toilets, first aid — mattered to visitors as much as the celebrated posters.",
+            text: "Design the boring parts too. The 39 service pictograms (telephones, toilets, first aid) mattered to visitors as much as the celebrated posters.",
           },
           {
             kind: "interpretation",
@@ -752,7 +752,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "The player hangs on the wall without a lid, so the disc is visible as it turns — as the blades of a fan would be. Speakers are built into the body. The cord hangs below, inviting a pull to start and stop playback. Volume and track search sit discreetly on top.",
+            text: "The player hangs on the wall without a lid, so the disc is visible as it turns, as the blades of a fan would be. Speakers are built into the body. The cord hangs below, inviting a pull to start and stop playback. Volume and track search sit discreetly on top.",
             cite: ["vam-cd-player"],
           },
           {
@@ -772,7 +772,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "MUJI put the design into production. The V&A's gallery label connects it to MUJI's principles — the company name translates roughly as \"no brand, good quality\".",
+            text: "MUJI put the design into production. The V&A's gallery label connects it to MUJI's principles; the company name translates roughly as \"no brand, good quality\".",
             cite: ["vam-cd-player"],
           },
           { kind: "image", image: "muji-cd-players", size: "wide" },
@@ -796,11 +796,11 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "interpretation",
-            text: "The CD player belongs to a format many people no longer use, yet the interaction idea is independent of the technology — which is why it still rewards study.",
+            text: "The CD player belongs to a format many people no longer use, yet the interaction idea is independent of the technology, which is why it still rewards study.",
           },
           {
             kind: "p",
-            text: "In 2006 Fukasawa and Jasper Morrison curated Super Normal, an exhibition of ordinary, often anonymous objects — another expression of attention to everyday use.",
+            text: "In 2006 Fukasawa and Jasper Morrison curated Super Normal, an exhibition of ordinary, often anonymous objects, another expression of attention to everyday use.",
             cite: ["wikipedia-fukasawa"],
           },
           {
@@ -847,7 +847,7 @@ export const stories: Story[] = [
     alternativeNames: ["ISO 7010 E001", "非常口マーク"],
     dek: "A Japanese design competition, smoke-filled test rooms and a quiet argument at ISO produced the green sign above exit doors around the world.",
     summary:
-      "In the late 1970s a Japanese fire-safety contest looked for an exit sign that anyone could understand — whatever language they read, and through smoke. Yukio Ota's running figure won after testing, and Japan put it forward to ISO, where it became the basis of the international emergency exit sign.",
+      "In the late 1970s a Japanese fire-safety contest looked for an exit sign that anyone could understand, whatever language they read, and through smoke. Yukio Ota's running figure won after testing, and Japan put it forward to ISO, where it became the basis of the international emergency exit sign.",
     category: "Information design",
     tags: ["pictograms", "wayfinding", "safety", "standards", "public signage"],
     originDate: "1979",
@@ -871,7 +871,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "interpretation",
-            text: "A text sign such as 非常出口 — emergency exit — works for people who read Japanese and can see clearly. In a fire, smoke cuts visibility, and in buildings used by visitors, not everyone reads the language on the wall. The contest that produced the running figure tested entries for exactly this: legibility in smoke.",
+            text: "A text sign such as 非常出口 (emergency exit) works for people who read Japanese and can see clearly. In a fire, smoke cuts visibility, and in buildings used by visitors, not everyone reads the language on the wall. The contest that produced the running figure tested entries for exactly this: legibility in smoke.",
           },
           { kind: "image", image: "exit-sign-text-sapporo", size: "inline" },
         ],
@@ -882,7 +882,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "In the late 1970s a Japanese association devoted to fire safety held a contest for a new national exit sign. It drew 3,300 entries. Shortlisted designs were tested to see how readily each could be understood in a smoky environment, and Yukio Ota's figure — a person running towards a doorway, white on green — was chosen.",
+            text: "In the late 1970s a Japanese association devoted to fire safety held a contest for a new national exit sign. It drew 3,300 entries. Shortlisted designs were tested to see how readily each could be understood in a smoky environment, and Yukio Ota's figure, a person running towards a doorway in white on green, was chosen.",
             cite: ["slate-exit-sign"],
           },
           {
@@ -903,7 +903,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Ota drew 58 variations. One committee member objected that the figure looked as if it were sprinting out of the door, so Ota adjusted the angle of the legs — the aim, he said, was to suggest people should run slowly.",
+            text: "Ota drew 58 variations. One committee member objected that the figure looked as if it were sprinting out of the door, so Ota adjusted the angle of the legs. The aim, he said, was to suggest people should run slowly.",
             cite: ["slate-exit-sign"],
           },
           {
@@ -927,7 +927,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Japan submitted the design to the International Organization for Standardization in 1980. ISO had been close to adopting a Soviet proposal — also a man running through a door. The Soviet side objected that Ota's version had no door; the Japanese side argued that a vertical line in the Soviet design made the figure harder to recognise. ISO agreed to consider Ota's design because of the testing behind it.",
+            text: "Japan submitted the design to the International Organization for Standardization in 1980. ISO had been close to adopting a Soviet proposal, also a man running through a door. The Soviet side objected that Ota's version had no door; the Japanese side argued that a vertical line in the Soviet design made the figure harder to recognise. ISO agreed to consider Ota's design because of the testing behind it.",
             cite: ["slate-exit-sign"],
           },
           {
@@ -937,7 +937,7 @@ export const stories: Story[] = [
           },
           {
             kind: "uncertain",
-            text: "Sources give different years for international adoption — Slate says 1985, other sources 1987 — and we have not seen the original ISO publication. We show both.",
+            text: "Sources give different years for international adoption (Slate says 1985, other sources 1987), and we have not seen the original ISO publication. We show both.",
             cite: ["slate-exit-sign", "wikipedia-ota"],
           },
         ],
@@ -1051,13 +1051,13 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Each pictogram was drawn on a grid of just 12 by 12 pixels — 144 squares to convey \"sunny\", \"love\" or \"happy\".",
+            text: "Each pictogram was drawn on a grid of just 12 by 12 pixels: 144 squares to convey \"sunny\", \"love\" or \"happy\".",
             cite: ["wikipedia-kurita"],
           },
-          { kind: "diagram", diagram: "emoji-grid", caption: "Working at 12×12: every pixel is a decision. A generic heart drawn on the grid for illustration — not one of Kurita's original designs, which remain the property of NTT DOCOMO." },
+          { kind: "diagram", diagram: "emoji-grid", caption: "Working at 12×12: every pixel is a decision. A generic heart drawn on the grid for illustration, not one of Kurita's original designs, which remain the property of NTT DOCOMO." },
           {
             kind: "interpretation",
-            text: "The grid forced the same discipline as a pictogram set like Tokyo 1964's: reduce each idea to the few marks that carry it. Borrowing from manga conventions — sweat drops, sparkles — gave users a visual language many already knew.",
+            text: "The grid forced the same discipline as a pictogram set like Tokyo 1964's: reduce each idea to the few marks that carry it. Borrowing from manga conventions, such as sweat drops and sparkles, gave users a visual language many already knew.",
           },
         ],
       },
@@ -1078,7 +1078,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Once emoji were in Unicode, any device could exchange them, and the Japanese word — e (picture) + moji (character) — travelled with them. In 2016 MoMA added DOCOMO's original 176 to its collection and exhibited them as \"Inbox: The Original Emoji\".",
+            text: "Once emoji were in Unicode, any device could exchange them, and the Japanese word emoji, from e (picture) + moji (character), travelled with them. In 2016 MoMA added DOCOMO's original 176 to its collection and exhibited them as \"Inbox: The Original Emoji\".",
             cite: ["unicode-emoji-history", "wikipedia-kurita"],
           },
           {
@@ -1115,9 +1115,9 @@ export const stories: Story[] = [
     subjectJa: "カップヌードル",
     palette: ["#c8102e", "#f4f1ea", "#d4a640", "#3a3a3a"],
     alternativeNames: ["カップヌードル", "Cup O'Noodles (US, 1973)"],
-    dek: "Momofuku Ando fried noodles like tempura so they would keep, then watched people eat them from paper cups — and redesigned the meal around the container.",
+    dek: "Momofuku Ando fried noodles like tempura so they would keep, then watched people eat them from paper cups, and redesigned the meal around the container.",
     summary:
-      "After developing Chicken Ramen in 1958, Momofuku Ando noticed on a 1966 trip to the United States that people broke the noodles into cups and ate them with forks. Cup Noodles (1971) answered with a single object that is package, cooking vessel and bowl — including a clever way of holding the noodles in the middle of the cup.",
+      "After developing Chicken Ramen in 1958, Momofuku Ando noticed on a 1966 trip to the United States that people broke the noodles into cups and ate them with forks. Cup Noodles (1971) answered with a single object that is package, cooking vessel and bowl, including a clever way of holding the noodles in the middle of the cup.",
     category: "Product design",
     tags: ["packaging", "food", "everyday products", "manufacturing"],
     originDate: "1971",
@@ -1175,7 +1175,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Nearly forty container prototypes were tested before an enlarged paper-cup shape in polystyrene foam — then unusual in Japan — was chosen. The noodle block was made larger than the base of the cup, so it would sit suspended in the middle of the cup rather than resting on the bottom.",
+            text: "Nearly forty container prototypes were tested before an enlarged paper-cup shape in polystyrene foam, then unusual in Japan, was chosen. The noodle block was made larger than the base of the cup, so it would sit suspended in the middle of the cup rather than resting on the bottom.",
             cite: ["nissin-founder"],
           },
           {
@@ -1186,7 +1186,7 @@ export const stories: Story[] = [
           { kind: "diagram", diagram: "cup-suspension", caption: "The block is larger than the cup's base, so it wedges mid-cup with space beneath. To fill reliably, the cup is lowered over an upturned block. Editorial diagram." },
           {
             kind: "interpretation",
-            text: "Holding the noodles off the bottom plausibly lets hot water reach the whole block and cushions it in transit — though Nissin's account we have read records the solution, not its reasons.",
+            text: "Holding the noodles off the bottom plausibly lets hot water reach the whole block and cushions it in transit, though Nissin's account we have read records the solution, not its reasons.",
           },
           {
             kind: "facts",
@@ -1217,7 +1217,7 @@ export const stories: Story[] = [
         blocks: [
           { kind: "interpretation", text: "Watch how people misuse your product. Ando's breakthrough came from seeing customers improvise with paper cups." },
           { kind: "interpretation", text: "Collapse steps into one object. Package, pot and bowl became a single thing, removing equipment from the meal entirely." },
-          { kind: "interpretation", text: "Solve manufacturing as design. Turning the process upside down — literally — made the suspended block possible at scale." },
+          { kind: "interpretation", text: "Solve manufacturing as design. Turning the process upside down, literally, made the suspended block possible at scale." },
         ],
       },
     ],
@@ -1242,7 +1242,7 @@ export const stories: Story[] = [
     subjectJa: "ウォークマン",
     palette: ["#2d4a7a", "#c9ccd1", "#e8892a", "#111111"],
     alternativeNames: ["Soundabout (US)", "Stowaway (UK)", "Freestyle (Sweden)"],
-    dek: "Sony took a reporter's tape recorder, removed the recording, added stereo — and created a new way to move through a city.",
+    dek: "Sony took a reporter's tape recorder, removed the recording, added stereo, and created a new way to move through a city.",
     summary:
       "Sony's TPS-L2 (1979) began with co-founder Masaru Ibuka wanting stereo music he could carry. The tape recorder division adapted its Pressman interview recorder into a playback-only stereo player. Two headphone sockets and a \"hotline\" button show that it was designed to be shared, not only listened to alone.",
     category: "Product design",
@@ -1303,7 +1303,7 @@ export const stories: Story[] = [
           { kind: "image", image: "walkman-teardown", size: "wide" },
           {
             kind: "interpretation",
-            text: "These features suggest Sony anticipated a worry about isolation — that personal headphones might cut people off — and designed a social mode into the very first model.",
+            text: "These features suggest Sony anticipated a worry about isolation (that personal headphones might cut people off) and designed a social mode into the very first model.",
           },
         ],
       },
@@ -1338,7 +1338,7 @@ export const stories: Story[] = [
           },
           {
             kind: "p",
-            text: "The V&A describes how, because cassettes do not skip like records, the player started a trend of listening to music on the move — giving commuting and errands a private soundtrack.",
+            text: "The V&A describes how, because cassettes do not skip like records, the player started a trend of listening to music on the move, giving commuting and errands a private soundtrack.",
             cite: ["vam-walkman"],
           },
           {
@@ -1414,7 +1414,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "Toshiba's appliance development manager, Shogo Yamada, turned to Yoshitada Minami, who ran a small family factory making electric water heaters for Toshiba — and which was close to bankruptcy. Their working design heated an inner pot of rice indirectly, inside an outer pot holding a measured amount of water.",
+            text: "Toshiba's appliance development manager, Shogo Yamada, turned to Yoshitada Minami, who ran a small family factory making electric water heaters for Toshiba, and which was close to bankruptcy. Their working design heated an inner pot of rice indirectly, inside an outer pot holding a measured amount of water.",
             cite: ["ieee-spectrum-rice-cooker"],
           },
           {
@@ -1446,7 +1446,7 @@ export const stories: Story[] = [
         blocks: [
           {
             kind: "p",
-            text: "The ER-4 went on sale on 10 December 1955 for ¥3,200 — roughly a third of an average monthly salary — and sales started slowly. Within a year Toshiba was selling more than 200,000 cookers a month, many of them made at the Minamis' factory, which was rescued in the process.",
+            text: "The ER-4 went on sale on 10 December 1955 for ¥3,200 (roughly a third of an average monthly salary), and sales started slowly. Within a year Toshiba was selling more than 200,000 cookers a month, many of them made at the Minamis' factory, which was rescued in the process.",
             cite: ["ieee-spectrum-rice-cooker"],
           },
           {

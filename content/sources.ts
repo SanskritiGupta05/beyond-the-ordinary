@@ -86,7 +86,7 @@ export const sources: Source[] = [
   {
     id: "iso-23599",
     url: "https://www.iso.org/standard/76106.html",
-    title: "ISO 23599:2019 Assistive products for blind and vision-impaired persons — Tactile walking surface indicators",
+    title: "ISO 23599:2019 Assistive products for blind and vision-impaired persons: Tactile walking surface indicators",
     publisher: "International Organization for Standardization",
     published: "2019-01",
     accessed: ACCESSED,
@@ -437,7 +437,7 @@ export const sources: Source[] = [
   {
     id: "iso-7010",
     url: "https://www.iso.org/standard/72424.html",
-    title: "ISO 7010 Graphical symbols — Safety colours and safety signs — Registered safety signs",
+    title: "ISO 7010 Graphical symbols: Safety colours and safety signs: Registered safety signs",
     publisher: "International Organization for Standardization",
     accessed: ACCESSED,
     type: "standard",
@@ -517,7 +517,7 @@ export const sources: Source[] = [
     claims: [
       "Momofuku Ando was born in 1910 and died on 5 January 2007.",
       "In 1957 he lost almost everything when a credit union he directed failed, and resolved to make ramen that could be prepared at home with hot water.",
-      "He set five goals — taste, long storage, quick preparation, low cost and safety — and worked for about a year in a shed behind his house in Ikeda, Osaka.",
+      "He set five goals (taste, long storage, quick preparation, low cost and safety) and worked for about a year in a shed behind his house in Ikeda, Osaka.",
       "He applied the principle of tempura to noodles: frying dried them and left pores that let hot water restore them.",
       "Chicken Ramen launched on 25 August 1958 at ¥35 a serving.",
       "On a 1966 trip to the US he saw supermarket staff break noodles into paper cups and eat them with forks, which prompted the idea of noodles in a cup.",

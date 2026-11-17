@@ -24,7 +24,7 @@ export const principles: Principle[] = [
     name: "Designing from existing behaviour",
     question: "What does the user already know how to do?",
     explanation:
-      "Rather than teaching people a new interaction, a design can reuse one they already perform. Fukasawa described the goal as a product that triggers an instinctive response — no manual required. The skill lies in noticing which behaviours are shared widely enough to build on.",
+      "Rather than teaching people a new interaction, a design can reuse one they already perform. Fukasawa described the goal as a product that triggers an instinctive response, with no manual required. The skill lies in noticing which behaviours are shared widely enough to build on.",
     examples: [
       { story: "naoto-fukasawa-cd-player", text: "The CD player borrows the pull-cord switch of a kitchen extractor fan.", cite: ["vam-cd-player"] },
       { story: "qr-code", text: "Codes readable from any angle mean users never have to learn how to align a scanner.", cite: ["denso-qr-story"] },
@@ -39,7 +39,7 @@ export const principles: Principle[] = [
     id: "designing-for-recognition",
     slug: "designing-for-recognition",
     name: "Designing for recognition",
-    question: "How do you make something unmistakable at a glance — for a person, a foot or a machine?",
+    question: "How do you make something unmistakable at a glance, for a person, a foot or a machine?",
     explanation:
       "Each of these designs had to be recognised quickly in a noisy environment: a pictogram among crowds, a finder pattern among printed clutter, a warning texture among paving stones. Distinctiveness was engineered, often by studying what was common in order to choose what was rare.",
     examples: [
@@ -65,7 +65,7 @@ export const principles: Principle[] = [
       { story: "cup-noodles", text: "Turning the noodle block upside down and lowering the cup over it made the suspended-noodle design manufacturable.", cite: ["nissin-founder"] },
       { story: "rice-cooker", text: "Boiling water itself became the timer: when it was gone, a bimetallic switch tripped.", cite: ["ieee-spectrum-rice-cooker"] },
       { story: "walkman", text: "Sony adapted an existing reporter's recorder, removing recording and adding stereo.", cite: ["vam-walkman"] },
-      { story: "tactile-paving", text: "The first blocks were cast cement — modular units that compose into guiding lines and warning fields.", cite: ["vam-tactile-slab"] },
+      { story: "tactile-paving", text: "The first blocks were cast cement: modular units that compose into guiding lines and warning fields.", cite: ["vam-tactile-slab"] },
     ],
     people: ["sori-yanagi", "seiichi-miyake", "momofuku-ando"],
     stories: ["butterfly-stool", "tactile-paving", "cup-noodles", "rice-cooker", "walkman"],
@@ -77,7 +77,7 @@ export const principles: Principle[] = [
     name: "Standards, openness and scale",
     question: "What lets an idea travel beyond the people who made it?",
     explanation:
-      "Many ideas spread not because of their form alone but because of decisions about who may use them and how they are specified. Standards bodies, open specifications and repeatable systems turn a single solution into shared infrastructure — and also fix it in place, for better and worse.",
+      "Many ideas spread not because of their form alone but because of decisions about who may use them and how they are specified. Standards bodies, open specifications and repeatable systems turn a single solution into shared infrastructure, and also fix it in place, for better and worse.",
     examples: [
       { story: "qr-code", text: "DENSO WAVE published the specification and declared it would not exercise its patents; AIM, JIS and ISO standards followed.", cite: ["denso-qr-history"] },
       { story: "tactile-paving", text: "JIS T 9251 in Japan and ISO 23599 internationally codified the guiding and warning patterns.", cite: ["jis-t9251", "iso-23599"] },
